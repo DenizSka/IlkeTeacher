@@ -1,8 +1,7 @@
 const express = require('express');
 const projeRoutes = express.Router();
 const controller = require('../controllers/projeController')
-
-
+const views = require('../controllers/viewsController');
 
 // the root route,
 
@@ -14,16 +13,19 @@ const controller = require('../controllers/projeController')
 // });
 
 projeRoutes.route('/:id')
-  .get(controller.getOne)
+  .get(controller.getOne,views.showOne, views.show404)
   .put(controller.update)
   .delete(controller.destroy);
 
 
 projeRoutes.route('/')
-  .get(controller.index)
+  .get(controller.index, views.projeleriGoster, views.show404)
   .post(controller.create);
+
 
 
 //export file:
 
 module.exports = projeRoutes;
+
+

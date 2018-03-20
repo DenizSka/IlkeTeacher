@@ -13,21 +13,28 @@ module.exports = {
 //   });
 // });
 
-  index(req, res) {
+  index(req, res, next) {
     projeData.findAll()
       .then((projeler) => {
-        res.json({
-          message: 'OK',
-          data: projeler
-        });
+        res.locals.projeler = projeler;
+        next();
       })
-      .catch(err => res.status(500).json(err));
+      .catch(err => next(err));
   },
 
-  getOne(req, res) {
+  getOne(req, res, next) {
     projeData.findById(req.params.id)
       .then((proje) => {
         console.log(proje);
+        res.locals.proje = proje;
+        next();
+      })
+      .catch(err => next(err));
+  },
+
+  create(req, res) {
+    projeData.save(req.body)
+      .then((proje) => {
         res.json({
           message: 'OK',
           data: proje
@@ -36,24 +43,13 @@ module.exports = {
       .catch(err => res.status(500).json(err));
   },
 
-  create(req, res) {
-    quoteDB.save(req.body)
-      .then((quote) => {
-        res.json({
-          message: 'OK',
-          data: quote
-        })
-      })
-      .catch(err => res.status(500).json(err));
-  },
-
   update(req, res) {
     req.body.id = req.params.id;
-    quoteDB.update(req.body)
-      .then((quote) => {
+    projeData.update(req.body)
+      .then((proje) => {
         res.json({
           message: 'OK',
-          data: quote
+          data: proje
         });
       })
       .catch(err => res.status(500).json(err));

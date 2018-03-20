@@ -2,7 +2,7 @@
 const express = require('express');
 // initialize the app
 const app = express();
-// const projeRoutes = require('./routes/projeroutes');
+const projeRoutes = require('./routes/projeroutes');
 const bodyParser = require('body-parser');
 //configure the logger: (some other loggers are winston, bunyan,)
 const logger = require('morgan');
@@ -10,24 +10,20 @@ const logger = require('morgan');
 const ejs = require('ejs');
 const path = require('path');
 const bcrypt = require('bcrypt');
-// const flash = require ('connect-flash');
+
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const User = require('./models/user');
 // const env = require('dotenv').load();
 const expressValidator = require('express-validator');
-const { check, validationResult } = require('express-validator/check');
-const { matchedData, sanitize } = require('express-validator/filter');
-const signup = require('./routes/signup');
-// const passport = require('passport');
+
+
 // set the port, either from an environmental variable or manually
 const port = process.env.PORT || 3000;
 
 /* Views */
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-app.use(expressValidator())
 
 // middleware
 app.use(logger('dev'));
@@ -39,6 +35,8 @@ app.use( bodyParser.urlencoded({ extended: true}));
 /* we'll also be accepting and parsing json  */
 app.use(bodyParser.json());
 
+//initialize validator:
+app.use(expressValidator());
 
 // initialize cookie-parser to allow us access the cookies stored in the browser.
 app.use(cookieParser());
@@ -66,38 +64,7 @@ app.use(session({
     }
 }));
 
-
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// //initialize validator:
-// app.use(expressValidator({
-//   errorFormatter: function (param, msg, value){
-//     const namespace = param.split('.')
-//     , root = namespace.shift()
-//     , formParam = root;
-
-//     while(namespace.length){
-//       formParam += '[' + namespace.shift() + ']';
-//     }
-//     return {
-//       param: formParam,
-//       msg: msg,
-//       value: value
-//     };
-//   }
-// }));
-
-//connect flash
-// app.use(flash());
-
-//Global Vars
-// app.use((req, res, next) => {
-//   res.locals.success_msg = req.flash('success_msg');
-//   res.locals.error_msg = req.flash('error_msg');
-//   res.locals.error = req.flash('error');
-//   next();
-// });
+//you need compatible session stores. go to express session.  we are using pql
 
 // home route
 // app.get('/', (req,res) => res.render('pages/home',
@@ -140,29 +107,19 @@ app.get('/', sessionChecker, (req, res) => {
 
 
 // route for user signup
-app.get('/signup', sessionChecker, (req, res) => {
-    res.render('pages/signup');
-});
-
-app.post( '/signup', [
-  check('username').exists().withMessage('must have a username'),
-  check('email').isEmail().withMessage('must be email'),
-  check('password').isLength({ min: 5 }).matches(/\d/).withMessage('passwords must be at least 5 characters and contain one number')
-  ], (req, res, next) => {
-      const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-          return res.status(422).json({ errors: errors.mapped() });
-        }
-
-        // if (!req.body.username || !req.body.email || !req.body.password) {
-        //   return res.status(400).send('Missing username or password');
-        // };
-
+app.route('/signup')
+    .get(sessionChecker, (req, res) => {
+        res.render('pages/signup');
+    })
+    .post((req, res) => {
+        check(req.body.email).isEmail().withMessage('must be an email');
+        if (!req.body.username || !req.body.email || !req.body.password) {
+          return res.status(400).send('Missing username or password');
+        } else {
           User.create({
             username: req.body.username,
             email: req.body.email,
-            password: req.body.password,
-            password2: req.body.password2
+            password: req.body.password
         })
         .then(user => {
             req.session.user = user.dataValues;
@@ -171,7 +128,7 @@ app.post( '/signup', [
         })
         .catch(error => {
             res.redirect('/signup');
-        });
+        })};
     });
 
 // route for user Login
