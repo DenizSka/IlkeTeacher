@@ -1,4 +1,5 @@
 \c deniz_proje_dev
+-- CREATE TABLE message ( id SERIAL PRIMARY KEY NOT NULL, name VARCHAR (50), message TEXT);
 
 DROP TABLE IF EXISTS projeler;
 

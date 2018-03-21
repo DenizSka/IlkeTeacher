@@ -2,7 +2,6 @@
 const express = require('express');
 // initialize the app
 const app = express();
-// const projeRoutes = require('./routes/projeroutes');
 const bodyParser = require('body-parser');
 //configure the logger: (some other loggers are winston, bunyan,)
 const logger = require('morgan');
@@ -14,11 +13,12 @@ const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const User = require('./models/user');
+const Message = require('./models/message');
 // const env = require('dotenv').load();
 const expressValidator = require('express-validator');
 const { check, validationResult } = require('express-validator/check');
 const { matchedData, sanitize } = require('express-validator/filter');
-const signup = require('./routes/signup');
+const projeRoutes = require('./routes/projeroutes');
 // const passport = require('passport');
 // set the port, either from an environmental variable or manually
 const port = process.env.PORT || 3000;
@@ -145,7 +145,7 @@ app.get('/signup', sessionChecker, (req, res) => {
 });
 
 app.post( '/signup', [
-  check('username').exists().withMessage('must have a username'),
+  // check('username').exists().withMessage('must have a username'),
   check('email').isEmail().withMessage('must be email'),
   check('password').isLength({ min: 5 }).matches(/\d/).withMessage('passwords must be at least 5 characters and contain one number')
   ], (req, res, next) => {
@@ -191,9 +191,11 @@ app.route('/login')
 
         User.findOne({ where: { username: username } }).then(function (user) {
             if (!user) {
-                res.redirect('/login');
+                res.redirect('/login')
+                console.log( 'Wrong Credentials');
             } else if (!user.validPassword(password)) {
-                res.redirect('/login');
+                console.log( 'Wrong Credentials');
+                res.render('pages/login');
             } else {
                 req.session.user = user.dataValues;
                 console.log(req.session.user)
@@ -202,8 +204,7 @@ app.route('/login')
         });
     });
 
-
-
+// app.use('/dashboard', projeRoutes);
 // route for user's dashboard
 app.get('/dashboard', (req, res) => {
     if (req.session.user && req.cookies.user_sid) {
@@ -212,6 +213,7 @@ app.get('/dashboard', (req, res) => {
         res.redirect('/login');
     }
 });
+
 
 
 // route for user logout

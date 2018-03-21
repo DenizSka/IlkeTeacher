@@ -1,6 +1,6 @@
 const express = require('express');
 const projeRoutes = express.Router();
-
+const session = require('express-session');
 const projeData = require('../models/projeDB');
 
 module.exports = {
@@ -13,13 +13,25 @@ module.exports = {
 //   });
 // });
 
+  // dashboard(req, res, next) {
+  //     if (req.session.user && req.cookies.user_sid) {
+  //         res.render('pages/dashboard');
+  //     } else {
+  //         res.redirect('/login');
+  //     }
+  // },
+
   index(req, res, next) {
+    if (req.session.user && req.cookies.user_sid) {
     projeData.findAll()
       .then((projeler) => {
         res.locals.projeler = projeler;
         next();
       })
       .catch(err => next(err));
+    } else {
+      res.redirect('/login');
+    }
   },
 
   getOne(req, res, next) {

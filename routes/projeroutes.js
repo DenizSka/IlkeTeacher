@@ -12,13 +12,13 @@ const views = require('../controllers/viewsController');
 //   });
 // });
 
-projeRoutes.route('/:id')
+projeRoutes.route('/dashboard/:id')
   .get(controller.getOne,views.showOne, views.show404)
   .put(controller.update)
   .delete(controller.destroy);
 
 
-projeRoutes.route('/')
+projeRoutes.route('/dashboard')
   .get(controller.index, views.projeleriGoster, views.show404)
   .post(controller.create);
 
