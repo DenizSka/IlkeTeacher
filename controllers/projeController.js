@@ -13,27 +13,23 @@ module.exports = {
 //   });
 // });
 
-  index(req, res) {
+  index(req, res, next) {
     projeData.findAll()
       .then((projeler) => {
-        res.json({
-          message: 'OK',
-          data: projeler
-        });
-      })
-      .catch(err => res.status(500).json(err));
+          res.locals.projeler= projeler;
+          next();
+        })
+      .catch(err => next(err));
   },
 
-  getOne(req, res) {
+  getOne(req, res, next) {
     projeData.findById(req.params.id)
       .then((proje) => {
         console.log(proje);
-        res.json({
-          message: 'OK',
-          data: proje
-        })
+        res.locals.proje = proje;
+        next();
       })
-      .catch(err => res.status(500).json(err));
+      .catch(err => next(err));
   },
 
   create(req, res) {

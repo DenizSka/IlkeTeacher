@@ -14,14 +14,20 @@ const views = require('../controllers/viewsController');
 //   });
 // });
 
-projeRoutes.route('/:id')
-  .get(controller.getOne)
+
+// home route
+projeRoutes.get('/', (req,res) => res.render('pages/home', {data: 'Hello'}));
+
+
+
+projeRoutes.route('/projeler/:id')
+  .get(controller.getOne, views.showOne)
   .put(controller.update)
   .delete(controller.destroy);
 
 
-projeRoutes.route('/')
-  .get(controller.index)
+projeRoutes.route('/projeler')
+  .get(controller.index, views.projeleriGoster)
   .post(controller.create);
 
 

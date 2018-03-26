@@ -12,7 +12,7 @@ module.exports = {
 
   projeleriGoster(req, res) {
     res.render('projeler/proje-index', {
-      projeler: res.locals.projeler,
+      data: res.locals.projeler,
       });
     },
 
