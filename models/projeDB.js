@@ -47,7 +47,7 @@ module.exports = {
   destroy(id) {
   return db.none(`
     DELETE
-      FROM quotes
+      FROM projeler
      WHERE id = $1
   `, id);
   }

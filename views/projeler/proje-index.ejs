@@ -1,0 +1,10 @@
+
+<div class='quote'>
+<p>We have quotes by <% projeler.forEach(function(proje) { %>
+  <h1><%= proje.content %></h1>
+  <h3>Author: <%= proje.author %></h3>
+  <h3>Genre: <%= proje.genre_type %></h3>
+  <a href="/dashboard/<%= proje.id %>"> Daha Fazla </a><br>
+<% }) %>.</p>
+</div>
+
