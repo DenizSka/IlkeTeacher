@@ -2,7 +2,7 @@
 const express = require('express');
 const projeRoutes = express.Router();
 const controller = require('../controllers/projeController')
-
+const views = require('../controllers/viewsController');
 
 
 // the root route,
