@@ -1,57 +1,52 @@
-# teacherstudent
 
-> Platform to share commit homeworks.
+<h1>Ilke Ciritci Website</h1>
 
-## About
 
-This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
+<p>
+This website is built to perform as a portfolio page for architecture teacher Ilke and also a platform for her students to download all the homeworks and submit it back to her. 
 
-## Getting Started
+This site has an admin page for Ilke to upload all her publications and homeworks. She will also be approving the users of the page. 
 
-Getting up and running is as easy as 1, 2, 3.
+Students will have to create a username and password in order to upload the homeworks. Users will be approved by admin. 
+</p>
+<div>
+    <p>  <h3> User Journey </h3><br>
+        <img src="../master/wireframes/0userjourney.png" width="500"/>
+    </p>
 
-1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
-2. Install your dependencies
+</div>
+<div>
+    <p> <h3> Wire Frames</h3><br>
+    <p> <h2> Homepage </h2> <br>
+      <img src="../master/wireframes/1Homepage.png" width="300"/>
+    </p>
+    <p> <h2> Homework </h2> <br>
+      <img src="../master/wireframes/2Homework.png" width="300"/>
+    </p>
+    <p> <h2> Login </h2> <br>
+      <img src="../master/wireframes/3Login.png" width="300"/>
+    </p>
+    <p> <h2> Publications </h2> <br>
+      <img src="../master/wireframes/4Publications.png" width="300"/>
+    </p>
+</div>
+<ul><h2>Good to have features: (NOT PART OF MVP)</h2></ul>
+<li>A forum for students to chat</li>
+<li>A place for students to submit their homeworks. (with the current flow, they can only send it as an email)</li>
 
-    ```
-    cd path/to/teacherstudent; npm install
-    ```
 
-3. Start your app
+<ul><h2> Technologies Needed: </h2></ul>
 
-    ```
-    npm start
-    ```
+<li> Express </li>
+<li> SQL </li>
 
-## Testing
 
-Simply run `npm test` and all your tests in the `test/` directory will be run.
 
-## Scaffolding
+<ul><h2> Important Milestones: </h2></ul>
+<p>(Note: In order to move forward client approval is needed - Payment is expected on these important dates in order to share the work.)</p>
+<li>3/30/2018 - Set up all the tabs and the forms</li>
+<li>4/5/2018 - Username password set up</li>
+<li>4/10/2018 - Authentication system for admin</li>
+<li>4/13/2018 - CSS done. Ready to publish</li>
 
-Feathers has a powerful command line interface. Here are a few things it can do:
 
-```
-$ npm install -g feathers-cli             # Install Feathers CLI
-
-$ feathers generate service               # Generate a new Service
-$ feathers generate hook                  # Generate a new Hook
-$ feathers generate model                 # Generate a new Model
-$ feathers help                           # Show all commands
-```
-
-## Help
-
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
-
-## Changelog
-
-__0.1.0__
-
-- Initial release
-
-## License
-
-Copyright (c) 2016
-
-Licensed under the [MIT license](LICENSE).

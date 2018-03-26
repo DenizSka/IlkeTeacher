@@ -1,7 +1,9 @@
+
 const express = require('express');
 const projeRoutes = express.Router();
 const controller = require('../controllers/projeController')
-const views = require('../controllers/viewsController');
+
+
 
 // the root route,
 
@@ -12,20 +14,17 @@ const views = require('../controllers/viewsController');
 //   });
 // });
 
-projeRoutes.route('/dashboard/:id')
-  .get(controller.getOne,views.showOne, views.show404)
+projeRoutes.route('/:id')
+  .get(controller.getOne)
   .put(controller.update)
   .delete(controller.destroy);
 
 
-projeRoutes.route('/dashboard')
-  .get(controller.index, views.projeleriGoster, views.show404)
+projeRoutes.route('/')
+  .get(controller.index)
   .post(controller.create);
-
 
 
 //export file:
 
 module.exports = projeRoutes;
-
-

@@ -1,6 +1,6 @@
 const express = require('express');
 const projeRoutes = express.Router();
-const session = require('express-session');
+
 const projeData = require('../models/projeDB');
 
 module.exports = {
@@ -13,40 +13,21 @@ module.exports = {
 //   });
 // });
 
-  // dashboard(req, res, next) {
-  //     if (req.session.user && req.cookies.user_sid) {
-  //         res.render('pages/dashboard');
-  //     } else {
-  //         res.redirect('/login');
-  //     }
-  // },
-
-  index(req, res, next) {
-    if (req.session.user && req.cookies.user_sid) {
+  index(req, res) {
     projeData.findAll()
       .then((projeler) => {
-        res.locals.projeler = projeler;
-        next();
+        res.json({
+          message: 'OK',
+          data: projeler
+        });
       })
-      .catch(err => next(err));
-    } else {
-      res.redirect('/login');
-    }
+      .catch(err => res.status(500).json(err));
   },
 
-  getOne(req, res, next) {
+  getOne(req, res) {
     projeData.findById(req.params.id)
       .then((proje) => {
         console.log(proje);
-        res.locals.proje = proje;
-        next();
-      })
-      .catch(err => next(err));
-  },
-
-  create(req, res) {
-    projeData.save(req.body)
-      .then((proje) => {
         res.json({
           message: 'OK',
           data: proje
@@ -55,13 +36,24 @@ module.exports = {
       .catch(err => res.status(500).json(err));
   },
 
-  update(req, res) {
-    req.body.id = req.params.id;
-    projeData.update(req.body)
-      .then((proje) => {
+  create(req, res) {
+    quoteDB.save(req.body)
+      .then((quote) => {
         res.json({
           message: 'OK',
-          data: proje
+          data: quote
+        })
+      })
+      .catch(err => res.status(500).json(err));
+  },
+
+  update(req, res) {
+    req.body.id = req.params.id;
+    quoteDB.update(req.body)
+      .then((quote) => {
+        res.json({
+          message: 'OK',
+          data: quote
         });
       })
       .catch(err => res.status(500).json(err));
