@@ -11,7 +11,7 @@ Students will have to create a username and password in order to upload the home
 </p>
 <div>
     <p>  <h3> User Journey </h3><br>
-        <img src="../master/wireframes/0userjourney.png" width="500"/>
+        <img src="../master/wireframes/0userjourney.png" width="700"/>
     </p>
 
 </div>
