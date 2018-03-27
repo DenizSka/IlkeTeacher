@@ -32,15 +32,24 @@ module.exports = {
       .catch(err => next(err));
   },
 
-  create(req, res) {
-    quoteDB.save(req.body)
-      .then((quote) => {
-        res.json({
-          message: 'OK',
-          data: quote
-        })
+  create(req, res, next) {
+    projeData.save(req.body)
+      .then(() => {
+        next();
       })
-      .catch(err => res.status(500).json(err));
+      .catch(err => next(err));
+  },
+
+
+  bosForm(req, res, next) {
+    const yeniProje = {
+      id: null,
+      content: null,
+      author: null,
+      genre_type: null,
+    };
+    res.locals.proje = yeniProje;
+    next();
   },
 
   update(req, res) {

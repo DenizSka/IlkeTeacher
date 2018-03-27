@@ -5,18 +5,7 @@ const controller = require('../controllers/projeController')
 const views = require('../controllers/viewsController');
 
 
-// the root route,
-
-// projeRoutes.get('/', (req, res) => {
-//   res.json({
-//     message: 'ok',
-//     data: projeler
-//   });
-// });
-
-
-// home route
-projeRoutes.get('/', (req,res) => res.render('pages/home', {data: 'Hello'}));
+projeRoutes.get('/yeni', controller.bosForm, views.eklemeFormu);
 
 
 
@@ -28,7 +17,10 @@ projeRoutes.route('/projeler/:id')
 
 projeRoutes.route('/projeler')
   .get(controller.index, views.projeleriGoster)
-  .post(controller.create);
+  .post(controller.create, views.ekle);
+
+// home route
+projeRoutes.get('/', (req,res) => res.render('pages/home', {data: 'Hello'}));
 
 
 //export file:

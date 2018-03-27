@@ -20,5 +20,16 @@ module.exports = {
       res.render('projeler/bir-proje', {
         proje: res.locals.proje,
       });
-    }
+    },
+
+    eklemeFormu(req, res){
+      res.render('projeler/proje-ekle');
+    },
+
+    ekle(req, res) {
+      res.redirect('/projeler');
+    },
+
 }
+
+
