@@ -1,5 +1,3 @@
-const express = require('express');
-const projeRoutes = express.Router();
 
 const projeData = require('../models/projeDB');
 

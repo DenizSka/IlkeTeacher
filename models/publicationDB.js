@@ -9,47 +9,28 @@ module.exports = {
   findAll() {
     return db.many(`
       SELECT *
-        FROM projeler
+        FROM publications
       ORDER BY id
     `);
   },
 
+
   findById(id) {
     return db.oneOrNone(`
-    SELECT * FROM projeler
+    SELECT * FROM publications
     WHERE id = $1
   `, id);
   },
 
-  save(proje) {
+  save(publication) {
     //using pgpromise to SAVE ONE row, producing a new id
     return db.one(`
       INSERT
-      INTO projeler
+      INTO publications
         (content,author,genre_type)
       VALUES ($/content/,$/author/,$/genre_type/)
       RETURNING *
-      `, proje)
+      `, publication)
   },
-
-  update(proje) {
-    return db.one(`
-      UPDATE projeler
-      SET
-       content = $/content/,
-       author =  $/author/,
-       genre_type = $/genre_type/
-      WHERE id = $/id/
-      RETURNING *
-      `, proje)
-  },
-
-  destroy(id) {
-  return db.none(`
-    DELETE
-      FROM projeler
-     WHERE id = $1
-  `, id);
-  }
 
 }

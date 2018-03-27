@@ -11,23 +11,23 @@ Students will have to create a username and password in order to upload the home
 </p>
 <div>
     <p>  <h3> User Journey </h3><br>
-        <img src="../master/wireframes/0userjourney.png" width="700"/>
+        <img src="../master/wireframes/0userjourney.png" width="800"/>
     </p>
 
 </div>
 <div>
-    <p> <h3> Wire Frames</h3><br>
+    <p> <h3> Wireframes</h3><br>
     <p> <h2> Homepage </h2> <br>
-      <img src="../master/wireframes/1Homepage.png" width="300"/>
+      <img src="../master/wireframes/1Homepage.png" width="400"/>
     </p>
-    <p> <h2> Homework </h2> <br>
-      <img src="../master/wireframes/2Homework.png" width="300"/>
+    <p> <h2> Homework Tab</h2> <br>
+      <img src="../master/wireframes/2Homework.png" width="500"/>
     </p>
-    <p> <h2> Login </h2> <br>
-      <img src="../master/wireframes/3Login.png" width="300"/>
+    <p> <h2> Login Tab</h2> <br>
+      <img src="../master/wireframes/3Login.png" width="400"/>
     </p>
-    <p> <h2> Publications </h2> <br>
-      <img src="../master/wireframes/4Publications.png" width="300"/>
+    <p> <h2> Publications Tab</h2> <br>
+      <img src="../master/wireframes/4Publications.png" width="400"/>
     </p>
 </div>
 <ul><h2>Good to have features: (NOT PART OF MVP)</h2></ul>

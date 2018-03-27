@@ -3,6 +3,7 @@ const express = require('express');
 // initialize the app
 const app = express();
 const projeRoutes = require('./routes/projeroutes');
+const publiRoutes = require('./routes/publicationRoutes');
 const bodyParser = require('body-parser');
 //configure the logger: (some other loggers are winston, bunyan,)
 const logger = require('morgan');
@@ -37,14 +38,22 @@ app.use(express.static('public'));
 app.use( '/static', express.static( path.join( __dirname, 'public' )));
 
 
-// below the index route
-app.use('/', projeRoutes);
+// project route
+app.use('/projects', projeRoutes);
 
+
+// publication route
+app.use('/publications', publiRoutes);
+
+// home route
+app.get('/', (req,res) => {
+  res.render('pages/home')
+});
 
 // get anything that hasn't already been matched
 app.use('*', (req, res) => {
-    // send a response with status 404
-    res.status(404).send('page not found');
+  // send a response with status 404
+  res.status(404).send('page not found');
 });
 
 

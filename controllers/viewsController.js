@@ -11,24 +11,46 @@ module.exports = {
 
 
   projeleriGoster(req, res) {
-    res.render('projeler/proje-index', {
+    res.render('projects/project-index', {
       data: res.locals.projeler,
       });
     },
 
     showOne(req, res){
-      res.render('projeler/bir-proje', {
+      res.render('projects/project-single', {
         proje: res.locals.proje,
       });
     },
 
     eklemeFormu(req, res){
-      res.render('projeler/proje-ekle');
+      res.render('projects/project-add');
     },
 
     ekle(req, res) {
-      res.redirect('/projeler');
+      res.redirect('/projects');
     },
+
+    // publications
+
+  publiGoster(req, res) {
+    res.render('publications/publication-index', {
+      pubdata: res.locals.publications,
+    });
+  },
+
+  onePubli(req, res){
+    res.render('publications/publication-single', {
+      publication: res.locals.publication,
+    });
+  },
+
+  publiFormu(req, res){
+    res.render('publications/publication-add');
+  },
+
+  publiEkle(req, res) {
+    res.redirect('/publications');
+  },
 
 }
 

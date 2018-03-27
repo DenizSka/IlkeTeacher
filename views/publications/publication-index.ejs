@@ -1,0 +1,15 @@
+
+<% include ../partials/header %>
+
+<div class='publi'>
+<p>Ilke's publications <% pubdata.forEach(function(publi) { %>
+  <h1><%= publi.content %></h1>
+  <h3>Author: <%= publi.author %></h3>
+  <h3>Genre: <%= publi.genre_type %></h3>
+  <a href="/publications/<%= publi.id %>"> Daha Fazla </a><br>
+<% }) %>.</p>
+<a href='/publications/new'>Add New</a>
+</div>
+
+
+<% include ../partials/footer %>
