@@ -1,3 +1,13 @@
 <% include ../partials/header %>
 
+<div class= "edit-publication">
+  <form method='POST' action='/publications/<%= publication.id %>?_method=PUT'>
+    <input name="id" type="hidden" value="<%= publication.id %>">
+    <input name="content" type="text" value="<%= publication.content %>" />
+    <input name="author" type="text" value="<%= publication.author %>" />
+    <input name="genre_type" type="text" value="<%= publication.genre_type %>" />
+    <input type='submit' value='Edit!' />
+  </form>
+</div>
+
 <% include ../partials/footer %>

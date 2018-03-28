@@ -2,7 +2,8 @@ const pgp = require('pg-promise')();
 const dbConfig = require('../config/dbConfig');
 // execute pgp with our db config, so a connection is made.
 const db = pgp(dbConfig);
-
+// const db = require('./initilize.js');
+// const pgp = db.$config.pgp;
 
 module.exports = {
 
@@ -33,4 +34,15 @@ module.exports = {
       `, publication)
   },
 
+  update(publication) {
+    return db.one(`
+    UPDATE publications
+    SET
+    content = $/content/,
+    author =  $/author/,
+    genre_type = $/genre_type/
+    WHERE id = $/id/
+    RETURNING *
+    `, publication)
+  }
 }

@@ -1,13 +1,13 @@
 module.exports = {
 
   // Showing error status if the other comments do not work.
-  show404(err, req, res) {
-    res.sendStatus(404);
-  },
+  // show404(err, req, res) {
+  //   res.sendStatus(404);
+  // },
 
-  show406(err, req, res) {
-    res.sendStatus(406);
-  },
+  // show406(err, req, res) {
+  //   res.sendStatus(406);
+  // },
 
 
   projeleriGoster(req, res) {
@@ -50,6 +50,17 @@ module.exports = {
 
   publiEkle(req, res) {
     res.redirect('/publications');
+  },
+
+  publiEditForm(req, res) {
+    // console.log('inside of showEditForm function');
+    res.render('publications/publication-edit', {
+      publication: res.locals.publication,
+    });
+  },
+
+  publiUpdate(req, res) {
+    res.redirect(`/publications/${req.params.id}`);
   },
 
 }

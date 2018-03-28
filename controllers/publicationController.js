@@ -43,4 +43,17 @@ module.exports = {
       .catch(err => next(err));
   },
 
+
+
+  update(req, res, next) {
+    req.body.id = req.params.id;
+    publiData.update(req.body)
+    .then((publication) => {
+      console.log(publication, 'after post');
+      res.locals.publication = publication;
+      next();
+    })
+    .catch(err => next(err));
+  }
+
 }
