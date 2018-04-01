@@ -1,12 +1,26 @@
-<% include ../partials/header %>
 
-<div class='project'>
-<p>Ilke's projects <% data.forEach(function(proje) { %>
-  <h1><%= proje.content %></h1>
-  <h3>Date: <%= proje.date_created %></h3>
-  <a href="/projects/<%= proje.id %>"> Daha Fazla </a><br>
-<% }) %>.</p>
-<a href='/projects/new'>Yeni Proje Ekle</a>
-</div>
+<% include ../partials/header %>
+<a href='/projects/new'>Add New</a>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Project Name</th>
+      <th scope="col">Upload Date</th>
+      <th scope="col">More</th>
+    </tr>
+  </thead>
+  <tbody><% data.forEach(function(proje) { %>
+    <tr>
+      <th scope="row"><%= proje.id %></th>
+      <td><%= proje.content %></td>
+      <td><%= proje.date_created %></td>
+      <td><a href="/projects/<%= proje.id %>"> More </a></td>
+    </tr>
+
+  <% }) %></tbody>
+</table>
+
+<br>
 
 <% include ../partials/footer %>
