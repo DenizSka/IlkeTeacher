@@ -1,13 +1,13 @@
 const express = require('express');
 const projeRoutes = express.Router();
-const controller = require('../controllers/projeController')
+const controller = require('../controllers/projeController');
 const views = require('../controllers/viewsController');
 
 
 projeRoutes.get('/new', controller.bosForm, views.eklemeFormu);
 
 projeRoutes.route('/:id/edit')
-  .get(controller.getOne, views.projeEditForm);
+  .get(controller.onlyOne, views.projeEditForm);
 
 projeRoutes.route('/:id')
   .get(controller.getOne, views.showOne)

@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const projeRoutes = require('./routes/projeroutes');
 const publiRoutes = require('./routes/publicationRoutes');
+const loginRoutes = require('./routes/loginRoutes');
+const signupRoutes = require('./routes/signupRoutes');
 const bodyParser = require('body-parser');
 //configure the logger: (some other loggers are winston, bunyan,)
 const logger = require('morgan');
@@ -36,6 +38,13 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 // This sets a folder called public to be the destination from which any static assets (images,css,etc) will be served.
 app.use( '/static', express.static( path.join( __dirname, 'public' )));
+
+// project route
+app.use('/login', loginRoutes);
+
+// project route
+app.use('/signup', signupRoutes);
+
 
 
 // project route

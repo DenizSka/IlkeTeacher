@@ -1,6 +1,6 @@
 const express = require('express');
 const publiRoutes = express.Router();
-const controller = require('../controllers/publicationController')
+const controller = require('../controllers/publicationController');
 const views = require('../controllers/viewsController');
 
 

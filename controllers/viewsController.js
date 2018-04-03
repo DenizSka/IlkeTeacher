@@ -9,7 +9,31 @@ module.exports = {
   //   res.sendStatus(406);
   // },
 
+// signup!!!
 
+  // signupFormu(req, res){
+  //   res.render('pages/signup');
+  // },
+
+  // ekle(req, res) {
+  //   res.redirect('/home');
+  // },
+
+
+// login!!!
+
+  // loginFormu(req, res){
+  //   res.render('pages/login');
+  // },
+
+  // ekle(req, res) {
+  //   res.redirect('/home');
+  // },
+
+
+
+
+//projects!!
   projeleriGoster(req, res) {
     res.render('projects/project-index', {
       data: res.locals.projeler,
@@ -18,7 +42,7 @@ module.exports = {
 
   showOne(req, res){
     res.render('projects/project-single', {
-      proje: res.locals.proje,
+      login: res.locals.proje,
     });
   },
 
@@ -31,21 +55,23 @@ module.exports = {
   },
 
 
-  projeEditForm(req, res) {
+  loginEditForm(req, res) {
     // console.log('inside of showEditForm function');
     res.render('projects/project-edit', {
       project: res.locals.project,
     });
   },
 
-  projeUpdate(req, res) {
+  loginUpdate(req, res) {
     res.redirect(`/projects/${req.params.id}`);
   },
 
-  projeDelete(req, res) {
+  loginDelete(req, res) {
    res.redirect('/projects');
    },
-    // publications
+
+
+// publications!!!
 
   publiGoster(req, res) {
     res.render('publications/publication-index', {
