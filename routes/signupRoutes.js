@@ -17,9 +17,8 @@ signupRoutes.get('/', controller.bosForm, views.signupFormu);
 
 
 
-// signupRoutes.route('/')
-//   .get(controller.index)
-//   .post(controller.create);
+signupRoutes.route('/')
+  .post(controller.create, views.addsignup);
 
 
 

@@ -15,7 +15,7 @@ module.exports = {
     res.render('pages/signup');
   },
 
-  ekle(req, res) {
+  addsignup(req, res) {
     res.redirect('/home');
   },
 
@@ -26,7 +26,7 @@ module.exports = {
     res.render('pages/login');
   },
 
-  ekle(req, res) {
+  addlogin(req, res) {
     res.redirect('/home');
   },
 
