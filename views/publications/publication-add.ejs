@@ -1,10 +1,14 @@
-<% include ../partials//header %>
+<% include ../partials/header %>
 
+<h3 >Add a New Publication</h6>
 <form method='POST' action='/publications'>
-  <input name="content" type="text" placeholder="Quote" />
-  <input name="author" type="text" placeholder="Author" />
-  <input name="genre_type" type="text" placeholder="Genre_type" />
-  <input type='submit' value='Submit!' />
+  <label for="inputQuote">Quote</label>
+  <input class="form-control" name="content" type="text" placeholder="Quote" />
+  <label for="inputAuthor">Author</label>
+  <input class="form-control" name="author" type="text" placeholder="Author" />
+  <label for="inputGenre">Genre</label>
+  <input class="form-control" name="genre_type" type="text" placeholder="Genre_type" />
+  <button type="submit" class="btn btn-primary mb-2" value='Submit!'>Submit</button>
 </form>
 
 

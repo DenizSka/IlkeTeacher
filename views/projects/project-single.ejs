@@ -4,8 +4,16 @@
   <h1><%= proje.content %></h1>
   <h3>Author: <%= proje.author %></h3>
   <h3>Genre: <%= proje.genre_type %></h3>
-  <a href='/projects'>Butun projeleri gor</a>
+  <a href='/projects/<%= proje.id %>/edit'> Edit </a><br>
+
+  <form method='POST' action='/projects/<%= proje.id %>?_method=DELETE'>
+    <button type="Submit" value="Delete" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+    Delete
+    </button>
+  </form>
+  <a href='/projects'>Back to all projects</a>
 
 </div>
 
 <% include ../partials/footer %>
+

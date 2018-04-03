@@ -50,25 +50,23 @@ module.exports = {
     next();
   },
 
-  update(req, res) {
+  update(req, res, next) {
     req.body.id = req.params.id;
-    quoteDB.update(req.body)
-      .then((quote) => {
-        res.json({
-          message: 'OK',
-          data: quote
-        });
-      })
-      .catch(err => res.status(500).json(err));
+    projeData.update(req.body)
+    .then((proje) => {
+      console.log(proje, 'after post');
+      res.locals.proje = proje;
+      next();
+    })
+    .catch(err => next(err));
   },
 
-  destroy(req, res) {
-    quoteDB.destroy(req.params.id)
-      .then(() => {
-        res.json({
-          message: 'Quote deleted successfully'
-        })
+  destroy(req, res, next) {
+    projeData.destroy(req.params.id)
+      .then((proje) => {
+        res.locals.proje = proje;
+        next();
       })
-      .catch(err => res.status(500).json(err));
+      .catch(err => next(err));
   }
 };

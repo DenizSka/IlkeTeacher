@@ -4,24 +4,21 @@
 
 
 <a href='/publications/new'>Add New</a>
-<div class="col-sm-8 col-md-7 py-4"><% pubdata.forEach(function(publi) { %>
-<!-- <main role="main"> -->
 
-  <div class="container">
+  <div class="clearfix"><% pubdata.forEach(function(publi) { %>
+  <div>
+    <h5><%= publi.content %></h5>
+    <h6>Author: <%= publi.author %></h6>
+    <h6>Genre: <%= publi.genre_type %></h6>
+      <div class="btn-group">
+        <a href="/publications/<%= publi.id %>" class="btn btn-sm btn-outline-secondary">View</a>
+      </div>
+    </div>
+  <% }) %></div>
 
-    <img class="rounded float-left" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-      <p class="card-text"><%= publi.content %></p>
-      <p class="card-text">Author: <%= publi.author %></p>
-      <p class="card-text">Genre: <%= publi.genre_type %></p>
-        <div class="btn-group">
-          <a href="/publications/<%= publi.id %>" class="btn btn-sm btn-outline-secondary">View</a>
-        </div>
-  </div>
-<!-- </main> -->
-<% }) %></div>
-
-</div>
 
 <% include ../partials/footer %>
+
+
 
 

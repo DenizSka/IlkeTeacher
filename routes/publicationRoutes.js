@@ -11,14 +11,14 @@ publiRoutes.route('/:id/edit')
 
 publiRoutes.route('/:id')
   .get(controller.getOne, views.onePubli)
-  .put(controller.update, views.publiUpdate);
+  .put(controller.update, views.publiUpdate)
+  .delete(controller.destroy, views.handleDelete);
 
 
 
 publiRoutes.route('/')
   .get(controller.index, views.publiGoster)
   .post(controller.create, views.publiEkle);
-
 
 
 

@@ -43,8 +43,6 @@ module.exports = {
       .catch(err => next(err));
   },
 
-
-
   update(req, res, next) {
     req.body.id = req.params.id;
     publiData.update(req.body)
@@ -54,6 +52,15 @@ module.exports = {
       next();
     })
     .catch(err => next(err));
+  },
+
+  destroy(req, res, next) {
+    publiData.destroy(req.params.id)
+      .then((publication) => {
+        res.locals.publication = publication;
+        next();
+      })
+      .catch(err => next(err));
   }
 
 }

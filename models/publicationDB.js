@@ -44,5 +44,13 @@ module.exports = {
     WHERE id = $/id/
     RETURNING *
     `, publication)
+  },
+
+  destroy(id) {
+  return db.none(`
+    DELETE
+      FROM publications
+     WHERE id = $1
+  `, id);
   }
 }

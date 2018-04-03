@@ -2,11 +2,18 @@
 
 
 <div class='publi'>
+
+  <img src="../../img/sorry.png" width="300" alt="Noimage">
   <h1><%= publication.content %></h1>
   <h3>Author: <%= publication.author %></h3>
   <h3>Genre: <%= publication.genre_type %></h3>
-  <a href='/publications/<%= publication.id %>/edit'> Edit </a><br>
-  <a href='/publications'>Butun publicationlari gor</a>
+  <a href='/publications/<%= publication.id %>/edit'> <button type="button" class="btn btn-outline-success btn-sm">Edit</button> </a>
+  <form method='POST' action='/publications/<%= publication.id %>?_method=DELETE'>
+     <button type="Submit" value="Delete" class="btn btn-outline-warning btn-sm">
+    Delete
+    </button>
+  </form>
+  <a href='/publications'><button type="button" class="btn btn-outline-secondary btn-sm">Back </button></a>
 </div>
 
 

@@ -2,10 +2,9 @@
   --jumbotron-padding-y: 3rem;
 }
 
-.col-sm-8 div{
+.clearfix div{
   height: auto;
-  width: 150px;
-  height: 50%;
+  width: 50%;
   float: left;
   font-size: 12px;
   padding-top: 20px;
@@ -14,6 +13,7 @@
   margin-left: 0px;
 
 }
+
 
 .table.table-hover{
   height: auto;
@@ -33,7 +33,7 @@ footer{
   position:relative;
   width:100%;
   height: 200px;
-  margin-top: -200px;
+  margin-top: 200px;
   padding-bottom:50px;
   clear:both;
 

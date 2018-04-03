@@ -1,12 +1,14 @@
 <% include ../partials/header %>
 
-<form method='POST' action='/projects'>
-  <input name="content" type="text" placeholder="Quote" />
-  <input name="author" type="text" placeholder="Author" />
-  <input name="genre_type" type="text" placeholder="Genre_type" />
-  <input type='submit' value='Submit!' />
-</form>
-
-
+<div class= "edit-project">
+  <form method='POST' action='/projects/<%= proje.id %>?_method=PUT'>
+    <input name="id" type="hidden" value="<%= proje.id %>">
+    <input name="content" type="text" value="<%= proje.content %>" />
+    <input name="author" type="text" value="<%= proje.author %>" />
+    <input name="genre_type" type="text" value="<%= proje.genre_type %>" />
+    <input type='submit' value='Edit!' />
+  </form>
+</div>
 
 <% include ../partials/footer %>
+

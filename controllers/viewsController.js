@@ -16,20 +16,35 @@ module.exports = {
       });
     },
 
-    showOne(req, res){
-      res.render('projects/project-single', {
-        proje: res.locals.proje,
-      });
-    },
+  showOne(req, res){
+    res.render('projects/project-single', {
+      proje: res.locals.proje,
+    });
+  },
 
-    eklemeFormu(req, res){
-      res.render('projects/project-add');
-    },
+  eklemeFormu(req, res){
+    res.render('projects/project-add');
+  },
 
-    ekle(req, res) {
-      res.redirect('/projects');
-    },
+  ekle(req, res) {
+    res.redirect('/projects');
+  },
 
+
+  projeEditForm(req, res) {
+    // console.log('inside of showEditForm function');
+    res.render('projects/project-edit', {
+      project: res.locals.project,
+    });
+  },
+
+  projeUpdate(req, res) {
+    res.redirect(`/projects/${req.params.id}`);
+  },
+
+  projeDelete(req, res) {
+   res.redirect('/projects');
+   },
     // publications
 
   publiGoster(req, res) {
@@ -62,6 +77,10 @@ module.exports = {
   publiUpdate(req, res) {
     res.redirect(`/publications/${req.params.id}`);
   },
+
+  handleDelete(req, res) {
+   res.redirect('/publications');
+   }
 
 }
 
