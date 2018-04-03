@@ -11,24 +11,24 @@ module.exports = {
 
 // signup!!!
 
-  // signupFormu(req, res){
-  //   res.render('pages/signup');
-  // },
+  signupFormu(req, res){
+    res.render('pages/signup');
+  },
 
-  // ekle(req, res) {
-  //   res.redirect('/home');
-  // },
+  ekle(req, res) {
+    res.redirect('/home');
+  },
 
 
 // login!!!
 
-  // loginFormu(req, res){
-  //   res.render('pages/login');
-  // },
+  loginFormu(req, res){
+    res.render('pages/login');
+  },
 
-  // ekle(req, res) {
-  //   res.redirect('/home');
-  // },
+  ekle(req, res) {
+    res.redirect('/home');
+  },
 
 
 
