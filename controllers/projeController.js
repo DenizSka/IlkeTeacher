@@ -20,7 +20,7 @@ module.exports = {
       .catch(err => next(err));
   },
 
-  onlyOne(req, res, next) {
+  getOne(req, res, next) {
     projeData.findById(req.params.id)
       .then((proje) => {
         console.log(proje);
@@ -44,7 +44,7 @@ module.exports = {
       id: null,
       content: null,
       author: null,
-      genre_type: null
+      genre_type: null,
     };
     res.locals.proje = yeniProje;
     next();

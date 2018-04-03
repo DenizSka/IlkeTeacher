@@ -42,7 +42,7 @@ module.exports = {
 
   showOne(req, res){
     res.render('projects/project-single', {
-      login: res.locals.proje,
+      proje: res.locals.proje,
     });
   },
 
@@ -55,18 +55,18 @@ module.exports = {
   },
 
 
-  loginEditForm(req, res) {
+  projeEditForm(req, res) {
     // console.log('inside of showEditForm function');
     res.render('projects/project-edit', {
       project: res.locals.project,
     });
   },
 
-  loginUpdate(req, res) {
+  projeUpdate(req, res) {
     res.redirect(`/projects/${req.params.id}`);
   },
 
-  loginDelete(req, res) {
+  projeDelete(req, res) {
    res.redirect('/projects');
    },
 

@@ -7,7 +7,7 @@ const views = require('../controllers/viewsController');
 projeRoutes.get('/new', controller.bosForm, views.eklemeFormu);
 
 projeRoutes.route('/:id/edit')
-  .get(controller.onlyOne, views.projeEditForm);
+  .get(controller.getOne, views.projeEditForm);
 
 projeRoutes.route('/:id')
   .get(controller.getOne, views.showOne)
