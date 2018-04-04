@@ -35,3 +35,21 @@ INSERT INTO publications (content, author, genre_type) VALUES
     'Unknown',
     'motivational'
   );
+
+
+
+INSERT INTO users (username, password, repassword, fullname, email) VALUES
+  (
+    'deniz',
+    '123456',
+    '123456',
+    'denizska',
+    'hello@world.com'
+  ),
+  (
+    'yana',
+    '123456',
+    '123456',
+    'yanina',
+    'yanina@world.com'
+  );

@@ -1,5 +1,18 @@
 
-const loginData = require('../models/loginDB');
+const signinData = require('../models/loginDB');
+
+function validUser(user){
+  //do stuff
+  const validEmail = typeof user.email == 'string' &&
+                    user.email.trim() != '';
+
+  const validPassword = typeof user.password == 'string' &&
+                     user.password.trim() != '' &&
+                     user.password.trim().length >= 6;
+
+  return validEmail && validPassword;
+
+};
 
 module.exports = {
 // the root route,
@@ -12,7 +25,7 @@ module.exports = {
 // });
 
   index(req, res, next) {
-    loginData.findAll()
+    signinData.findAll()
       .then((users) => {
           res.locals.users= users;
           next();
@@ -21,7 +34,7 @@ module.exports = {
   },
 
   getOne(req, res, next) {
-    loginData.findById(req.params.id)
+    signinData.findById(req.params.id)
       .then((user) => {
         console.log(user);
         res.locals.user = user;
@@ -30,8 +43,30 @@ module.exports = {
       .catch(err => next(err));
   },
 
+
+  getOneEmail(req, res, next) {
+    if(validUser(req.body)){
+      signinData.findByEmail(req.body.email)
+        .then((user) => {
+        console.log('user', user);
+      if(!user){
+          //this is a unique email
+          res.json ({
+            user,
+            message: 'this is a unique email'
+          });
+        } else {
+          //email in use
+          next(new Error('email in use'));
+        }
+      });
+    } else {
+      next(new Error('password not accepted'));
+    }
+  },
+
   create(req, res, next) {
-    loginData.save(req.body)
+    signinData.save(req.body)
       .then(() => {
         next();
       })
@@ -54,7 +89,7 @@ module.exports = {
 
   update(req, res, next) {
     req.body.id = req.params.id;
-    loginData.update(req.body)
+    signinData.update(req.body)
     .then((user) => {
       console.log(user, 'after post');
       res.locals.user = user;
@@ -64,7 +99,7 @@ module.exports = {
   },
 
   destroy(req, res, next) {
-    loginData.destroy(req.params.id)
+    signinData.destroy(req.params.id)
       .then((user) => {
         res.locals.user = user;
         next();

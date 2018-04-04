@@ -21,6 +21,14 @@ module.exports = {
   `, id);
   },
 
+
+  findByEmail(email) {
+    return db.oneOrNone(`
+    SELECT * FROM users
+    WHERE email = '$email'
+  `, email);
+  },
+
   save(user) {
     //using pgpromise to SAVE ONE row, producing a new id
     return db.one(`

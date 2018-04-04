@@ -1,3 +1,4 @@
+
 const pgp = require('pg-promise')();
 const dbConfig = require('../config/dbConfig');
 // execute pgp with our db config, so a connection is made.
