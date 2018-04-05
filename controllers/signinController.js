@@ -4,7 +4,8 @@ const signinData = require('../models/loginDB');
 function validUser(user){
   //do stuff
   const validEmail = typeof user.email == 'string' &&
-                    user.email.trim() != '';
+                    user.email.trim() != '' &&
+                    user.email.trim().length >= 6;
 
   const validPassword = typeof user.password == 'string' &&
                      user.password.trim() != '' &&
@@ -45,8 +46,9 @@ module.exports = {
 
 
   getOneEmail(req, res, next) {
+    console.log(req.body);
     if(validUser(req.body)){
-      signinData.findByEmail(req.body.email)
+      signinData.findByEmail(req.params.email)
         .then((user) => {
         console.log('user', user);
       if(!user){
@@ -61,7 +63,7 @@ module.exports = {
         }
       });
     } else {
-      next(new Error('password not accepted'));
+      next(new Error('signin not accepted. password must be at least 6 characters'));
     }
   },
 
