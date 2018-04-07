@@ -1,12 +1,11 @@
 
-// const pgp = require('pg-promise')();
-// const dbConfig = require('../config/dbConfig');
-// // execute pgp with our db config, so a connection is made.
-// const db = pgp(dbConfig);
+const pgp = require('pg-promise')();
+const dbConfig = require('../config/dbConfig');
+// execute pgp with our db config, so a connection is made.
+const db = pgp(dbConfig);
 // const db = require('./initilize.js');
 // const pgp = db.$config.pgp;
-const db = require('./initilize.js');
-const pgp = db.$config.pgp;
+
 
 module.exports = {
 

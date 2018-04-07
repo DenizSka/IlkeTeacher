@@ -1,9 +1,19 @@
-// const pgp = require('pg-promise')();
-// const dbConfig = require('../config/dbConfig');
-// // execute pgp with our db config, so a connection is made.
-// const db = pgp(dbConfig);
-const db = require('./initilize.js');
-const pgp = db.$config.pgp;
+
+//i do not want to start pg promise in each file. In every npm start i get an error saying:
+// WARNING: Creating a duplicate database object for the same connection.
+
+const pgp = require('pg-promise')();
+const dbConfig = require('../config/dbConfig');
+// execute pgp with our db config, so a connection is made.
+const db = pgp(dbConfig);
+
+
+// In order to avoid the dublicate db creation I added the pg promise command to initilize file. And my plan was
+// to call import pg promise when i needed. Below code is me trying to make that happen. This did not work too.
+
+// import db from './initilize.js';
+// const db = require('./initilize.js');
+// const pgp = db.$config.pgp;
 
 module.exports = {
 
@@ -22,12 +32,13 @@ module.exports = {
   `, id);
   },
 
-
+//this function is not working. The purpose of this function is to take the email that the client wrote in to the sign up form page,
+// and check if that email exists in the users table I created in the database.
   findByEmail(email) {
     return db.oneOrNone(`
     SELECT * FROM users
     WHERE email = '$email'
-  `, email);
+  `, email)
   },
 
   save(user) {

@@ -1,11 +1,13 @@
 
 const signinData = require('../models/loginDB');
+const bcrypt = require ('bcrypt');
 
+
+//this is a function to give some limitations to username and password.
 function validUser(user){
-  //do stuff
+  // do stuff
   const validEmail = typeof user.email == 'string' &&
-                    user.email.trim() != '' &&
-                    user.email.trim().length >= 6;
+                    user.email.trim() != '';
 
   const validPassword = typeof user.password == 'string' &&
                      user.password.trim() != '' &&
@@ -16,14 +18,6 @@ function validUser(user){
 };
 
 module.exports = {
-// the root route,
-
-// userRoutes.get('/', (req, res) => {
-//   res.json({
-//     message: 'ok',
-//     data: users
-//   });
-// });
 
   index(req, res, next) {
     signinData.findAll()
@@ -45,39 +39,74 @@ module.exports = {
   },
 
 
+//this is the old version just to check if the validuser function is working.
+  // getOneEmail(req, res, next) {
+  //   if(validUser(req.body)){
+  //     signinData.findByEmail(req.body.email)
+  //       .then((user) => {
+  //       console.log('user', user);
+  //     if(!user){
+  //         //this is a unique email
+  //         res.json ({
+  //           user,
+  //           message: 'this is a unique email'
+  //         });
+  //       } else {
+  //         //email in use
+  //         next(new Error('email in use'));
+  //       }
+  //     });
+  //   } else {
+  //     next(new Error('password not accepted'));
+  //   }
+  // },
+
+
+//this function is suppose to take the user input on the signin form and check if the email that client wrote exists in the existing database.
+//If it exist it should give an error. And if there is no limitations than client can create their username.
+
   getOneEmail(req, res, next) {
     console.log(req.body);
     if(validUser(req.body)){
+      // FindByEmail psql command is not working.
       signinData.findByEmail(req.params.email)
         .then((user) => {
+        // According to this console log, user is null. Why??
         console.log('user', user);
+        res.locals.user = user;
+        next();
       if(!user){
-          //this is a unique email
-          res.json ({
-            user,
-            message: 'this is a unique email'
-          });
+          bcrypt.hash(req.body.password, 10)
+          .then((hash) => {
+            const yeniuser = {
+              username: req.body.username,
+              password: hash,
+              repassword: hash,
+              fullname: req.body.fullname,
+              email: req.body.email
+            };
+            res.locals.user = newuser;
+            signinData.save(newuser)
+              .then(id => {
+                res.json ({
+                id,
+                message: 'this is a unique email'
+                });
+              });
+            });
         } else {
           //email in use
           next(new Error('email in use'));
         }
-      });
+      })
     } else {
       next(new Error('signin not accepted. password must be at least 6 characters'));
     }
   },
 
-  create(req, res, next) {
-    signinData.save(req.body)
-      .then(() => {
-        next();
-      })
-      .catch(err => next(err));
-  },
 
-
-  bosForm(req, res, next) {
-    const yeniuser = {
+  emptyForm(req, res, next) {
+    const newuser = {
       id: null,
       username: null,
       password: null,
@@ -85,9 +114,19 @@ module.exports = {
       fullname: null,
       email: null,
     };
-    res.locals.user = yeniuser;
+    res.locals.user = newuser;
     next();
   },
+
+
+  // create(req, res, next) {
+  //   signinData.save(req.body)
+  //     .then(() => {
+  //       next();
+  //     })
+  //     .catch(err => next(err));
+  // },
+
 
   update(req, res, next) {
     req.body.id = req.params.id;

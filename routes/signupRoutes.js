@@ -4,7 +4,8 @@ const controller = require('../controllers/signinController');
 const views = require('../controllers/viewsController');
 
 
-signupRoutes.get('/', controller.bosForm, views.signupFormu);
+// signupRoutes.get('/', controller.getOneEmail, views.signupFormu);
+signupRoutes.get('/', controller.emptyForm, views.signupFormu);
 
 // signupRoutes.route('/:id/edit')
 //   .get(controller.getOne);
