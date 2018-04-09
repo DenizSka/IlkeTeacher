@@ -31,11 +31,23 @@ module.exports = {
 
 //this function is not working. The purpose of this function is to take the email that the client wrote in to the sign up form page,
 // and check if that email exists in the users table I created in the database.
+
+// According to pg-promise's documentation, "Never use ES6 template strings or manual concatenation to generate queries"
+// Replaced it with parameterized queries and used promise
+
   findByEmail(email) {
-    return db.oneOrNone(`
-    SELECT * FROM users
-    WHERE email = '$email'
-  `, email)
+    return new Promise((resolve, reject) => {
+      db
+      .oneOrNone('SELECT * FROM users WHERE email = $1', email)
+      .then(user => {
+        resolve(user);
+      })
+      .catch(error => {
+        // do something with error
+        console.error(error);
+        reject(error);
+      })
+    })
   },
 
   save(user) {
