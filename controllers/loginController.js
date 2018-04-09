@@ -2,14 +2,7 @@
 const loginData = require('../models/loginDB');
 
 module.exports = {
-// the root route,
 
-// userRoutes.get('/', (req, res) => {
-//   res.json({
-//     message: 'ok',
-//     data: users
-//   });
-// });
 
   index(req, res, next) {
     loginData.findAll()
