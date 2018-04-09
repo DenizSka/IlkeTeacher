@@ -69,7 +69,7 @@ module.exports = {
     console.log(req.body);
     if(validUser(req.body)){
       // FindByEmail psql command is not working.
-      signinData.findByEmail(req.body.email)
+      signinData.findByEmail(req.params.email)
         .then((user) => {
         // According to this console log, user is null. Why??
         console.log('user', user);
@@ -78,7 +78,7 @@ module.exports = {
       if(!user){
           bcrypt.hash(req.body.password, 10)
           .then((hash) => {
-            const newuser = {
+            const yeniuser = {
               username: req.body.username,
               password: hash,
               repassword: hash,
@@ -88,16 +88,10 @@ module.exports = {
             res.locals.user = newuser;
             signinData.save(newuser)
               .then(id => {
-                // user is now saved in the database at this point
-                console.log(id);
                 res.json ({
                 id,
                 message: 'this is a unique email'
                 });
-              })
-              .catch(error => {
-                // handle database errors
-                next(new Error('database error'));
               });
             });
         } else {
