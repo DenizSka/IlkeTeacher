@@ -9,6 +9,7 @@ const signupRoutes = require('./routes/signupRoutes');
 const bodyParser = require('body-parser');
 //configure the logger: (some other loggers are winston, bunyan,)
 const logger = require('morgan');
+const cookieParser = require('cookie-parser');
 const ejs = require('ejs');
 const path = require('path');
 
@@ -33,6 +34,7 @@ or anything more than text*/
 app.use( bodyParser.urlencoded({ extended: true }));
 /* we'll also be accepting and parsing json  */
 app.use(bodyParser.json());
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // static route to public
 app.use(express.static('public'));

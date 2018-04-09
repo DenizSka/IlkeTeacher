@@ -15,9 +15,9 @@ loginRoutes.get('/', controller.loginForm, views.loginFormu);
 //   .delete(controller.destroy, views.projeDelete);
 
 
-// loginRoutes.route('/')
+loginRoutes.route('/')
 //   .get(controller.index, views.projeleriGoster)
-//   .post(controller.create, views.ekle);
+  .post(controller.getLogin, views.ekle);
 
 
 
