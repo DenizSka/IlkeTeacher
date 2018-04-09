@@ -60,27 +60,27 @@ app.get('/', (req,res) => {
 });
 
 // get anything that hasn't already been matched
-// app.use('*', (req, res) => {
-//   // send a response with status 404
-//   res.status(404).send('page not found');
-// });
+app.use('*', (req, res) => {
+  // send a response with status 404
+  res.status(404).send('page not found');
+});
 
 
 // catch 404 and forward to error handler
-app.use('*', (req, res, next) => {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+// app.use('*', (req, res, next) => {
+//   const err = new Error('Not Found');
+//   err.status = 404;
+//   next(err);
+// });
 
-// error handler
-app.use('*', (err, req, res, next) => {
-  res.status(err.status || 500);
-  res.json({
-    message: err.message,
-    error: req.app.get('env') === 'development' ? err : {}
-  });
-});
+// // error handler
+// app.use('*', (err, req, res, next) => {
+//   res.status(err.status || 500);
+//   res.json({
+//     message: err.message,
+//     error: req.app.get('env') === 'development' ? err : {}
+//   });
+// });
 
 
 
