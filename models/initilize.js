@@ -19,7 +19,6 @@ module.exports = {
    if (databaseClient == null) {
      this.initialize();
    }
-
    return databaseClient;
  }
 };

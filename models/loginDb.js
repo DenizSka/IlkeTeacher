@@ -2,6 +2,7 @@
 const databaseClient = require('./initilize');
 const db = databaseClient.getClient();
 
+
 // WRONG way
 // import db from './initilize.js';
 // const db = require('./initilize.js');
@@ -26,12 +27,18 @@ module.exports = {
 
 //this function is not working. The purpose of this function is to take the email that the client wrote in to the sign up form page,
 // and check if that email exists in the users table I created in the database.
+
   // findByEmail(email) {
   //   return db.oneOrNone(`
   //   SELECT * FROM users
   //   WHERE email = '$email'
   // `, email)
   // },
+
+
+// According to pg-promise's documentation, "Never use ES6 template strings or manual concatenation to generate queries"
+// Replaced it with parameterized queries and used promise
+
 
   findByEmail(email) {
     return new Promise((resolve, reject) => {
@@ -46,7 +53,7 @@ module.exports = {
         reject(error);
       })
     })
- },
+  },
 
   save(user) {
     //using pgpromise to SAVE ONE row, producing a new id

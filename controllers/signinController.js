@@ -68,9 +68,10 @@ module.exports = {
   getOneEmail(req, res, next) {
     console.log(req.body);
     if(validUser(req.body)){
-      // FindByEmail psql command is not working.
+
       // You can fit more (diverse) data in the body than in the url. You can pass any string (special characters)
       // best practice would be that you should use params when doing a get, but use body for post, put and delete.
+
       signinData.findByEmail(req.body.email)
         .then((user) => {
         // According to this console log, user is null. Why??
@@ -95,7 +96,6 @@ module.exports = {
                 res.json ({
                 id,
                 message: 'this is a unique email'
-                })
               })
               .catch(error => {
                 // handle database errors
