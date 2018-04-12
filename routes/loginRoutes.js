@@ -17,7 +17,7 @@ loginRoutes.get('/', controller.loginForm, views.loginFormu);
 
 loginRoutes.route('/')
 //   .get(controller.index, views.projeleriGoster)
-  .post(controller.getLogin, views.ekle);
+  .post(controller.getLogin, () => {} );
 
 
 

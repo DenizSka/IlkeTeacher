@@ -38,7 +38,6 @@ module.exports = {
   //     .catch(err => next(err));
   // },
 
-
   getLogin(req, res, next) {
     console.log(req.body);
     if(validUser(req.body)){
@@ -49,19 +48,31 @@ module.exports = {
           if(user){
               //compare pasword with hashed password. Comparing password they entered in with password in db.
               bcrypt.compare(req.body.password, user.password)
-              .then((result) => {
+                .then((result) => {
               //if the passwords matched
                 if(result){
+                const cookie = req.cookies.cookieName;
+                  if (cookie === undefined) {
                   //setting the 'set-cookie' header
-                  const isSecure = req.app.get('env') != 'development';
-                  res.cookie('user-id', user.id, {
-                    httpOnly: true,
-                    secure: isSecure,
-                    signed: true
-                  });
-                  res.json({
-                    message: 'logged in!'
-                  });
+                  // let cookie = req.cookies['user_id'];
+                  // console.log(cookie);
+                    const isSecure = req.app.get('env') != 'development';
+                    res.cookie('user_id', user.id, {
+                      httpOnly: true,
+                      maxAge: 900000,
+                      secure: isSecure,
+                      signed: true
+                    });
+                    console.log('cookie created successfully');
+                    res.json({
+                      id: user.id,
+                      message: 'logged in!'
+                    });
+                    } else {
+                      // yes, cookie was already present
+                      console.log('cookie exists', cookie);
+                    }
+                    next(); // <-- important!
                 } else {
                   next (new Error('password or username you entered is incorrect'));
                 }

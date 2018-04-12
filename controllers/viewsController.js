@@ -26,11 +26,11 @@ module.exports = {
     res.render('pages/login');
   },
 
-  addlogin(req, res) {
-    res.redirect('/home');
-  },
-
-
+  // loggedIn(req, res) {
+  //   res.render('/users/user-single', {
+  //     user: res.id,
+  //   });
+  // },
 
 
 //projects!!

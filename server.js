@@ -12,6 +12,14 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const ejs = require('ejs');
 const path = require('path');
+const escapeHtml = require('escape-html');
+const http = require('http');
+const url = require('url');
+require('dotenv').config();
+
+const cors = require('cors');
+const secret = process.env.COOKIE_SECRET;
+
 
 //when we create forms, the natural method will be post. In order to get the delete function to work we will need this package.
 const methodOverride = require('method-override');
@@ -34,19 +42,22 @@ or anything more than text*/
 app.use( bodyParser.urlencoded({ extended: true }));
 /* we'll also be accepting and parsing json  */
 app.use(bodyParser.json());
-app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(cookieParser(secret));
+
+
+
 
 // static route to public
 app.use(express.static('public'));
 // This sets a folder called public to be the destination from which any static assets (images,css,etc) will be served.
 app.use( '/static', express.static( path.join( __dirname, 'public' )));
 
+
 // project route
 app.use('/login', loginRoutes);
 
 // project route
 app.use('/signup', signupRoutes);
-
 
 
 // project route
