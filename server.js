@@ -52,6 +52,10 @@ app.use(express.static('public'));
 // This sets a folder called public to be the destination from which any static assets (images,css,etc) will be served.
 app.use( '/static', express.static( path.join( __dirname, 'public' )));
 
+app.use(cors({
+  origin: 'http://localhost:8080',
+  credentials: true
+}));
 
 // project route
 app.use('/login', loginRoutes);

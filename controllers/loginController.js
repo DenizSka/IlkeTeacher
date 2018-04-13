@@ -51,20 +51,18 @@ module.exports = {
                 .then((result) => {
               //if the passwords matched
                 if(result){
-                const cookie = req.cookies.cookieName;
+                const cookie = req.cookies['user_id'];
                   if (cookie === undefined) {
                   //setting the 'set-cookie' header
-                  // let cookie = req.cookies['user_id'];
-                  // console.log(cookie);
                     const isSecure = req.app.get('env') != 'development';
                     res.cookie('user_id', user.id, {
-                      httpOnly: true,
+                      httpOnly: false,
                       maxAge: 900000,
                       secure: isSecure,
                       signed: true
                     });
-                    console.log('cookie created successfully');
-                    res.json({
+                    console.log('cookie created successfully. Signed cookie: ', req.signedCookies)
+                    res.send({
                       id: user.id,
                       message: 'logged in!'
                     });
@@ -101,6 +99,9 @@ module.exports = {
       email: null,
       password: null,
     };
+      // Cookies that have not been signed
+  console.log('Cookies: ', req.cookies)
+
     res.locals.user = logginguser;
     next();
   },
