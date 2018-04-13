@@ -1,6 +1,7 @@
 
 const loginData = require('../models/loginDB');
 const bcrypt = require ('bcrypt');
+const views = require('../controllers/viewsController');
 
 //this is a function to give some limitations to username and password.
 function validUser(user){
@@ -49,7 +50,7 @@ module.exports = {
               //compare pasword with hashed password. Comparing password they entered in with password in db.
               bcrypt.compare(req.body.password, user.password)
                 .then((result) => {
-              //if the passwords matched
+                //if the passwords matched
                 if(result){
                 const cookie = req.cookies['user_id'];
                   if (cookie === undefined) {
@@ -61,11 +62,18 @@ module.exports = {
                       secure: isSecure,
                       signed: true
                     });
-                    console.log('cookie created successfully. Signed cookie: ', req.signedCookies)
-                    res.send({
-                      id: user.id,
-                      message: 'logged in!'
+                    console.log('cookie created successfully. Signed cookie: ', req.signedCookies);
+                    console.log('users:', user);
+                    // user = user;
+                    //How can I have the logged in users info rendered on the page?
+                    res.render('/login/login-single', {
+                      user: req.user,
                     });
+                    // next();
+                    // res.send({
+                    //   id: user.id,
+                    //   message: 'logged in!'
+                    // });
                     } else {
                       // yes, cookie was already present
                       console.log('cookie exists', cookie);
@@ -99,9 +107,6 @@ module.exports = {
       email: null,
       password: null,
     };
-      // Cookies that have not been signed
-  console.log('Cookies: ', req.cookies)
-
     res.locals.user = logginguser;
     next();
   },
