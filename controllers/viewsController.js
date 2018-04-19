@@ -26,12 +26,18 @@ module.exports = {
     res.render('pages/login');
   },
 
-  addlogin(req, res) {
-    res.redirect('/home');
-  },
+  // loggedIn(req, res) {
+  //   // res.redirect(`/login/${req.params.id}`);
+  //   // res.render('/users/user-single', {
+  //   //   user: req.locals.user,
+  //   // });
+  //   // res.render('user ' + req.params.id);
+  // },
 
 
-
+// app.get('/user/:id', function(request, response){
+//   response.send('user ' + request.params.id);
+// });
 
 //projects!!
   projeleriGoster(req, res) {

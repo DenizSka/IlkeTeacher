@@ -9,8 +9,17 @@ const signupRoutes = require('./routes/signupRoutes');
 const bodyParser = require('body-parser');
 //configure the logger: (some other loggers are winston, bunyan,)
 const logger = require('morgan');
+const cookieParser = require('cookie-parser');
 const ejs = require('ejs');
 const path = require('path');
+const escapeHtml = require('escape-html');
+const http = require('http');
+const url = require('url');
+require('dotenv').config();
+
+const cors = require('cors');
+const secret = process.env.COOKIE_SECRET;
+
 
 //when we create forms, the natural method will be post. In order to get the delete function to work we will need this package.
 const methodOverride = require('method-override');
@@ -33,18 +42,26 @@ or anything more than text*/
 app.use( bodyParser.urlencoded({ extended: true }));
 /* we'll also be accepting and parsing json  */
 app.use(bodyParser.json());
+app.use(cookieParser(secret));
+
+
+
 
 // static route to public
 app.use(express.static('public'));
 // This sets a folder called public to be the destination from which any static assets (images,css,etc) will be served.
 app.use( '/static', express.static( path.join( __dirname, 'public' )));
 
+app.use(cors({
+  origin: 'http://localhost:8080',
+  credentials: true
+}));
+
 // project route
 app.use('/login', loginRoutes);
 
 // project route
 app.use('/signup', signupRoutes);
-
 
 
 // project route
@@ -60,27 +77,27 @@ app.get('/', (req,res) => {
 });
 
 // get anything that hasn't already been matched
-// app.use('*', (req, res) => {
-//   // send a response with status 404
-//   res.status(404).send('page not found');
-// });
+app.use('*', (req, res) => {
+  // send a response with status 404
+  res.status(404).send('page not found');
+});
 
 
 // catch 404 and forward to error handler
-app.use('*', (req, res, next) => {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+// app.use('*', (req, res, next) => {
+//   const err = new Error('Not Found');
+//   err.status = 404;
+//   next(err);
+// });
 
-// error handler
-app.use('*', (err, req, res, next) => {
-  res.status(err.status || 500);
-  res.json({
-    message: err.message,
-    error: req.app.get('env') === 'development' ? err : {}
-  });
-});
+// // error handler
+// app.use('*', (err, req, res, next) => {
+//   res.status(err.status || 500);
+//   res.json({
+//     message: err.message,
+//     error: req.app.get('env') === 'development' ? err : {}
+//   });
+// });
 
 
 

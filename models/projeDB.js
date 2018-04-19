@@ -1,13 +1,8 @@
-//i do not want to start pg promise in each file. In every npm start i get an error saying:
-// WARNING: Creating a duplicate database object for the same connection.
 
 const databaseClient = require('./initilize');
 const db = databaseClient.getClient();
 
-// In order to avoid the dublicate db creation I added the pg promise command to initilize file. And my plan was
-// to call import pg promise when i needed. Below code is me trying to make that happen. This did not work too.
-// const db = require('./initilize.js');
-// const pgp = db.$config.pgp;
+
 
 module.exports = {
 

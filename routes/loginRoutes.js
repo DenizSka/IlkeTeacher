@@ -2,6 +2,7 @@ const express = require('express');
 const loginRoutes = express.Router();
 const controller = require('../controllers/loginController');
 const views = require('../controllers/viewsController');
+const loggedUser = require('../models/loginDb');
 
 
 loginRoutes.get('/', controller.loginForm, views.loginFormu);
@@ -10,16 +11,34 @@ loginRoutes.get('/', controller.loginForm, views.loginFormu);
 //   .get(controller.getOne, views.projeEditForm);
 
 // loginRoutes.route('/:id')
-//   .get(controller.getOne, views.showOne)
-//   .put(controller.update, views.projeUpdate)
-//   .delete(controller.destroy, views.projeDelete);
+//   .get(controller.getLogin, views.loggedIn);
+  // .put(controller.update, views.projeUpdate)
+  // .delete(controller.destroy, views.projeDelete);
+
+loginRoutes.get('/:id', (req, res) => {
+  if (!isNaN(req.params.id)) {
+    loggedUser.findById(req.params.id).then(user => {
+      if (user) {
+        delete user.password;
+        res.json(user);
+      } else {
+        resError(res, 404, "User Not Found");
+      }
+    });
+  } else {
+    resError(res, 500, "Invalid ID");
+  }
+});
 
 
-// loginRoutes.route('/')
+
+loginRoutes.route('/')
 //   .get(controller.index, views.projeleriGoster)
-//   .post(controller.create, views.ekle);
+  .post(controller.getLogin, () => {});
 
-
-
+function resError(res, statusCode, message) {
+  res.status(statusCode);
+  res.json({message});
+}
 
 module.exports = loginRoutes;

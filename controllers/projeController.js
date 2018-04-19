@@ -2,14 +2,6 @@
 const projeData = require('../models/projeDB');
 
 module.exports = {
-// the root route,
-
-// projeRoutes.get('/', (req, res) => {
-//   res.json({
-//     message: 'ok',
-//     data: projeler
-//   });
-// });
 
   index(req, res, next) {
     projeData.findAll()
