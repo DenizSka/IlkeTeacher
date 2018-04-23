@@ -31,12 +31,11 @@ CREATE INDEX ON publications (author);
 
 
 CREATE TABLE users (
-  id SERIAL UNIQUE,
-  username TEXT NOT NULL,
+  id SERIAL PRIMARY KEY,
   password TEXT NOT NULL,
   repassword TEXT NOT NULL,
   fullname TEXT,
-  email VARCHAR(255) PRIMARY KEY,
+  email VARCHAR(255) UNIQUE,
   date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 

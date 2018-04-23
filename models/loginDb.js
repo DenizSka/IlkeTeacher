@@ -61,8 +61,8 @@ module.exports = {
     return db.one(`
       INSERT
       INTO users
-        (username, password, repassword, fullname, email)
-      VALUES ($/username/, $/password/, $/repassword/, $/fullname/, $/email/)
+        (password, repassword, fullname, email)
+      VALUES ($/password/, $/repassword/, $/fullname/, $/email/)
       RETURNING *
       `, user)
   },
@@ -71,7 +71,6 @@ module.exports = {
     return db.one(`
       UPDATE users
       SET
-       username = $/username/,
        password =  $/password/,
        repassword =  $/repassword/,
        fullname = $/fullname/,

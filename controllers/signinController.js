@@ -74,13 +74,10 @@ module.exports = {
 
       signinData.findByEmail(req.body.email)
         .then((user) => {
-        // According to this console log, user is null. Why??
-        console.log('user', res.locals.user);
       if(!user){
           bcrypt.hash(req.body.password, 10)
           .then((hash) => {
             const newuser = {
-              username: req.body.username,
               password: hash,
               repassword: hash,
               fullname: req.body.fullname,
@@ -91,10 +88,13 @@ module.exports = {
               .then(id => {
                 // user is now saved in the database at this point
                 console.log(id);
-                res.json ({
-                id,
-                message: 'this is a unique email'
-                });
+                res.render('login/login-single', {
+                  user: newuser,
+                  })
+              //   res.json ({
+              //   id,
+              //   message: 'this is a unique email'
+              //   });
               })
               .catch(error => {
                 // handle database errors
@@ -115,7 +115,6 @@ module.exports = {
   emptyForm(req, res, next) {
     const newuser = {
       id: null,
-      username: null,
       password: null,
       repassword: null,
       fullname: null,
