@@ -99,6 +99,12 @@ app.use('*', (req, res) => {
 //   });
 // });
 
+app.use('*', (error, req, res, next) => {
+  // Won't get here, because Express doesn't catch the above error
+  console.log('this is error',error);
+  res.locals.error = error;
+  res.render('pages/error')
+});
 
 
 // tell the app where to serve

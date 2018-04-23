@@ -2,6 +2,7 @@
 const loginData = require('../models/loginDB');
 const bcrypt = require ('bcrypt');
 const views = require('../controllers/viewsController');
+const errorhandler = require('errorhandler');
 
 //this is a function to give some limitations to username and password.
 function validUser(user){
@@ -80,6 +81,7 @@ module.exports = {
                     }
                     next(); // <-- important!
                 } else {
+
                   next (new Error('password or username you entered is incorrect'));
                 }
               });
@@ -88,6 +90,7 @@ module.exports = {
           }
         });
     }else {
+      // catch(err => next(err));
       next (new Error('please re-enter your username and password'));
     }
 },
