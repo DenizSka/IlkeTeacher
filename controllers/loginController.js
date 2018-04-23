@@ -2,7 +2,7 @@
 const loginData = require('../models/loginDB');
 const bcrypt = require ('bcrypt');
 const views = require('../controllers/viewsController');
-const errorhandler = require('errorhandler');
+
 
 //this is a function to give some limitations to username and password.
 function validUser(user){

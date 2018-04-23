@@ -4,6 +4,7 @@ const controller = require('../controllers/loginController');
 const views = require('../controllers/viewsController');
 const loggedUser = require('../models/loginDb');
 
+const authMiddleware = require('../controllers/authController');
 
 loginRoutes.get('/', controller.loginForm, views.loginFormu);
 
@@ -15,7 +16,7 @@ loginRoutes.get('/', controller.loginForm, views.loginFormu);
   // .put(controller.update, views.projeUpdate)
   // .delete(controller.destroy, views.projeDelete);
 
-loginRoutes.get('/:id', (req, res) => {
+loginRoutes.get('/:id', authMiddleware.allowAccess, (req, res) => {
   if (!isNaN(req.params.id)) {
     loggedUser.findById(req.params.id).then(user => {
       if (user) {

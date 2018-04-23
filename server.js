@@ -19,7 +19,7 @@ require('dotenv').config();
 
 const cors = require('cors');
 const secret = process.env.COOKIE_SECRET;
-
+const authMiddleware = require('./controllers/authController');
 
 //when we create forms, the natural method will be post. In order to get the delete function to work we will need this package.
 const methodOverride = require('method-override');
@@ -58,7 +58,7 @@ app.use(cors({
 }));
 
 // project route
-app.use('/login', loginRoutes);
+app.use('/login', authMiddleware.ensureLoggedIn, loginRoutes);
 
 // project route
 app.use('/signup', signupRoutes);
