@@ -6,7 +6,7 @@ const loggedUser = require('../models/loginDb');
 
 const authMiddleware = require('../controllers/authController');
 
-loginRoutes.get('/', authMiddleware.ensureLoggedIn, controller.loginForm, views.loginFormu);
+loginRoutes.get('/', controller.loginForm, views.loginFormu);
 
 // loginRoutes.route('/:id/edit')
 //   .get(controller.getOne, views.projeEditForm);
@@ -22,6 +22,9 @@ loginRoutes.get('/:id', authMiddleware.allowAccess, (req, res) => {
       if (user) {
         delete user.password;
         res.json(user);
+        // res.render('/users/user-single', {
+        //   user: user,
+        // });
       } else {
         resError(res, 404, "User Not Found");
       }
@@ -35,7 +38,8 @@ loginRoutes.get('/:id', authMiddleware.allowAccess, (req, res) => {
 
 loginRoutes.route('/')
 //   .get(controller.index, views.projeleriGoster)
-  .post(controller.getLogin, () => {});
+  // .post(authMiddleware.ensureLoggedIn, controller.getLogin,  () => {})
+  .post(authMiddleware.ensureLoggedIn, controller.getLogin,  views.loggedIn)
 
 function resError(res, statusCode, message) {
   res.status(statusCode);

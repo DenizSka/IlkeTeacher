@@ -67,9 +67,13 @@ module.exports = {
                     console.log('users:', user);
                     // user = user;
                     //How can I have the logged in users info rendered on the page?
-                    res.render('login/login-single', {
-                      user: user,
-                    });
+                    // res.render('login/login-single', {
+                    //   user: user,
+                    // });
+                    // user = res.user;
+                    res.json({
+                    user: { user },
+                  });
                     // next();
                     // res.send({
                     //   id: user.id,
