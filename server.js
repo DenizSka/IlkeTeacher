@@ -5,6 +5,8 @@ const app = express();
 const projeRoutes = require('./routes/projeroutes');
 const publiRoutes = require('./routes/publicationRoutes');
 const loginRoutes = require('./routes/loginRoutes');
+
+
 const signupRoutes = require('./routes/signupRoutes');
 const bodyParser = require('body-parser');
 //configure the logger: (some other loggers are winston, bunyan,)
@@ -58,7 +60,8 @@ app.use(cors({
 }));
 
 // project route
-app.use('/login', authMiddleware.ensureLoggedIn, loginRoutes);
+app.use('/login', loginRoutes);
+
 
 // project route
 app.use('/signup', signupRoutes);
@@ -100,8 +103,7 @@ app.use('*', (req, res) => {
 // });
 
 app.use('*', (error, req, res, next) => {
-  // Won't get here, because Express doesn't catch the above error
-  console.log('this is error',error);
+  console.log('this is error', error);
   res.locals.error = error;
   res.render('pages/error')
 });

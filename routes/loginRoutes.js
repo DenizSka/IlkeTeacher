@@ -6,7 +6,7 @@ const loggedUser = require('../models/loginDb');
 
 const authMiddleware = require('../controllers/authController');
 
-loginRoutes.get('/', controller.loginForm, views.loginFormu);
+loginRoutes.get('/', authMiddleware.ensureLoggedIn, controller.loginForm, views.loginFormu);
 
 // loginRoutes.route('/:id/edit')
 //   .get(controller.getOne, views.projeEditForm);
