@@ -26,13 +26,9 @@ module.exports = {
     res.render('pages/login');
   },
 
-  loggedIn(req, res) {
-    res.redirect(`/login/${req.params.id}`);
-    // res.render('/users/user-single', {
-    //   user: req.locals.user,
-    // });
-    // res.render('user ' + req.params.id);
-  },
+  // loggedIn(req, res) {
+  //   res.redirect(`/login/${req.params.id}`);
+  // },
 
   // showOnePerson(req, res){
   //   res.render('/users/user-single', {

@@ -5,7 +5,7 @@ const app = express();
 const projeRoutes = require('./routes/projeroutes');
 const publiRoutes = require('./routes/publicationRoutes');
 const loginRoutes = require('./routes/loginRoutes');
-
+const userRoutes = require('./routes/userRoutes');
 
 const signupRoutes = require('./routes/signupRoutes');
 const bodyParser = require('body-parser');
@@ -59,11 +59,13 @@ app.use(cors({
   credentials: true
 }));
 
-// project route
+// login route
 app.use('/login', loginRoutes);
 
+// after login route
+// app.use('/user', authMiddleware.ensureLoggedIn, userRoutes);
 
-// project route
+// signup route
 app.use('/signup', signupRoutes);
 
 

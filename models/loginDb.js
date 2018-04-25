@@ -1,4 +1,3 @@
-
 const databaseClient = require('./initilize');
 const db = databaseClient.getClient();
 

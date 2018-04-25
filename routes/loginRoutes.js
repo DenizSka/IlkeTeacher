@@ -16,15 +16,17 @@ loginRoutes.get('/', controller.loginForm, views.loginFormu);
   // .put(controller.update, views.projeUpdate)
   // .delete(controller.destroy, views.projeDelete);
 
-loginRoutes.get('/:id', authMiddleware.allowAccess, (req, res) => {
+loginRoutes.get('/:id', authMiddleware.ensureLoggedIn, authMiddleware.allowAccess, (req, res) => {
+  console.log('we need req params in login routes', req.params.id);
   if (!isNaN(req.params.id)) {
     loggedUser.findById(req.params.id).then(user => {
       if (user) {
         delete user.password;
-        res.json(user);
-        // res.render('/users/user-single', {
-        //   user: user,
-        // });
+        console.log('users:', user);
+        // res.json(user);
+        res.render('./login/login-single', {
+          user: user,
+        });
       } else {
         resError(res, 404, "User Not Found");
       }
@@ -34,12 +36,20 @@ loginRoutes.get('/:id', authMiddleware.allowAccess, (req, res) => {
   }
 });
 
-
+loginRoutes.get('/:id/projects', (req,res)=>{
+  if (!isNaN(req.params.id)) {
+    Sticker.getByUser(req.params.id).then(projects=> {
+      res.json(projects);
+    });
+  } else {
+    resError(res, 500, "Invalid ID");
+  }
+})
 
 loginRoutes.route('/')
 //   .get(controller.index, views.projeleriGoster)
-  // .post(authMiddleware.ensureLoggedIn, controller.getLogin,  () => {})
-  .post(authMiddleware.ensureLoggedIn, controller.getLogin,  views.loggedIn)
+  // .post(authMiddleware.ensureLoggedIn, controller.getLogin,  views.loggedIn )
+  .post(controller.getLogin, () => {})
 
 function resError(res, statusCode, message) {
   res.status(statusCode);

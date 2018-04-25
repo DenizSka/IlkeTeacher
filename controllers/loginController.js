@@ -46,7 +46,6 @@ module.exports = {
       loginData
         .findByEmail(req.body.email)
         .then((user) => {
-        console.log('user', res.locals.user);
           if(user){
               //compare pasword with hashed password. Comparing password they entered in with password in db.
               bcrypt.compare(req.body.password, user.password)
@@ -65,20 +64,22 @@ module.exports = {
                     });
                     console.log('cookie created successfully. Signed cookie: ', req.signedCookies);
                     console.log('users:', user);
-                    // user = user;
                     //How can I have the logged in users info rendered on the page?
                     // res.render('login/login-single', {
                     //   user: user,
                     // });
                     // user = res.user;
-                    res.json({
-                    user: { user },
-                  });
-                    // next();
-                    // res.send({
+                    res.locals.user = user;
+                    console.log('id:', user.id);
+                    res.redirect(`/login/${user.id}`);
+                    // res.json({
                     //   id: user.id,
                     //   message: 'logged in!'
                     // });
+                  //   res.json({
+                  //   user: { user },
+                  // });
+                    // next();
                     } else {
                       // yes, cookie was already present
                       console.log('cookie exists', cookie);
