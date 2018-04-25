@@ -3,6 +3,7 @@ const loginRoutes = express.Router();
 const controller = require('../controllers/loginController');
 const views = require('../controllers/viewsController');
 const loggedUser = require('../models/loginDb');
+const project = require('../models/projeDB');
 
 const authMiddleware = require('../controllers/authController');
 
@@ -38,7 +39,7 @@ loginRoutes.get('/:id', authMiddleware.ensureLoggedIn, authMiddleware.allowAcces
 
 loginRoutes.get('/:id/projects', (req,res)=>{
   if (!isNaN(req.params.id)) {
-    Sticker.getByUser(req.params.id).then(projects=> {
+    project.getByUser(req.params.id).then(projects=> {
       res.json(projects);
     });
   } else {
