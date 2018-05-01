@@ -58,7 +58,7 @@ module.exports = {
                     const isSecure = req.app.get('env') != 'development';
                     res.cookie('user_id', user.id, {
                       httpOnly: false,
-                      maxAge: 900000,
+                      expire: new Date() + 9999,
                       secure: isSecure,
                       signed: true
                     });
@@ -107,6 +107,13 @@ module.exports = {
   //     })
   //     .catch(err => next(err));
   // },
+
+// route for user logout
+  logout(req, res, next) {
+    console.log('this is logout');
+    res.clearCookie('user_id');
+    next();
+  },
 
 
   loginForm(req, res, next) {

@@ -9,10 +9,11 @@
                     <p>
                         <strong>id</strong>: <%= user.id %><br>
                         <strong>email</strong>: <%= user.email %><br>
-                        <strong>password</strong>: <%= user.password %>
                     </p>
             </div>
-            <a class="nav-item nav-link" href="/logout">Logout</a>
+            <form action="/login/logout" method="post">
+            <input class="btn btn-danger" type="submit" value="Log Out"/>
+            </form>
         </div>
 
     </div>

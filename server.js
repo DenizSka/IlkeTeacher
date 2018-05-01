@@ -68,17 +68,16 @@ app.use('/login', loginRoutes);
 // signup route
 app.use('/signup', signupRoutes);
 
-// route for user logout
-app.get('/logout', (req, res) => {
-  console.log('this is logout', req.cookies['user_id']);
-    if (req.cookies['user_id']) {
-        res.clearCookie('user_id');
-        res.render('login/logout')
-        res.redirect('/');
-    } else {
-        res.redirect('/login');
-    }
-});
+// // route for user logout
+// app.get('/logout', (req, res) => {
+//   console.log('this is logout', req.cookies);
+//     if (req.cookies['user_id']) {
+//         res.clearCookie('user_id');
+//         return res.status(200).render('login/logout');
+//     } else {
+//         res.redirect('/login');
+//     }
+// });
 
 // project route
 app.use('/projects', projeRoutes);

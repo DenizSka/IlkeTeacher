@@ -68,11 +68,10 @@ module.exports = {
   getOneEmail(req, res, next) {
     console.log(req.body);
     if(validUser(req.body)){
-
       // You can fit more (diverse) data in the body than in the url. You can pass any string (special characters)
       // best practice would be that you should use params when doing a get, but use body for post, put and delete.
-
-      signinData.findByEmail(req.body.email)
+      signinData
+        .findByEmail(req.body.email)
         .then((user) => {
       if(!user){
           bcrypt.hash(req.body.password, 10)
@@ -91,6 +90,7 @@ module.exports = {
                 res.render('login/login-single', {
                   user: newuser,
                   })
+                // res.redirect(`/login/${id}`);
               //   res.json ({
               //   id,
               //   message: 'this is a unique email'

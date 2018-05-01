@@ -15,15 +15,22 @@ module.exports = {
     res.render('pages/signup');
   },
 
-  addsignup(req, res) {
-    res.redirect('/home');
-  },
+  // addsignup(req, res) {
+  //   res.render('login/login-single', {
+  //     user: newuser,
+  //   });
+  // },
 
 
 // login!!!
 
   loginFormu(req, res){
     res.render('pages/login');
+  },
+
+
+  logoutPage(req,res){
+    res.render('login/logout');
   },
 
   // loggedIn(req, res) {

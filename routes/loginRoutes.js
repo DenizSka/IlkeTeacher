@@ -49,8 +49,10 @@ loginRoutes.get('/:id/projects', (req,res)=>{
   }
 });
 
-
-
+loginRoutes.route('/logout')
+//   .get(controller.index, views.projeleriGoster)
+  // .post(authMiddleware.ensureLoggedIn, controller.getLogin,  views.loggedIn )
+  .post(controller.logout, views.logoutPage);
 
 loginRoutes.route('/')
 //   .get(controller.index, views.projeleriGoster)
