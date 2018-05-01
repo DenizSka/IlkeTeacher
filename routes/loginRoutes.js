@@ -9,6 +9,8 @@ const authMiddleware = require('../controllers/authController');
 
 loginRoutes.get('/', controller.loginForm, views.loginFormu);
 
+
+
 // loginRoutes.route('/:id/edit')
 //   .get(controller.getOne, views.projeEditForm);
 
@@ -45,16 +47,19 @@ loginRoutes.get('/:id/projects', (req,res)=>{
   } else {
     resError(res, 500, "Invalid ID");
   }
-})
+});
+
+
+
 
 loginRoutes.route('/')
 //   .get(controller.index, views.projeleriGoster)
   // .post(authMiddleware.ensureLoggedIn, controller.getLogin,  views.loggedIn )
-  .post(controller.getLogin, () => {})
+  .post(controller.getLogin, () => {});
 
 function resError(res, statusCode, message) {
   res.status(statusCode);
   res.json({message});
-}
+};
 
 module.exports = loginRoutes;

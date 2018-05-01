@@ -68,6 +68,17 @@ app.use('/login', loginRoutes);
 // signup route
 app.use('/signup', signupRoutes);
 
+// route for user logout
+app.get('/logout', (req, res) => {
+  console.log('this is logout', req.cookies['user_id']);
+    if (req.cookies['user_id']) {
+        res.clearCookie('user_id');
+        res.render('login/logout')
+        res.redirect('/');
+    } else {
+        res.redirect('/login');
+    }
+});
 
 // project route
 app.use('/projects', projeRoutes);
@@ -87,13 +98,6 @@ app.use('*', (req, res) => {
   res.status(404).send('page not found');
 });
 
-
-// catch 404 and forward to error handler
-// app.use('*', (req, res, next) => {
-//   const err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
 
 // // error handler
 // app.use('*', (err, req, res, next) => {
