@@ -16,25 +16,25 @@ signupRoutes.get('/', controller.emptyForm, views.signupFormu);
 //   .put(controller.update)
 //   .delete(controller.destroy);
 
-signupRoutes.get('/:id', (req, res) => {
-  console.log('we need req params in signup routes', req.params.id);
-  if (!isNaN(req.params.id)) {
-    signedUser.findById(req.params.id).then(user => {
-      if (user) {
-        delete user.password;
-        console.log('users:', user);
-        // res.json(user);
-        res.render('./login/login-single', {
-          user: user,
-        });
-      } else {
-        resError(res, 404, "User Not Found");
-      }
-    });
-  } else {
-    resError(res, 500, "Invalid ID");
-  }
-});
+// signupRoutes.get('/:id', (req, res) => {
+//   console.log('we need req params in signup routes', req.params.id);
+//   if (!isNaN(req.params.id)) {
+//     signedUser.findById(req.params.id).then(user => {
+//       if (user) {
+//         delete user.password;
+//         console.log('users:', user);
+//         // res.json(user);
+//         res.render('./login/login-single', {
+//           user: user,
+//         });
+//       } else {
+//         resError(res, 404, "User Not Found");
+//       }
+//     });
+//   } else {
+//     resError(res, 500, "Invalid ID");
+//   }
+// });
 
 
 signupRoutes.route('/')

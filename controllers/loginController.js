@@ -70,6 +70,7 @@ module.exports = {
                     // });
                     // user = res.user;
                     res.locals.user = user;
+
                     console.log('id:', user.id);
                     res.redirect(`/login/${user.id}`);
                     // res.json({

@@ -83,13 +83,17 @@ module.exports = {
               email: req.body.email
             };
             res.locals.user = newuser;
+            console.log('this is  new user', newuser);
             signinData.save(newuser)
-              .then(id => {
+              .then(result => {
                 // user is now saved in the database at this point
-                console.log(id);
-                res.render('login/login-single', {
-                  user: newuser,
-                  })
+                console.log('this is result', result);
+                res.locals.newuser = user;
+                console.log(user);
+                res.redirect(`/login/${result.id}`);
+                // res.render('login/login-single', {
+                //   user: result,
+                //   })
                 // res.redirect(`/login/${id}`);
               //   res.json ({
               //   id,
