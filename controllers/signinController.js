@@ -86,19 +86,21 @@ module.exports = {
             console.log('this is  new user', newuser);
             signinData.save(newuser)
               .then(result => {
-                // user is now saved in the database at this point
-                console.log('this is result', result);
-                res.locals.newuser = user;
-                console.log(user);
-                res.redirect(`/login/${result.id}`);
+                // I want to set cookie for the user after signup and redirect that user to login/:id page.
+                //Below code does not set any cookie. (If you look at login controller it is working perfectly.)
+                console.log('this is result', result.id);
+                const userid = result.id;
+                res.cookie('user_id', userid, {
+                      expire: new Date() + 9999,
+                      secure: isSecure,
+                    });
+                console.log('this is req cookie', req.signedCookies);
+                // console.log(user);
+                // res.locals.user = user;
+                res.redirect(`/login/${user.id}`);
                 // res.render('login/login-single', {
                 //   user: result,
                 //   })
-                // res.redirect(`/login/${id}`);
-              //   res.json ({
-              //   id,
-              //   message: 'this is a unique email'
-              //   });
               })
               .catch(error => {
                 // handle database errors
