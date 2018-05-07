@@ -42,7 +42,8 @@ signupRoutes.route('/')
   .post(controller.getOneEmail, () => {});
 
 
-
+signupRoutes.route('/logout')
+  .post(controller.logout, views.logoutPage);
 
 
 

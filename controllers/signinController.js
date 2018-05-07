@@ -39,28 +39,6 @@ module.exports = {
   },
 
 
-//this is the old version just to check if the validuser function is working.
-  // getOneEmail(req, res, next) {
-  //   if(validUser(req.body)){
-  //     signinData.findByEmail(req.body.email)
-  //       .then((user) => {
-  //       console.log('user', user);
-  //     if(!user){
-  //         //this is a unique email
-  //         res.json ({
-  //           user,
-  //           message: 'this is a unique email'
-  //         });
-  //       } else {
-  //         //email in use
-  //         next(new Error('email in use'));
-  //       }
-  //     });
-  //   } else {
-  //     next(new Error('password not accepted'));
-  //   }
-  // },
-
 
 //this function is suppose to take the user input on the signin form and check if the email that client wrote exists in the existing database.
 //If it exist it should give an error. And if there is no limitations than client can create their username.
@@ -76,28 +54,32 @@ module.exports = {
       if(!user){
           bcrypt.hash(req.body.password, 10)
           .then((hash) => {
-            const newuser = {
+            const user = {
               password: hash,
               repassword: hash,
               fullname: req.body.fullname,
               email: req.body.email
             };
-            res.locals.user = newuser;
-            console.log('this is  new user', newuser);
-            signinData.save(newuser)
+            res.locals.user = user;
+            console.log('this is  new user', user);
+            signinData.save(user)
               .then(result => {
                 // I want to set cookie for the user after signup and redirect that user to login/:id page.
                 //Below code does not set any cookie. (If you look at login controller it is working perfectly.)
                 console.log('this is result', result.id);
                 const userid = result.id;
+                const expireDate = new Date(Number(new Date()) + 10000)
+                const isSecure = req.app.get('env') != 'development';
                 res.cookie('user_id', userid, {
-                      expire: new Date() + 9999,
+                      httpOnly: false,
+                      expires: expireDate,
                       secure: isSecure,
+                      signed: true
                     });
                 console.log('this is req cookie', req.signedCookies);
                 // console.log(user);
                 // res.locals.user = user;
-                res.redirect(`/login/${user.id}`);
+                res.redirect(`/login/${userid}`);
                 // res.render('login/login-single', {
                 //   user: result,
                 //   })
@@ -117,16 +99,22 @@ module.exports = {
     }
   },
 
+// route for user logout
+  logout(req, res, next) {
+    console.log('this is logout');
+    res.clearCookie('user_id');
+    next();
+  },
 
   emptyForm(req, res, next) {
-    const newuser = {
+    const user = {
       id: null,
       password: null,
       repassword: null,
       fullname: null,
       email: null,
     };
-    res.locals.user = newuser;
+    res.locals.user = user;
     next();
   },
 

@@ -30,16 +30,6 @@ module.exports = {
       .catch(err => next(err));
   },
 
-  // getOne(req, res, next) {
-  //   loginData.findById(req.params.id)
-  //     .then((user) => {
-  //       console.log(user);
-  //       res.locals.user = user;
-  //       next();
-  //     })
-  //     .catch(err => next(err));
-  // },
-
   getLogin(req, res, next) {
     console.log(req.body);
     if(validUser(req.body)){
@@ -58,7 +48,7 @@ module.exports = {
                     const isSecure = req.app.get('env') != 'development';
                     res.cookie('user_id', user.id, {
                       httpOnly: false,
-                      expire: new Date() + 9999,
+                      maxAge : 10000,
                       secure: isSecure,
                       signed: true
                     });
