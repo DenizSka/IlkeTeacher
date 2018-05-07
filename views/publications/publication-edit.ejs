@@ -1,4 +1,4 @@
-<% include ../partials/header %>
+<% include ../partials/headernav %>
 
 <div class= "edit-publication">
   <form method='POST' action='/publications/<%= publication.id %>?_method=PUT'>
@@ -9,5 +9,6 @@
     <input type='submit' value='Edit!' />
   </form>
 </div>
+
 
 <% include ../partials/footer %>

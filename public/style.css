@@ -15,12 +15,15 @@
 }
 
 
+nav#firstnav {
+  text-align: center;
+}
+
 .table.table-hover{
   height: auto;
 /*  display: table;*/
   height: 70%;
   float: left;
-  padding-left: 20px;
   font-size: 12px;
   padding-top: 20px;
   padding-right: 20px;
