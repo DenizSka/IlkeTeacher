@@ -1,5 +1,5 @@
-<% include ../partials/headernav %>
-
+<% include ../partials/header %>
+<div class="table table-hover">
 <div class= "edit-project">
   <form method='POST' action='/projects/<%= proje.id %>?_method=PUT'>
     <input name="id" type="hidden" value="<%= proje.id %>">
@@ -8,6 +8,7 @@
     <input name="genre_type" type="text" value="<%= proje.genre_type %>" />
     <input type='submit' value='Edit!' />
   </form>
+</div>
 </div>
 
 <% include ../partials/footer %>

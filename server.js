@@ -6,7 +6,6 @@ const projeRoutes = require('./routes/projeroutes');
 const publiRoutes = require('./routes/publicationRoutes');
 const loginRoutes = require('./routes/loginRoutes');
 const userRoutes = require('./routes/userRoutes');
-const homeRoutes = require('./routes/homeRoute');
 
 const signupRoutes = require('./routes/signupRoutes');
 const bodyParser = require('body-parser');
@@ -88,7 +87,9 @@ app.use('/projects', projeRoutes);
 app.use('/publications', publiRoutes);
 
 // home route
-app.get('/', homeRoutes);
+app.get('/', (req,res) => {
+  res.render('pages/home')
+});
 
 // get anything that hasn't already been matched
 app.use('*', (req, res) => {

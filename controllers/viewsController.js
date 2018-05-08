@@ -93,11 +93,6 @@ module.exports = {
     });
   },
 
-  homePubli(req, res) {
-    res.render('pages/home', {
-      pubdata: res.locals.publications,
-    });
-  },
 
 
   onePubli(req, res){

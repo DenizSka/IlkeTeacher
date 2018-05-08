@@ -16,34 +16,28 @@
 </head>
 
   <body class="container">
-    <div class="container">
-      <div class="page-header">
-          <h1>Ilke Ciritci - Homepage</h1>
-      </div>
+    <h1>Ilke Ciritci </h1>
+    <div class="pos-f-t">
+      <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+          <a class="nav-link" href="/">About Me <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/publications">My Publications</a>
+          <a class="nav-link" href="/projects">Projects</a>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">About Me <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/publications">My Publications</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/projects">Projects</a>
-            </li>
-            <li class="nav-item">
-              <form method='GET' action='/login/<%= user.id %>'> My Profile</form>
-            </li>
-          </ul>
+          <form method='GET' action='/login/<%= user.id %>'> My Profile</form>
+
           <span class="navbar-text">
             <form action="/login/logout" method="post">
             <input class="btn btn-danger" type="submit" value="Log Out"/>
             </form>
           </span>
         </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       </nav>
+    </div>
+
+
