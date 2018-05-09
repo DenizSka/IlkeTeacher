@@ -5,7 +5,7 @@ const app = express();
 const projeRoutes = require('./routes/projeroutes');
 const publiRoutes = require('./routes/publicationRoutes');
 const loginRoutes = require('./routes/loginRoutes');
-const userRoutes = require('./routes/userRoutes');
+// const userRoutes = require('./routes/userRoutes');
 
 const signupRoutes = require('./routes/signupRoutes');
 const bodyParser = require('body-parser');
@@ -21,7 +21,7 @@ require('dotenv').config();
 
 const cors = require('cors');
 const secret = process.env.COOKIE_SECRET;
-const authMiddleware = require('./controllers/authController');
+// const authMiddleware = require('./controllers/authController');
 
 //when we create forms, the natural method will be post. In order to get the delete function to work we will need this package.
 const methodOverride = require('method-override');
@@ -47,7 +47,29 @@ app.use(bodyParser.json());
 app.use(cookieParser(secret));
 
 
+const permission = require('permission');
 
+
+permission.AUTHORIZED === 'authorized' // true
+permission.NOT_AUTHENTICATED === 'notAuthenticated' // true
+permission.NOT_AUTHORIZED === 'notAuthorized' // true
+
+const notAuthenticated = {
+    flashType: 'error',
+    message: 'The entered credentials are incorrect',
+    redirect: '/login'
+};
+
+// app.set('permission', {
+//   role: 'admin',
+//   [ 'allow',
+//     {
+//         paths: ["/projects/:id/edit"],
+//         methods: ['get'],
+//     }
+//   ],
+//   notAuthenticated: notAuthenticated
+// });
 
 // static route to public
 app.use(express.static('public'));

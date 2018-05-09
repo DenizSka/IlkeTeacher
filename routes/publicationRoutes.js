@@ -2,7 +2,7 @@ const express = require('express');
 const publiRoutes = express.Router();
 const controller = require('../controllers/publicationController');
 const views = require('../controllers/viewsController');
-
+const permission = require('permission');
 
 publiRoutes.get('/new', controller.bosForm, views.publiFormu);
 

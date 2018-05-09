@@ -18,7 +18,20 @@ function allowAccess(req, res, next) {
   }
 }
 
+
+// Middleware
+function isAdmin(req, res, next){
+  console.log('user info', req.body.id)
+  if(req.body.id == 1){
+    next();
+  } else {
+    res.status(401);
+    next(new Error('Un-Authorized'));
+  }
+}
+
 module.exports ={
   ensureLoggedIn,
-  allowAccess
+  allowAccess,
+
 }

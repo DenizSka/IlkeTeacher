@@ -5,13 +5,15 @@
 <a href='/publications/new'>Add New</a>
 
   <div class="clearfix"><% pubdata.forEach(function(publi) { %>
-  <div>
-    <h5><%= publi.content %></h5>
+  <div class="spanclass">
+    <h5 class="publiname"><%= publi.content %></h5>
+    <span class="paragraph">
     <h6>Author: <%= publi.author %></h6>
     <h6>Genre: <%= publi.genre_type %></h6>
-      <div class="btn-group">
-        <a href="/publications/<%= publi.id %>" class="btn btn-sm btn-outline-secondary">View</a>
-      </div>
+    </span>
+
+        <a href="/publications/<%= publi.id %>" class="publibutton">View</a>
+
     </div>
   <% }) %></div>
 </div>

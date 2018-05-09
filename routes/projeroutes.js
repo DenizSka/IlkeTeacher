@@ -4,6 +4,7 @@ const controller = require('../controllers/projeController');
 const views = require('../controllers/viewsController');
 
 
+
 projeRoutes.get('/new', controller.bosForm, views.eklemeFormu);
 
 projeRoutes.route('/:id/edit')

@@ -17,6 +17,8 @@ function validUser(user){
 
 };
 
+
+
 module.exports = {
 
   index(req, res, next) {

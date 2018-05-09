@@ -1,6 +1,9 @@
 
 const projeData = require('../models/projeDB');
 
+
+
+
 module.exports = {
 
   index(req, res, next) {
@@ -21,6 +24,7 @@ module.exports = {
       })
       .catch(err => next(err));
   },
+
 
   create(req, res, next) {
     projeData.save(req.body)
