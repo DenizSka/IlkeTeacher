@@ -5,10 +5,13 @@
   <h5 class="publiname">Edit this publication:</h5>
   <br></br>
   <form method='POST' action='/publications/<%= publication.id %>?_method=PUT'>
-    <input name="id" type="hidden" value="<%= publication.id %>">
-    <input name="content" type="text" value="<%= publication.content %>" />
-    <input name="author" type="text" value="<%= publication.author %>" />
-    <input name="genre_type" type="text" value="<%= publication.genre_type %>" />
+    <input name="id" type="hidden" class="form-control" value="<%= publication.id %>">
+    <label for="inputContent">Content</label>
+    <input name="content" type="text" class="form-control" value="<%= publication.content %>" />
+    <label for="inputAuthor">Author</label>
+    <input name="author" type="text" class="form-control" value="<%= publication.author %>" />
+    <label for="inputGenre">Genre</label>
+    <input name="genre_type" type="text" class="form-control" value="<%= publication.genre_type %>" />
     <input type='submit' value='Edit!' />
   </form>
 </div>

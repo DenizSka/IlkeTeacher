@@ -1,11 +1,16 @@
 <% include ../partials/header %>
 <div class="table table-hover">
 <div class= "edit-project">
+  <h5 class="publiname">Edit this project:</h5>
+  <br></br>
   <form method='POST' action='/projects/<%= proje.id %>?_method=PUT'>
-    <input name="id" type="hidden" value="<%= proje.id %>">
-    <input name="content" type="text" value="<%= proje.content %>" />
-    <input name="author" type="text" value="<%= proje.author %>" />
-    <input name="genre_type" type="text" value="<%= proje.genre_type %>" />
+    <input name="id" type="hidden" class="form-control" value="<%= proje.id %>">
+    <label for="inputContent">Content</label>
+    <input name="content" type="text" class="form-control" value="<%= proje.content %>" />
+    <label for="inputAuthor">Author</label>
+    <input name="author" type="text" class="form-control" value="<%= proje.author %>" />
+    <label for="inputGenre">Genre</label>
+    <input name="genre_type" type="text" class="form-control" value="<%= proje.genre_type %>" />
     <input type='submit' value='Edit!' />
   </form>
 </div>
