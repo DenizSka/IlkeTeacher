@@ -1,20 +1,19 @@
 <% include ../partials/header %>
 
-<div class="table table-hover">
-<div class='publi'>
+<div class="spanclasspubli">
 
   <img src="../../img/sorry.png" width="300" alt="Noimage">
-  <h1><%= publication.content %></h1>
-  <h3>Author: <%= publication.author %></h3>
-  <h3>Genre: <%= publication.genre_type %></h3>
-  <a href='/publications/<%= publication.id %>/edit'> <button type="button" class="btn btn-outline-success btn-sm">Edit</button> </a>
-  <form method='POST' action='/publications/<%= publication.id %>?_method=DELETE'>
-     <button type="Submit" value="Delete" class="btn btn-outline-warning btn-sm">
+  <h5 class="publiname-single"><%= publication.content %></h5>
+  <p class="publiname-single">Author: <%= publication.author %></p>
+  <p class="publiname-single">Genre: <%= publication.genre_type %></p>
+  <a class="singlebutton" href='/publications/<%= publication.id %>/edit'> <button type="button" class="btn btn-primary">Edit</button> </a>
+  <form method='POST' action='/publications/<%= publication.id %>?_method=DELETE' class='singlebutton'>
+     <button type="Submit" value="Delete" class="btn btn-secondary">
     Delete
     </button>
   </form>
-  <a href='/publications'><button type="button" class="btn btn-outline-secondary btn-sm">Back </button></a>
+  <a class="singlebutton" href='/publications'><button type="button" class="btn btn-light">Back</button></a>
 </div>
 
-</div>
+
 <% include ../partials/footer %>

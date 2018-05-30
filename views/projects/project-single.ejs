@@ -2,17 +2,16 @@
 <div class="table table-hover">
 
 <div class='proje'>
-  <h1><%= proje.content %></h1>
-  <h3>Author: <%= proje.author %></h3>
-  <h3>Genre: <%= proje.genre_type %></h3>
-  <a href='/projects/<%= proje.id %>/edit'> Edit </a><br>
-
+  <h5 class="publiname-single"><%= proje.content %></h5>
+  <p class="publiname-single">Author: <%= proje.author %></p>
+  <p class="publiname-single">Genre: <%= proje.genre_type %></p>
+  <a href='/projects/<%= proje.id %>/edit' class="btn btn-primary"> Edit </a><br>
   <form method='POST' action='/projects/<%= proje.id %>?_method=DELETE'>
-    <button type="Submit" value="Delete" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+    <button type="Submit" value="Delete" class="btn btn-secondary">
     Delete
     </button>
   </form>
-  <a href='/projects'>Back to all projects</a>
+  <a href='/projects' class="btn btn-light">Back</a>
 
 </div>
 </div>

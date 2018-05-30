@@ -4,26 +4,44 @@
 
 .clearfix div{
   height: auto;
-  width: 50%;
+  width: 25%;
   float: left;
   font-size: 12px;
   padding-top: 20px;
   padding-right: 20px;
+  padding-left: 20px;
   margin-bottom: 50px;
-  margin-left: 0px;
+  margin-left: 10px;
+}
 
+.site-title{
+  position: relative;
+  color: white;
+}
+
+a.nav-item{
+  padding-left: 20px;
+}
+
+.carousel-item{
+  height: 400px;
+  width: 100%;
+}
+
+.d-block{
+  height: 500px;
 }
 
 #loginsignup{
     margin-left: 25%;
     margin-right: 25%;
 }
-.table.table-hover{
-  padding-left: 20px;
-}
+
 
 .text-muted{
-  padding-left: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 12px;
 }
 
 .container {
@@ -54,17 +72,36 @@ nav#firstnav {
   text-align: center;
 }
 
+.writingabout{
+  margin-top: 10px;
+  margin-left: 10px
+}
+
 .table.table-hover{
   height: auto;
 /*  display: table;*/
   height: 70%;
   float: left;
   font-size: 12px;
-  padding-top: 20px;
-  padding-right: 20px;
+  padding-top: 0px;
+  margin-left: 20px;
+  padding-right: 0px;
   position: relative;
   margin-bottom: 100px;
-  margin-top: 20px;
+  margin-top: 0px;
+}
+
+.table.table-carousel{
+  height: auto;
+/*  display: table;*/
+  height: 70%;
+  float: left;
+  font-size: 12px;
+  padding-top: 0px;
+  padding-right: 0px;
+  position: relative;
+  margin-bottom: 100px;
+  margin-top: 0px;
 }
 
 img.resize {
@@ -83,6 +120,15 @@ img.resize {
   padding-bottom: var(--jumbotron-padding-y);
   margin-bottom: 0;
   background-color: #fff;
+}
+
+
+.footerhome{
+  margin-left: 10px;
+}
+
+.nav-link {
+  display: inline;
 }
 
 @media (min-width: 768px) {
@@ -113,30 +159,43 @@ img.resize {
 
 /*publications*/
 .headline {
-  text-align: center;
-  padding: 48px 0;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 20px;
   margin: 0 0 48px;
 }
 
-.clearfix div {
-  width: 25%;
-}
-
 .spanclass{
-  margin: 60px 24px 48px 24px;
+  margin: 30px 24px 48px 24px;
   width: calc((100% - 144px) / 3);
   display: block;
   position: relative;
   display: -webkit-box;
   display: flex;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 12px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   flex-direction: column;
   background-color: #f9f9f9;
 }
 
-.publiname{
+.spanclasspubli{
+  display: flex;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 12px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  padding-left: 20px;
+}
+.publi-title{
+  padding: 20px;
   font-size: 20px;
+  font-weight: bold;
+}
+
+.publiname{
   font-weight: 600;
   -webkit-font-smoothing: antialiased;
     border: 0;
@@ -147,10 +206,34 @@ img.resize {
     vertical-align: baseline;
     color: #535353;
     font-family: "Open Sans", Arial, sans-serif;
-    font-size: 24px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: bold;
     line-height: 1.3;
 }
+
+
+.publiname-single{
+  font-weight: 600;
+  -webkit-font-smoothing: antialiased;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  vertical-align: baseline;
+  line-height: 1.3;
+}
+
+h5.publiname-single{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.edit-publication{
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
 
 .paragraph {
   -moz-osx-font-smoothing: grayscale;
@@ -159,14 +242,20 @@ img.resize {
   font: inherit;
   font-size: 100%;
   margin: 0;
-  padding: 0;
+  padding-top: 5px;
   vertical-align: baseline;
   color: #535353;
   font-family: "Open Sans", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
 }
+
+.btn {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
 
 .publibutton{
   background-color: #bbb;

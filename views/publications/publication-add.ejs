@@ -1,7 +1,9 @@
 <% include ../partials/header %>
 
 <div class="table table-hover">
-<h3 >Add a New Publication</h6>
+<br></br>
+<h5 class="publiname">Add a new publication</h5>
+<br></br>
 <form method='POST' action='/publications'>
   <label for="inputQuote">Quote</label>
   <input class="form-control" name="content" type="text" placeholder="Quote" />
@@ -9,6 +11,7 @@
   <input class="form-control" name="author" type="text" placeholder="Author" />
   <label for="inputGenre">Genre</label>
   <input class="form-control" name="genre_type" type="text" placeholder="Genre_type" />
+  <br></br>
   <button type="submit" class="btn btn-primary mb-2" value='Submit!'>Submit</button>
 </form>
 

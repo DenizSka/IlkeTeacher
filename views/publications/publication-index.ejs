@@ -1,15 +1,15 @@
 <% include ../partials/header %>
 
 <div class="table table-hover">
-<h1> My Publications </h1>
-<a href='/publications/new'>Add New</a>
+  <h1 class="publi-title"> My Publications </h1>
+  <a class="nav-item nav-link" href='/publications/new'>Add New</a>
 
   <div class="clearfix"><% pubdata.forEach(function(publi) { %>
   <div class="spanclass">
     <h5 class="publiname"><%= publi.content %></h5>
     <span class="paragraph">
-    <h6>Author: <%= publi.author %></h6>
-    <h6>Genre: <%= publi.genre_type %></h6>
+    <p>Author: <%= publi.author %></p>
+    <p>Genre: <%= publi.genre_type %></p>
     </span>
 
         <a href="/publications/<%= publi.id %>" class="publibutton">View</a>

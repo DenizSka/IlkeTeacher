@@ -2,6 +2,8 @@
 
 <div class="table table-hover">
 <div class= "edit-publication">
+  <h5 class="publiname">Edit this publication:</h5>
+  <br></br>
   <form method='POST' action='/publications/<%= publication.id %>?_method=PUT'>
     <input name="id" type="hidden" value="<%= publication.id %>">
     <input name="content" type="text" value="<%= publication.content %>" />
