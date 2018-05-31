@@ -2,7 +2,7 @@ const express = require('express');
 const signupRoutes = express.Router();
 const controller = require('../controllers/signinController');
 const views = require('../controllers/viewsController');
-const signedUser = require('../models/loginDb');
+// const signedUser = require('../models/loginDb');
 
 
 // signupRoutes.get('/', controller.getOneEmail, views.signupFormu);
