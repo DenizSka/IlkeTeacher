@@ -6,18 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "nodemon server.js",
-    "debugger": "DEBUG=*:* npm run dev"
+    "dev": "nodemon",
+    "debugger": "DEBUG=*:* npm run dev",
+    "heroku-postbuild": "npm install --production"
   },
   "engines": {
     "node": "10.3.0",
-    "npm": "*"
+    "npm": "6.1.0"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:DenizSka/IlkeTeacher.git"
   },
-  "heroku-postbuild": "npm install --production",
   "keywords": [
     "Express",
     "node",
