@@ -1,4 +1,4 @@
-\c deniz_proje_dev
+-- \c deniz_proje_dev
 
 INSERT INTO projeler (content, author, genre_type) VALUES
   (

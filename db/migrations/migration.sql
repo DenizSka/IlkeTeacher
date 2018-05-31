@@ -1,4 +1,4 @@
-\c deniz_proje_dev
+-- \c deniz_proje_dev
 -- psql -f db/migrations/migration.sql
 -- psql -f db/seeds/seed.sql
 

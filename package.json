@@ -9,6 +9,10 @@
     "dev": "nodemon server.js",
     "debugger": "DEBUG=*:* npm run dev"
   },
+  "engines": {
+    "node": "10.3.0",
+    "npm": "6.1.0"
+  },
   "keywords": [
     "Express",
     "node",
@@ -19,6 +23,7 @@
   "dependencies": {
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "debug": "^3.1.0",
@@ -30,7 +35,9 @@
     "http": "0.0.0",
     "method-override": "^2.3.10",
     "morgan": "^1.9.0",
-    "nodemon": "^1.17.3",
+    "node": "^10.3.0",
+    "nodemon": "^1.17.5",
+    "passport": "^0.4.0",
     "permission": "^1.1.0",
     "pg-promise": "^8.2.2",
     "url": "^0.11.0"
