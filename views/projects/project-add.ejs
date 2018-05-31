@@ -1,13 +1,20 @@
+
 <% include ../partials/header %>
 
 <div class="table table-hover">
+<br></br>
+<h5 class="publiname">Add a new project</h5>
+<br></br>
 <form method='POST' action='/projects'>
-  <input name="content" type="text" placeholder="Quote" />
-  <input name="author" type="text" placeholder="Author" />
-  <input name="genre_type" type="text" placeholder="Genre_type" />
-  <input type='submit' value='Submit!' />
+  <label for="inputQuote">Quote</label>
+  <input class="form-control" name="content" type="text" placeholder="Quote" />
+  <label for="inputAuthor">Author</label>
+  <input class="form-control" name="author" type="text" placeholder="Author" />
+  <label for="inputGenre">Genre</label>
+  <input class="form-control" name="genre_type" type="text" placeholder="Genre_type" />
+  <br></br>
+  <button type="submit" class="btn btn-primary mb-2" value='Submit!'>Submit</button>
 </form>
+
 </div>
-
-
 <% include ../partials/footer %>
