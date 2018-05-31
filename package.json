@@ -1,5 +1,5 @@
 {
-  "name": "teacherstudent",
+  "name": "IlkeTeacher",
   "version": "1.0.0",
   "description": "Platform to share commit homeworks.",
   "main": "server.js",
@@ -11,8 +11,13 @@
   },
   "engines": {
     "node": "10.3.0",
-    "npm": "6.1.0"
+    "npm": "*"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:DenizSka/IlkeTeacher.git"
+  },
+  "heroku-postbuild": "npm install --production",
   "keywords": [
     "Express",
     "node",
