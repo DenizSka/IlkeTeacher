@@ -2,7 +2,7 @@ const express = require('express');
 const loginRoutes = express.Router();
 const controller = require('../controllers/loginController');
 const views = require('../controllers/viewsController');
-const loggedUser = require('../models/loginDb');
+const loggedUser = require('../models/loginDB');
 const project = require('../models/projeDB');
 
 const authMiddleware = require('../controllers/authController');
