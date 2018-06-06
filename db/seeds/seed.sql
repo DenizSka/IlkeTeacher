@@ -21,7 +21,7 @@ INSERT INTO projeler (content, author, genre_type) VALUES
 
 INSERT INTO publications (content, author, genre_type) VALUES
   (
-    'Sometimes you win, sometimes you learn.',
+    'After conservation : let building tell its own story',
     'Unknown',
     'motivational'
   ),

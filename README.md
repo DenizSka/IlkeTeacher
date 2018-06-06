@@ -1,7 +1,8 @@
 
 <h1>Ilke Ciritci Website</h1>
 
-
+<p>Work in progress site: </p>
+<p>https://ilke-teacher.herokuapp.com/</p>
 <p>
 This website is built to perform as a portfolio page for architecture teacher Ilke and also a platform for her students to download all the homeworks and submit it back to her. 
 
@@ -44,9 +45,9 @@ Students will have to create a username and password in order to upload the home
 
 <ul><h2> Important Milestones: </h2></ul>
 <p>(Note: In order to move forward client approval is needed - Payment is expected on these important dates in order to share the work.)</p>
-<li>3/30/2018 - Set up all the tabs and the forms</li>
-<li>4/5/2018 - Username password set up</li>
-<li>4/10/2018 - Authentication system for admin</li>
-<li>4/13/2018 - CSS done. Ready to publish</li>
+<li>4/10/2018 - Set up all the tabs and the forms</li>
+<li>5/10/2018 - Username password set up</li>
+<li>6/10/2018 - Authentication system for admin</li>
+<li>6/16/2018 - CSS done. Ready to publish</li>
 
 
