@@ -6,7 +6,7 @@ const projeRoutes = require('./routes/projeroutes');
 const publiRoutes = require('./routes/publicationRoutes');
 const loginRoutes = require('./routes/loginRoutes');
 // const userRoutes = require('./routes/userRoutes');
-
+const adminRoutes = require('./routes/adminRoutes');
 const signupRoutes = require('./routes/signupRoutes');
 const bodyParser = require('body-parser');
 //configure the logger: (some other loggers are winston, bunyan,)
@@ -89,6 +89,10 @@ app.use('/login', loginRoutes);
 
 // signup route
 app.use('/signup', signupRoutes);
+
+
+// signup route
+app.use('/admin', adminRoutes);
 
 // // route for user logout
 // app.get('/logout', (req, res) => {

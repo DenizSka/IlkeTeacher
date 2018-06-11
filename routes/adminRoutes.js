@@ -1,12 +1,13 @@
-// const express = require('express');
-// const userRoutes = express.Router();
-// const controller = require('../controllers/loginController');
-// const views = require('../controllers/viewsController');
-// const loggedUser = require('../models/loginDB');
+const express = require('express');
+const pendinguserRoutes = express.Router();
+const controller = require('../controllers/signinController');
+const views = require('../controllers/viewsController');
+const loggedUser = require('../models/loginDB');
 
 // const authMiddleware = require('../controllers/authController');
 
-
+pendinguserRoutes.route('/pending')
+  .get(controller.indexPending, views.pendingStudent)
 
 // userRoutes.get('/:id', authMiddleware.ensureLoggedIn, userRoutes, authMiddleware.allowAccess, (req, res) => {
 //   console.log('we need req params in login routes', req.params.id);
@@ -26,4 +27,4 @@
 //     resError(res, 500, "Invalid ID");
 //   }
 // });
-// module.exports = userRoutes;
+module.exports = pendinguserRoutes;

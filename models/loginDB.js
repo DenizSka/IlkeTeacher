@@ -60,8 +60,27 @@ module.exports = {
     return db.one(`
       INSERT
       INTO users
-        (password, repassword, fullname, email)
-      VALUES ($/password/, $/repassword/, $/fullname/, $/email/)
+        (password, repassword, fullname, role, email)
+      VALUES ($/password/, $/repassword/, $/fullname/, 'user', $/email/)
+      RETURNING *
+      `, user)
+  },
+
+  findAllPending() {
+    return db.many(`
+      SELECT *
+        FROM pendingusers
+      ORDER BY id
+    `);
+  },
+
+  save_pending(user) {
+    //using pgpromise to SAVE ONE row, producing a new id
+    return db.one(`
+      INSERT
+      INTO pendingusers
+        (password, repassword, fullname, role, email)
+      VALUES ($/password/, $/repassword/, $/fullname/, 'user', $/email/)
       RETURNING *
       `, user)
   },

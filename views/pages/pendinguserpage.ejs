@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+<br></br>
+<table class="table table-hover">
+  <h1 class="headline"> Pending Users</h1>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody><% pendingstudents.forEach(function(pendinguser) { %>
+    <tr>
+      <th scope="row"><%= pendinguser.id %></th>
+      <td><%= pendinguser.fullname %></td>
+      <td><%= pendinguser.email %></td>
+      <td><a href="#"> Accept </a>|<a href="#"> Decline </a></td>
+    </tr>
+
+  <% }) %></tbody>
+</table>
+</div>
+<br>
+
+<% include ../partials/footer %>

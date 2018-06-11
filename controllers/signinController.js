@@ -30,6 +30,16 @@ module.exports = {
       .catch(err => next(err));
   },
 
+  indexPending(req, res, next) {
+    signinData.findAllPending()
+      .then((pendingusers) => {
+          res.locals.pendingusers= pendingusers;
+          next();
+        })
+      .catch(err => next(err));
+  },
+
+
   getOne(req, res, next) {
     signinData.findById(req.params.id)
       .then((user) => {
@@ -44,6 +54,63 @@ module.exports = {
 
 //this function is suppose to take the user input on the signin form and check if the email that client wrote exists in the existing database.
 //If it exist it should give an error. And if there is no limitations than client can create their username.
+
+  // getOneEmail(req, res, next) {
+  //   console.log(req.body);
+  //   if(validUser(req.body)){
+  //     // You can fit more (diverse) data in the body than in the url. You can pass any string (special characters)
+  //     // best practice would be that you should use params when doing a get, but use body for post, put and delete.
+  //     signinData
+  //       .findByEmail(req.body.email)
+  //       .then((user) => {
+  //     if(!user){
+  //         bcrypt.hash(req.body.password, 10)
+  //         .then((hash) => {
+  //           const user = {
+  //             password: hash,
+  //             repassword: hash,
+  //             fullname: req.body.fullname,
+  //             // role: 'user',
+  //             email: req.body.email
+  //           };
+  //           res.locals.user = user;
+  //           console.log('this is  new user', user);
+  //           signinData.save_pending(user)
+  //             .then(result => {
+  //               // I want to set cookie for the user after signup and redirect that user to login/:id page.
+  //               //Below code does not set any cookie. (If you look at login controller it is working perfectly.)
+  //               console.log('this is result', result.id);
+  //               const userid = result.id;
+  //               const expireDate = new Date(Number(new Date()) + 100000)
+  //               const isSecure = req.app.get('env') != 'development';
+  //               res.cookie('user_id', userid, {
+  //                     httpOnly: false,
+  //                     expires: expireDate,
+  //                     secure: isSecure,
+  //                     signed: true
+  //                   });
+  //               console.log('this is req cookie', req.signedCookies);
+  //               // console.log(user);
+  //               // res.locals.user = user;
+  //               res.redirect(`/login/${userid}`);
+  //               // res.render('login/login-single', {
+  //               //   user: result,
+  //               //   })
+  //             })
+  //             .catch(error => {
+  //               // handle database errors
+  //               next(new Error('database error'));
+  //             });
+  //           });
+  //       } else {
+  //         //email in use
+  //         next(new Error('email in use'));
+  //       }
+  //     })
+  //   } else {
+  //     next(new Error('signin not accepted. password must be at least 6 characters'));
+  //   }
+  // },
 
   getOneEmail(req, res, next) {
     console.log(req.body);
@@ -60,31 +127,14 @@ module.exports = {
               password: hash,
               repassword: hash,
               fullname: req.body.fullname,
+              // role: 'user',
               email: req.body.email
             };
             res.locals.user = user;
             console.log('this is  new user', user);
-            signinData.save(user)
-              .then(result => {
-                // I want to set cookie for the user after signup and redirect that user to login/:id page.
-                //Below code does not set any cookie. (If you look at login controller it is working perfectly.)
-                console.log('this is result', result.id);
-                const userid = result.id;
-                const expireDate = new Date(Number(new Date()) + 10000)
-                const isSecure = req.app.get('env') != 'development';
-                res.cookie('user_id', userid, {
-                      httpOnly: false,
-                      expires: expireDate,
-                      secure: isSecure,
-                      signed: true
-                    });
-                console.log('this is req cookie', req.signedCookies);
-                // console.log(user);
-                // res.locals.user = user;
-                res.redirect(`/login/${userid}`);
-                // res.render('login/login-single', {
-                //   user: result,
-                //   })
+            signinData.save_pending(user)
+              .then(() => {
+                next();
               })
               .catch(error => {
                 // handle database errors
@@ -92,14 +142,16 @@ module.exports = {
               });
             });
         } else {
-          //email in use
+          //THIS IS NOT WORKING
           next(new Error('email in use'));
         }
       })
     } else {
+      //THIS WORKS
       next(new Error('signin not accepted. password must be at least 6 characters'));
     }
   },
+
 
 // route for user logout
   logout(req, res, next) {

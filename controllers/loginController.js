@@ -48,7 +48,7 @@ module.exports = {
                     const isSecure = req.app.get('env') != 'development';
                     res.cookie('user_id', user.id, {
                       httpOnly: false,
-                      maxAge : 10000,
+                      maxAge : 100000,
                       secure: isSecure,
                       signed: true
                     });

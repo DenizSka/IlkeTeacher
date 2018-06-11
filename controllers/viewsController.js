@@ -47,6 +47,18 @@ module.exports = {
 //   response.send('user ' + request.params.id);
 // });
 
+//pending student:
+  pendingStudent(req, res) {
+    res.render('pages/pendinguserpage', {
+      pendingstudents: res.locals.pendingusers,
+      });
+    },
+
+  pendingPage(req,res){
+    res.render('pages/pendingnote');
+  },
+
+
 //projects!!
   projeleriGoster(req, res) {
     res.render('projects/project-index', {
