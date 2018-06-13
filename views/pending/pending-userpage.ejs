@@ -15,9 +15,17 @@
       <th scope="row"><%= pendinguser.id %></th>
       <td><%= pendinguser.fullname %></td>
       <td><%= pendinguser.email %></td>
-      <td><a href="#"> Accept </a>|<a href="#"> Decline </a></td>
+      <td><a href='/admin/pending/<%= pendinguser.id %>'> More </a></td>
+      <td><form method='POST' action='/admin/pending/<%= pendinguser.id %>?_method=DELETE'>
+        <button type="Submit" value="Accept" class="btn btn-secondary">
+        Accept
+        </button>
+      </form>
+      <td><form method='POST' action='/admin/pending/<%= pendinguser.id %>?_method=DELETE'>
+        <button type="Submit" value="Decline" class="btn btn-secondary">
+        Decline
+        </button>
     </tr>
-
   <% }) %></tbody>
 </table>
 </div>

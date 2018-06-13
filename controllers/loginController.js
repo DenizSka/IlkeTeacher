@@ -34,7 +34,7 @@ module.exports = {
     console.log(req.body);
     if(validUser(req.body)){
       loginData
-        .findByEmail(req.body.email)
+        .findByExistingEmail(req.body.email)
         .then((user) => {
           if(user){
               //compare pasword with hashed password. Comparing password they entered in with password in db.

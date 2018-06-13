@@ -9,6 +9,11 @@ const loggedUser = require('../models/loginDB');
 pendinguserRoutes.route('/pending')
   .get(controller.indexPending, views.pendingStudent)
 
+pendinguserRoutes.route('/pending/:id')
+  .get(controller.getOnePending, views.oneAcceptPending)
+  .post(controller.addPending)
+  .delete(controller.removePending, views.handlePandingDelete);
+
 // userRoutes.get('/:id', authMiddleware.ensureLoggedIn, userRoutes, authMiddleware.allowAccess, (req, res) => {
 //   console.log('we need req params in login routes', req.params.id);
 //   if (!isNaN(req.params.id)) {

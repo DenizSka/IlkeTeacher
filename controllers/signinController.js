@@ -114,7 +114,6 @@ module.exports = {
 
   getOneEmail(req, res, next) {
     console.log(req.body);
-    if(validUser(req.body)){
       // You can fit more (diverse) data in the body than in the url. You can pass any string (special characters)
       // best practice would be that you should use params when doing a get, but use body for post, put and delete.
       signinData
@@ -146,11 +145,36 @@ module.exports = {
           next(new Error('email in use'));
         }
       })
-    } else {
-      //THIS WORKS
-      next(new Error('signin not accepted. password must be at least 6 characters'));
-    }
+
   },
+
+
+  addPending(req, res, next) {
+    signinData.accept_pending_user(req.params.id)
+    .catch(err => next(err));
+  },
+
+
+  getOnePending(req, res, next) {
+    signinData.findPendingById(req.params.id)
+      .then((pendinguser) => {
+        console.log(pendinguser);
+        res.locals.pendinguser = pendinguser;
+        next();
+      })
+      .catch(err => next(err));
+  },
+  removePending(req, res, next) {
+    console.log('this is  remove pending', req.params.id);
+    signinData.delete_pending_user(req.params.id)
+      .then((pendinguser) => {
+        res.locals.pendinguser = pendinguser;
+        console.log(pendinguser);
+        next();
+      })
+      .catch(err => next(err));
+  },
+
 
 
 // route for user logout

@@ -43,6 +43,25 @@ module.exports = {
     // Promise - do a thing, possibly async,
     return new Promise((resolve, reject) => {
       db
+      .oneOrNone('SELECT * FROM pendingusers WHERE email = $1', email)
+      .then(user => {
+        resolve(user);
+      })
+      .catch(error => {
+        // do something with error
+        console.error(error);
+        reject(error);
+      })
+    })
+  },
+
+
+    findByExistingEmail(email) {
+    // Promise is like event listener. But except A promise can only succeed or fail once.
+    // you're less interested in the exact time something became available, and more interested in reacting to the outcome.
+    // Promise - do a thing, possibly async,
+    return new Promise((resolve, reject) => {
+      db
       .oneOrNone('SELECT * FROM users WHERE email = $1', email)
       .then(user => {
         resolve(user);
@@ -74,6 +93,13 @@ module.exports = {
     `);
   },
 
+  findPendingById(id) {
+    return db.oneOrNone(`
+      SELECT * FROM pendingusers
+      WHERE id = $1
+  `, id);
+  },
+
   save_pending(user) {
     //using pgpromise to SAVE ONE row, producing a new id
     return db.one(`
@@ -84,6 +110,25 @@ module.exports = {
       RETURNING *
       `, user)
   },
+
+  delete_pending_user(id){
+  return db.none(`
+    DELETE
+      FROM pendingusers
+     WHERE id = $1
+  `, id);
+  },
+
+  accept_pending_user(user){
+    return db.one(`
+      INSERT
+      INTO users
+        (password, repassword, fullname, role, email)
+      VALUES ($/password/, $/repassword/, $/fullname/, 'user', $/email/)
+      RETURNING *
+      `, user)
+  },
+
 
   update(user) {
     return db.one(`

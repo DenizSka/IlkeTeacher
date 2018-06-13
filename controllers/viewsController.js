@@ -49,15 +49,24 @@ module.exports = {
 
 //pending student:
   pendingStudent(req, res) {
-    res.render('pages/pendinguserpage', {
+    res.render('pending/pending-userpage', {
       pendingstudents: res.locals.pendingusers,
       });
     },
 
-  pendingPage(req,res){
-    res.render('pages/pendingnote');
+  oneAcceptPending(req, res){
+    res.render('pending/accept-pending', {
+      pendinguser: res.locals.pendinguser,
+    });
   },
 
+  pendingPage(req,res){
+    res.render('pending/pending-note');
+  },
+
+  handlePandingDelete(req, res) {
+   res.redirect('/admin/pending');
+   },
 
 //projects!!
   projeleriGoster(req, res) {
