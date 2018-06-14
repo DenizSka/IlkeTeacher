@@ -149,16 +149,50 @@ module.exports = {
   },
 
 
-  addPending(req, res, next) {
-    signinData.accept_pending_user(req.params.id)
-    .catch(err => next(err));
-  },
+  // addPending(req, res, next) {
+  //   signinData.accept_pending_user(req.body)
+  //     .then(() => {
+  //       next();
+  //     })
+  //     .catch(err => next(err));
+  // },
 
+
+
+saveOnePending(req, res, next) {
+  console.log('this is save one pending', req.body);
+  // You can fit more (diverse) data in the body than in the url. You can pass any string (special characters)
+  // best practice would be that you should use params when doing a get, but use body for post, put and delete.
+    signinData
+      .findByEmail(req.body.email)
+      .then((user) => {
+        const newUser = {
+          id: null,
+          password: hash,
+          repassword: hash,
+          fullname: req.body.fullname,
+          // role: 'user',
+          email: req.body.email
+        };
+        res.locals.user = newUser;
+      })
+        .then((newUser) => {
+          console.log('this is  new pending user', newUser);
+          signinData.accept_pending_user(req.body)
+          .then(() => {
+            next();
+          })
+        })
+        .catch(error => {
+          // handle database errors
+          next(new Error('database error'));
+        });
+      },
 
   getOnePending(req, res, next) {
     signinData.findPendingById(req.params.id)
       .then((pendinguser) => {
-        console.log(pendinguser);
+        console.log('getOnePending => ' + pendinguser);
         res.locals.pendinguser = pendinguser;
         next();
       })
