@@ -74,14 +74,14 @@ module.exports = {
     })
   },
 
-  save(user) {
+  save(id) {
     //using pgpromise to SAVE ONE row, producing a new id
-    return db.one(`
+    return db.oneOrNone(`
       INSERT
       INTO users (password, repassword, fullname, email)
       SELECT password, repassword, fullname, email FROM pendingusers
-      WHERE id = $/id/;
-      `, user)
+      WHERE id = $1;
+      `, id)
   },
 
   findAllPending() {

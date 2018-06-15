@@ -179,10 +179,9 @@ module.exports = {
 
 
   saveOnePending(req, res, next) {
-    req.body.id = req.params.id;
+    const integerId = parseInt(req.params.id);
     console.log('this is save one pending', req.params.id);
-    console.log('this is save one pending', req.body.id);
-    signinData.save(req.body)
+    signinData.save(integerId)
       .then(() => {
         next();
       })
@@ -224,33 +223,6 @@ module.exports = {
 
   // },
 
-// saveOnePending(req, res, next) {
-//   console.log('this is save one pending', req.body);
-//     signinData
-//       .findByEmail(req.body.email)
-//       .then((user) => {
-//         const newUser = {
-//           id: null,
-//           password: hash,
-//           repassword: hash,
-//           fullname: req.body.fullname,
-//           // role: 'user',
-//           email: req.body.email
-//         };
-//         res.locals.user = newUser;
-//       })
-//         .then((newUser) => {
-//           console.log('this is  new pending user', newUser);
-//           signinData.accept_pending_user(req.body)
-//           .then(() => {
-//             next();
-//           })
-//         })
-//         .catch(error => {
-//           // handle database errors
-//           next(new Error('database error'));
-//         });
-//       },
 
 
   getOnePending(req, res, next) {

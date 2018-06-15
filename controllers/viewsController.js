@@ -61,7 +61,7 @@ module.exports = {
   },
 
     acceptedPending(req, res){
-    res.render('pending/accepted-pending')
+    res.render('pending/accepted')
   },
 
   pendingPage(req,res){
