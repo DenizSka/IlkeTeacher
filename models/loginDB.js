@@ -78,10 +78,9 @@ module.exports = {
     //using pgpromise to SAVE ONE row, producing a new id
     return db.one(`
       INSERT
-      INTO users
-        (password, repassword, fullname, role, email)
-      VALUES ($/password/, $/repassword/, $/fullname/, 'user', $/email/)
-      RETURNING *
+      INTO users (password, repassword, fullname, email)
+      SELECT password, repassword, fullname, email FROM pendingusers
+      WHERE id = $/id/;
       `, user)
   },
 
@@ -119,15 +118,6 @@ module.exports = {
   `, id);
   },
 
-  accept_pending_user(user){
-    return db.one(`
-      INSERT
-      INTO users
-        (password, repassword, fullname, role, email)
-      VALUES ($/password/, $/repassword/, $/fullname/, 'user', $/email/)
-      RETURNING *
-      `, user)
-  },
 
 
   update(user) {

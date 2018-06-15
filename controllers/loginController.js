@@ -3,23 +3,7 @@ const loginData = require('../models/loginDB');
 const bcrypt = require ('bcrypt');
 const views = require('../controllers/viewsController');
 
-
-//this is a function to give some limitations to username and password.
-function validUser(user){
-  // do stuff
-  const validEmail = typeof user.email == 'string' &&
-                    user.email.trim() != '';
-
-  const validPassword = typeof user.password == 'string' &&
-                     user.password.trim() != '' &&
-                     user.password.trim().length >= 6;
-
-  return validEmail && validPassword;
-
-};
-
 module.exports = {
-
 
   index(req, res, next) {
     loginData.findAll()
@@ -32,7 +16,6 @@ module.exports = {
 
   getLogin(req, res, next) {
     console.log(req.body);
-    if(validUser(req.body)){
       loginData
         .findByExistingEmail(req.body.email)
         .then((user) => {
@@ -85,11 +68,7 @@ module.exports = {
             next (new Error('login does not exist'));
           }
         });
-    }else {
-      // catch(err => next(err));
-      next (new Error('please re-enter your username and password'));
-    }
-},
+  },
 
   // create(req, res, next) {
   //   loginData.save(req.body)

@@ -1,3 +1,47 @@
-<% include ../partials/header %>
+<!-- <% include ../partials/header %>
 <h1> Accepting... </h1>
+
+<ul>
+<% setTimeout(function () { %>
+<% supplies = [1, 2, 3, 4]; %>
+<% for(let i=0; i<supplies.length; i++) {%>
+   <li><%= supplies[i] %></li>
+<% } %>
+<% }, 1000) %>
+</ul>
+
+(function($) {
+  $(function() {
+    $('#test').click(function(e) {
+      if (e.originalEvent) {
+        alert('You clicked me!');
+      } else {
+        alert('Something else triggered me!');
+      }
+    });
+
+    setTimeout(function() {
+      $('#test').trigger('click');
+    }, 5000);
+  });
+})(jQuery);
+{{ method_field('PUT') }} -->
+
+<div class='proje'>
+<form method='POST' action="/admin/pending/<%= pendinguser.id %>?_method=PUT">
+  <h5 class="publiname-single"><%= pendinguser.id %></h5>
+  <p class="publiname-single"><%= pendinguser.email %></p>
+  <p class="publiname-single"><%= pendinguser.fullname %></p>
+  <p class="publiname-single"><%= pendinguser.password %></p>
+  <p class="publiname-single"><%= pendinguser.repassword %></p>
+
+    <button type="Submit" value="Accept" class="btn btn-secondary">
+    Accept
+    </button>
+</form>
+
+
+</div>
+
+
 <% include ../partials/footer %>

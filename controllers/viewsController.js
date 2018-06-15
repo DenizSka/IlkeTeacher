@@ -60,6 +60,10 @@ module.exports = {
     });
   },
 
+    acceptedPending(req, res){
+    res.render('pending/accepted-pending')
+  },
+
   pendingPage(req,res){
     res.render('pending/pending-note');
   },
@@ -67,6 +71,7 @@ module.exports = {
   handlePandingDelete(req, res) {
    res.redirect('/admin/pending');
    },
+
 
 //projects!!
   projeleriGoster(req, res) {

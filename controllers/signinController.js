@@ -4,18 +4,18 @@ const bcrypt = require ('bcrypt');
 
 
 //this is a function to give some limitations to username and password.
-function validUser(user){
-  // do stuff
-  const validEmail = typeof user.email == 'string' &&
-                    user.email.trim() != '';
+// function validUser(user){
+//   // do stuff
+//   const validEmail = typeof user.email == 'string' &&
+//                     user.email.trim() != '';
 
-  const validPassword = typeof user.password == 'string' &&
-                     user.password.trim() != '' &&
-                     user.password.trim().length >= 6;
+//   const validPassword = typeof user.password == 'string' &&
+//                      user.password.trim() != '' &&
+//                      user.password.trim().length >= 6;
 
-  return validEmail && validPassword;
+//   return validEmail && validPassword;
 
-};
+// };
 
 
 
@@ -145,51 +145,116 @@ module.exports = {
           next(new Error('email in use'));
         }
       })
-
   },
 
 
-  // addPending(req, res, next) {
-  //   signinData.accept_pending_user(req.body)
-  //     .then(() => {
-  //       next();
-  //     })
-  //     .catch(err => next(err));
+
+// saveOnePending(req, res, next) {
+//   console.log(req.params.id);
+//   console.log(req.params.password);
+//   console.log(req.body.id);
+//     req.body.id = req.params.id;
+//     // req.body.password = req.params.password;
+//     // req.body.repassword = req.params.repassword;
+//     // req.body.fullname = req.params.fullname;
+//     // req.body.email = req.params.email;
+//     // const newUser = {
+//     //       id: req.body.id,
+//     //       password: req.body.password,
+//     //       repassword: req.body.repassword,
+//     //       fullname: req.body.fullname,
+//     //       // role: 'user',
+//     //       email: req.body.email
+//     //     };
+//     console.log(newUser);
+
+//     signinData.save(newUser)
+//     .then((user) => {
+//       console.log(user, 'after save');
+//       res.locals.user = user;
+//       next();
+//     })
+//     .catch(err => next(err));
+//   },
+
+
+  saveOnePending(req, res, next) {
+    req.body.id = req.params.id;
+    console.log('this is save one pending', req.params.id);
+    console.log('this is save one pending', req.body.id);
+    signinData.save(req.body)
+      .then(() => {
+        next();
+      })
+      .catch(err => next(err));
+  },
+
+
+// saveOnePending(req, res, next) {
+//     console.log('this is save one pending', res.body);
+//       // You can fit more (diverse) data in the body than in the url. You can pass any string (special characters)
+//       // best practice would be that you should use params when doing a get, but use body for post, put and delete.
+//       signinData
+//         .findByExistingEmail(req.body.email)
+//         .then((user) => {
+//       if(!user){
+//         console.log('this is inside if statement save one pending', req.body);
+//             const user = {
+//               password: req.body.password,
+//               repassword: req.body.repassword,
+//               fullname: req.body.fullname,
+//               role: 'user',
+//               email: req.body.email
+//             };
+//             res.locals.user = user;
+//             console.log('this is  new user', user);
+//             signinData.accept_pending_user(user)
+//               .then(() => {
+//                 next();
+//               })
+//               .catch(error => {
+//                 // handle database errors
+//                 next(new Error('database error'));
+//               });
+//         } else {
+//           //THIS IS NOT WORKING
+//           next(new Error('email already in the system'));
+//         }
+//       })
+
   // },
 
+// saveOnePending(req, res, next) {
+//   console.log('this is save one pending', req.body);
+//     signinData
+//       .findByEmail(req.body.email)
+//       .then((user) => {
+//         const newUser = {
+//           id: null,
+//           password: hash,
+//           repassword: hash,
+//           fullname: req.body.fullname,
+//           // role: 'user',
+//           email: req.body.email
+//         };
+//         res.locals.user = newUser;
+//       })
+//         .then((newUser) => {
+//           console.log('this is  new pending user', newUser);
+//           signinData.accept_pending_user(req.body)
+//           .then(() => {
+//             next();
+//           })
+//         })
+//         .catch(error => {
+//           // handle database errors
+//           next(new Error('database error'));
+//         });
+//       },
 
-
-saveOnePending(req, res, next) {
-  console.log('this is save one pending', req.body);
-  // You can fit more (diverse) data in the body than in the url. You can pass any string (special characters)
-  // best practice would be that you should use params when doing a get, but use body for post, put and delete.
-    signinData
-      .findByEmail(req.body.email)
-      .then((user) => {
-        const newUser = {
-          id: null,
-          password: hash,
-          repassword: hash,
-          fullname: req.body.fullname,
-          // role: 'user',
-          email: req.body.email
-        };
-        res.locals.user = newUser;
-      })
-        .then((newUser) => {
-          console.log('this is  new pending user', newUser);
-          signinData.accept_pending_user(req.body)
-          .then(() => {
-            next();
-          })
-        })
-        .catch(error => {
-          // handle database errors
-          next(new Error('database error'));
-        });
-      },
 
   getOnePending(req, res, next) {
+    console.log('this is get one pending', req.body);
     signinData.findPendingById(req.params.id)
       .then((pendinguser) => {
         console.log('getOnePending => ' + pendinguser);

@@ -11,7 +11,7 @@ pendinguserRoutes.route('/pending')
 
 pendinguserRoutes.route('/pending/:id')
   .get(controller.getOnePending, views.oneAcceptPending)
-  .put(controller.saveOnePending)
+  .put(controller.saveOnePending, views.acceptedPending)
   .delete(controller.removePending, views.handlePandingDelete);
 
 // userRoutes.get('/:id', authMiddleware.ensureLoggedIn, userRoutes, authMiddleware.allowAccess, (req, res) => {

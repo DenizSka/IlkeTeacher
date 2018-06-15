@@ -15,12 +15,12 @@
       <th scope="row"><%= pendinguser.id %></th>
       <td><%= pendinguser.fullname %></td>
       <td><%= pendinguser.email %></td>
-      <!-- <td><a href='/admin/pending/<%= pendinguser.id %>'> More </a></td> -->
-      <td><form method='PUT' action='/admin/pending/<%= pendinguser.id%>'>
+      <td><a href='/admin/pending/<%= pendinguser.id %>'> Accept </a></td>
+      <!-- <td><form method='POST' action='/admin/pending/<%= pendinguser.id%>'>
         <button type="Submit" value="Accept" class="btn btn-secondary">
         Accept
         </button>
-      </form>
+      </form> -->
       <td><form method='POST' action='/admin/pending/<%= pendinguser.id %>?_method=DELETE'>
         <button type="Submit" value="Decline" class="btn btn-secondary">
         Decline
