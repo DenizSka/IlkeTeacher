@@ -55,12 +55,12 @@ module.exports = {
     },
 
   oneAcceptPending(req, res){
-    res.render('pending/accept-pending', {
+    res.render('pending/single-pending', {
       pendinguser: res.locals.pendinguser,
     });
   },
 
-    acceptedPending(req, res){
+  acceptedPending(req, res){
     res.render('pending/accepted')
   },
 
@@ -69,7 +69,7 @@ module.exports = {
   },
 
   handlePandingDelete(req, res) {
-   res.redirect('/admin/pending');
+   res.render('pending/rejected');
    },
 
 

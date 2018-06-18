@@ -23,11 +23,18 @@ loginRoutes.get('/:id', authMiddleware.ensureLoggedIn, authMiddleware.allowAcces
   console.log('we need req params in login routes', req.params.id);
   if (!isNaN(req.params.id)) {
     loggedUser.findById(req.params.id).then(user => {
-      if (user) {
+      if (user == true && user.id != 1) {
         delete user.password;
         console.log('users:', user);
         // res.json(user);
         res.render('./login/login-single', {
+          user: user,
+        });
+      } else if (user.id === 1 ) {
+        delete user.password;
+        console.log('users:', user);
+        // res.json(user);
+        res.render('./pages/admin', {
           user: user,
         });
       } else {
@@ -38,6 +45,29 @@ loginRoutes.get('/:id', authMiddleware.ensureLoggedIn, authMiddleware.allowAcces
     resError(res, 500, "Invalid ID");
   }
 });
+
+// admin login
+loginRoutes.get('/admin', authMiddleware.ensureLoggedIn, authMiddleware.allowAccess, (req, res) => {
+  console.log('we need req params in admin routes', req.params.id);
+  if (!isNaN(req.params.id)) {
+    loggedUser.findById(req.params.id).then(user => {
+      console.log ('user', user);
+      if (user.id === 4 ) {
+        delete user.password;
+        console.log('users:', user);
+        // res.json(user);
+        res.render('./pages/admin', {
+          user: user,
+        });
+      } else {
+        resError(res, 404, "User Not Found");
+      }
+    });
+  } else {
+    resError(res, 500, "Invalid ID");
+  }
+});
+
 
 loginRoutes.get('/:id/projects', (req,res)=>{
   if (!isNaN(req.params.id)) {

@@ -78,8 +78,8 @@ module.exports = {
     //using pgpromise to SAVE ONE row, producing a new id
     return db.oneOrNone(`
       INSERT
-      INTO users (password, repassword, fullname, email)
-      SELECT password, repassword, fullname, email FROM pendingusers
+      INTO users (password, repassword, fullname, role, email)
+      SELECT password, repassword, fullname, 'user', email FROM pendingusers
       WHERE id = $1;
       `, id)
   },

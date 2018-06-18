@@ -6,6 +6,7 @@ const loggedUser = require('../models/loginDB');
 
 // const authMiddleware = require('../controllers/authController');
 
+
 pendinguserRoutes.route('/pending')
   .get(controller.indexPending, views.pendingStudent)
 
