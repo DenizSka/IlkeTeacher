@@ -11,9 +11,10 @@
                         <strong>email</strong>: <%= user.email %><br>
                     </p>
             </div>
-            <a href='/admin/pending' class="btn btn-light">Pending users</a>
+
+            <a href='/login/<%= user.id %>/pending' class="btn btn-light">Pending users</a>
             <form action="/login/logout" method="post">
-            <input class="btn btn-danger" type="submit" value="Log Out"/>
+                <input class="btn btn-danger" type="submit" value="Log Out"/>
             </form>
         </div>
 

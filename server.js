@@ -10,6 +10,7 @@ const adminRoutes = require('./routes/adminRoutes');
 const signupRoutes = require('./routes/signupRoutes');
 const bodyParser = require('body-parser');
 //configure the logger: (some other loggers are winston, bunyan,)
+const passport = require('passport');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const ejs = require('ejs');
@@ -25,6 +26,10 @@ const secret = process.env.COOKIE_SECRET;
 
 //when we create forms, the natural method will be post. In order to get the delete function to work we will need this package.
 const methodOverride = require('method-override');
+
+// app.use(passport.initialize());
+// app.use(passport.session());
+// require('./path/to/passport/config/file')(passport);//add this line
 
 app.use(methodOverride('_method'));
 
@@ -84,6 +89,20 @@ app.use(cors({
 // login route
 app.use('/login', loginRoutes);
 
+// const requiresAdmin = function() {
+//   return [
+//     function(req, res, next) {
+//       if (user == true && user.role != admin)
+//         next();
+//       else
+//         res.send(401, 'Unauthorized');
+//     }
+//   ]
+// };
+
+// app.all('/admin/*', requiresAdmin());
+// app.get('/admin/', loginRoutes);
+
 // after login route
 // app.use('/user', authMiddleware.ensureLoggedIn, userRoutes);
 
@@ -91,8 +110,10 @@ app.use('/login', loginRoutes);
 app.use('/signup', signupRoutes);
 
 
-// signup route
-app.use('/admin', adminRoutes);
+
+
+
+
 
 // // route for user logout
 // app.get('/logout', (req, res) => {

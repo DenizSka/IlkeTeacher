@@ -7,10 +7,10 @@ const loggedUser = require('../models/loginDB');
 // const authMiddleware = require('../controllers/authController');
 
 
-pendinguserRoutes.route('/pending')
-  .get(controller.indexPending, views.pendingStudent)
+// pendinguserRoutes.route('/')
+//   .get(controller.indexPending, views.pendingStudent)
 
-pendinguserRoutes.route('/pending/:id')
+pendinguserRoutes.route('/:id')
   .get(controller.getOnePending, views.oneAcceptPending)
   .put(controller.saveOnePending, views.acceptedPending)
   .delete(controller.removePending, views.handlePandingDelete);

@@ -2,23 +2,6 @@
 const signinData = require('../models/loginDB');
 const bcrypt = require ('bcrypt');
 
-
-//this is a function to give some limitations to username and password.
-// function validUser(user){
-//   // do stuff
-//   const validEmail = typeof user.email == 'string' &&
-//                     user.email.trim() != '';
-
-//   const validPassword = typeof user.password == 'string' &&
-//                      user.password.trim() != '' &&
-//                      user.password.trim().length >= 6;
-
-//   return validEmail && validPassword;
-
-// };
-
-
-
 module.exports = {
 
   index(req, res, next) {
@@ -30,14 +13,14 @@ module.exports = {
       .catch(err => next(err));
   },
 
-  indexPending(req, res, next) {
-    signinData.findAllPending()
-      .then((pendingusers) => {
-          res.locals.pendingusers= pendingusers;
-          next();
-        })
-      .catch(err => next(err));
-  },
+  // indexPending(req, res, next) {
+  //   signinData.findAllPending()
+  //     .then((pendingusers) => {
+  //         res.locals.pendingusers= pendingusers;
+  //         next();
+  //       })
+  //     .catch(err => next(err));
+  // },
 
 
   getOne(req, res, next) {

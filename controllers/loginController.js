@@ -14,6 +14,7 @@ module.exports = {
       .catch(err => next(err));
   },
 
+
   getLogin(req, res, next) {
     console.log(req.body);
       loginData
