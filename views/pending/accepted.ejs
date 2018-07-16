@@ -1,13 +1,13 @@
 <% include ../partials/header %>
 <h1> User Accepted </h1>
 
-    <td><form id="test" method='POST' action='login/1/pending/<%= integerId %>?_method=DELETE'>
-      <button type="Submit" value="Decline" class="btn btn-secondary">
-      Remove From Pending
-      </button>
-    </form>
+    <td>
+      <form id="test" method='POST' action='/login/1/pending/<%= integerId %>?_method=DELETE'>
+        <button type="Submit" value="Decline" class="btn btn-secondary" autofocus>
+          Remove From Pending 
+        </button>
+      </form>
     </td>
 
 
-<a href='login/1/pending' class="btn btn-light">Back to list</a>
 <% include ../partials/footer %>
