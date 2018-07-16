@@ -1,19 +1,40 @@
 const express = require('express');
-const pendinguserRoutes = express.Router();
+const adminRoutes = express.Router();
+
 const controller = require('../controllers/signinController');
 const views = require('../controllers/viewsController');
 const loggedUser = require('../models/loginDB');
 
-// const authMiddleware = require('../controllers/authController');
 
 
-// pendinguserRoutes.route('/')
-//   .get(controller.indexPending, views.pendingStudent)
+adminRoutes.get('/ ', (req, res, id) => {
+  console.log('admin routes for pending', req.params);
+  console.log('admin routes for pending checking cookie', req.signedCookies.user_id);
+  if (!isNaN(req.params.id)) {
+    loggedUser.findById(req.params.id).then(user => {
+      if ((user.id === 1 && user.role == "admin") && (req.signedCookies.user_id == req.params.id) ) {
+        delete user.password;
+        loggedUser.findAllPending().then((pendingusers) => {
+          console.log('users:', pendingusers);
+          res.render ('pending/pending-userpage', {
+            pendingusers: pendingusers,
+          })
+        });
+        // .get(controller.indexPending, views.pendingStudent)
+      } else {
+        resError(res, 404, "User Not Found");
+      }
+    });
+  } else {
+    resError(res, 500, "Invalid ID");
+  }
+});
+  
+// adminRoutes.route('/:id')
+//   .get(controller.getOnePending, views.oneAcceptPending)
+//   .put(controller.saveOnePending, views.acceptedPending)
+//   .delete(controller.removePending, views.handlePandingDelete);
 
-pendinguserRoutes.route('/:id')
-  .get(controller.getOnePending, views.oneAcceptPending)
-  .put(controller.saveOnePending, views.acceptedPending)
-  .delete(controller.removePending, views.handlePandingDelete);
 
 // userRoutes.get('/:id', authMiddleware.ensureLoggedIn, userRoutes, authMiddleware.allowAccess, (req, res) => {
 //   console.log('we need req params in login routes', req.params.id);
@@ -33,4 +54,10 @@ pendinguserRoutes.route('/:id')
 //     resError(res, 500, "Invalid ID");
 //   }
 // });
-module.exports = pendinguserRoutes;
+
+function resError(res, statusCode, message) {
+  res.status(statusCode);
+  res.json({message});
+};
+
+module.exports = adminRoutes;

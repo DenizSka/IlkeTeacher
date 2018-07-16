@@ -133,6 +133,7 @@ app.use('/projects', projeRoutes);
 // publication route
 app.use('/publications', publiRoutes);
 
+
 // home route
 app.get('/', (req,res) => {
   res.render('pages/home')

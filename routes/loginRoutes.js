@@ -2,22 +2,11 @@ const express = require('express');
 const loginRoutes = express.Router();
 const adminRoutes = require('./adminRoutes');
 const controller = require('../controllers/loginController');
-// const scontroller = require('../controllers/signinController');
 const views = require('../controllers/viewsController');
 const loggedUser = require('../models/loginDB');
-const project = require('../models/projeDB');
-// const passport = require('passport');
 const authMiddleware = require('../controllers/authController');
 
-
-
-// loginRoutes.post('/', passport.authenticate('local', {
-//   successRedirect: '/', failureRedirect: '/login'
-// }));
-
-
 loginRoutes.get('/', controller.loginForm, views.loginFormu);
-
 
 
 // loginRoutes.route('/:id/edit')
@@ -61,7 +50,7 @@ loginRoutes.get('/:id', authMiddleware.ensureLoggedIn, authMiddleware.allowAcces
 // admin pending route
 loginRoutes.get('/:id/pending', (req, res) => {
     console.log('admin routes pending', req.params.id);
-    console.log('admin routes pending chekcing cookie', req.signedCookies.user_id);
+    console.log('admin routes pending checking cookie', req.signedCookies.user_id);
     if (!isNaN(req.params.id)) {
       loggedUser.findById(req.params.id).then(user => {
         if ((user.id === 1 && user.role == "admin") && (req.signedCookies.user_id == req.params.id) ) {
@@ -72,7 +61,6 @@ loginRoutes.get('/:id/pending', (req, res) => {
               pendingusers: pendingusers,
             })
           });
-          // .get(controller.indexPending, views.pendingStudent)
         } else {
           resError(res, 404, "User Not Found");
         }
@@ -82,17 +70,79 @@ loginRoutes.get('/:id/pending', (req, res) => {
     }
   });
 
+  // admin pending route
+loginRoutes.get('/:loginid/pending/:pendingid', (req, res) => {
+  if (!isNaN(req.params.loginid)) {
+    loggedUser.findById(req.params.loginid).then(user => {
+      if ((user.id === 1 && user.role == "admin") && (req.signedCookies.user_id == req.params.loginid) ) {
+        delete user.password;
+        loggedUser.findPendingById(req.params.pendingid).then((pendinguser) => {
+            console.log('getOnePending => ' + pendinguser);
+          res.render ('pending/single-pending', {
+            pendinguser: pendinguser,
+          })
+        });
+      } else {
+        resError(res, 404, "User Not Found");
+      }
+    });
+  } else {
+    resError(res, 500, "Invalid ID");
+  }
+});
+// loginRoutes.use('/:id/pending', adminRoutes);
 
 
-// loginRoutes.get('/:id/projects', (req,res)=>{
-//   if (!isNaN(req.params.id)) {
-//     project.getByUser(req.params.id).then(projects=> {
-//       res.json(projects);
-//     });
-//   } else {
-//     resError(res, 500, "Invalid ID");
-//   }
-// });
+
+loginRoutes.put('/:loginid/pending/:pendingid', (req, res) => {
+  if (!isNaN(req.params.loginid)) {
+    loggedUser.findById(req.params.loginid).then(user => {
+      if ((user.id === 1 && user.role == "admin") && (req.signedCookies.user_id == req.params.loginid) ) {
+        delete user.password;
+        const integerId = parseInt(req.params.pendingid);
+        loggedUser.save(integerId).then(() => {
+          res.render ('pending/accepted', {
+            integerId : integerId,
+          });
+        });  
+      } else {
+        resError(res, 404, "User Not Found");
+      }
+    });
+  } else {
+    resError(res, 500, "Invalid ID");
+  }
+});
+
+
+
+
+
+loginRoutes.delete('/:loginid/pending/:pendingid', (req, res) => {
+  if (!isNaN(req.params.loginid)) {
+    loggedUser.findById(req.params.loginid).then(user => {
+      if ((user.id === 1 && user.role == "admin") && (req.signedCookies.user_id == req.params.loginid) ) {
+        delete user.password;
+        loggedUser.delete_pending_user(req.params.pendingid).then((pendinguser) => {
+          console.log('this is delete pending user', pendinguser);
+          pendinguser = pendinguser;
+          res.redirect(`/login/1/pending/`)
+        });  
+      } else {
+        resError(res, 404, "User Not Found");
+      }
+    });
+  } else {
+    resError(res, 500, "Invalid ID");
+  }
+});
+
+
+// adminRoutes.route('/:id')
+  
+//   .put(controller.saveOnePending, views.acceptedPending)
+//   .delete(controller.removePending, views.handlePandingDelete);
+
 
 loginRoutes.route('/logout')
 //   .get(controller.index, views.projeleriGoster)

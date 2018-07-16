@@ -130,36 +130,36 @@ module.exports = {
       })
   },
 
-  saveOnePending(req, res, next) {
-    const integerId = parseInt(req.params.id);
-    console.log('this is save one pending', req.params.id);
-    signinData.save(integerId)
-      .then(() => {
-        next();
-      })
-      .catch(err => next(err));
-  },
+  // saveOnePending(req, res, next) {
+  //   const integerId = parseInt(req.params.id);
+  //   console.log('this is save one pending', req.params.id);
+  //   signinData.save(integerId)
+  //     .then(() => {
+  //       next();
+  //     })
+  //     .catch(err => next(err));
+  // },
 
-  getOnePending(req, res, next) {
-    console.log('this is get one pending', req.body);
-    signinData.findPendingById(req.params.id)
-      .then((pendinguser) => {
-        console.log('getOnePending => ' + pendinguser);
-        res.locals.pendinguser = pendinguser;
-        next();
-      })
-      .catch(err => next(err));
-  },
-  removePending(req, res, next) {
-    console.log('this is  remove pending', req.params.id);
-    signinData.delete_pending_user(req.params.id)
-      .then((pendinguser) => {
-        res.locals.pendinguser = pendinguser;
-        console.log(res.locals.pendinguser);
-        next();
-      })
-      .catch(err => next(err));
-  },
+  // getOnePending(req, res, next) {
+  //   console.log('this is get one pending', req.body);
+  //   signinData.findPendingById(req.params.id)
+  //     .then((pendinguser) => {
+  //       console.log('getOnePending => ' + pendinguser);
+  //       res.locals.pendinguser = pendinguser;
+  //       next();
+  //     })
+  //     .catch(err => next(err));
+  // },
+  // removePending(req, res, next) {
+  //   console.log('this is  remove pending', req.params.id);
+  //   signinData.delete_pending_user(req.params.id)
+  //     .then((pendinguser) => {
+  //       res.locals.pendinguser = pendinguser;
+  //       console.log(res.locals.pendinguser);
+  //       next();
+  //     })
+  //     .catch(err => next(err));
+  // },
 
 
 

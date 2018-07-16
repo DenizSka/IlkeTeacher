@@ -110,6 +110,14 @@ module.exports = {
       `, user)
   },
 
+  destroy(id) {
+    return db.none(`
+      DELETE
+        FROM users
+       WHERE id = $1
+    `, id);
+    },
+    
   delete_pending_user(id){
   return db.none(`
     DELETE

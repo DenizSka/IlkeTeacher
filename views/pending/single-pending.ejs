@@ -2,20 +2,22 @@
 <% include ../partials/header %>
 
 <div class='proje'>
-<form method='POST' action="/admin/pending/<%= pendinguser.id %>?_method=PUT">
+<form method='POST' action="/login/1/pending/<%= pendinguser.id %>?_method=PUT">
   <h5 class="publiname-single">User #: <%= pendinguser.id %></h5>
   <p class="publiname-single">Email: <%= pendinguser.email %></p>
   <p class="publiname-single">Full Name: <%= pendinguser.fullname %></p>
 
-    <button type="Submit" value="Accept" class="btn btn-secondary">
+  <button type="Submit" value="Accept" class="btn btn-secondary" onclick="location.href='/login/1/pending/<%= pendinguser.id %>/accepted'">
     Accept
-    </button>
+  </button>
 </form>
-    <td><form method='POST' action='/admin/pending/<%= pendinguser.id %>?_method=DELETE'>
+    <td><form method='POST' action='/login/1/pending/<%= pendinguser.id %>?_method=DELETE'>
       <button type="Submit" value="Decline" class="btn btn-secondary">
       Decline
       </button>
-    </tr>
+    </form>
+    </td>
+
 
 </div>
 

@@ -1,60 +1,13 @@
 <% include ../partials/header %>
 <h1> User Accepted </h1>
-<a href='/admin/pending' class="btn btn-light">Back to list</a>
-<% include ../partials/footer %>
- // window.onload setTimeout(function () {
 
- you may not need to redirect to this page. Look in to union. SQL
-
- delete from the accepted user button.
-
-
-
-
- https://www.w3schools.com/sql/sql_stored_procedures.asp
-
-
- redirect to deleted page and redirect to pending page.
-}
-
-store procedureL exec: execute this procedure.
-SELECT formula FROM table1
-WHERE table1.foo IN(SELECT foos FROM table2
-WHERE table2.bar = 'BAR';
-) AND table1.bar = 'BAR';
-
-check the accepted error!!!
-<!--
-
-<ul>
-<% setTimeout(function () { %>
-<% supplies = [1, 2, 3, 4]; %>
-<% for(let i=0; i<supplies.length; i++) {%>
-   <li><%= supplies[i] %></li>
-<% } %>
-<% }, 1000) %>
-</ul>
-
-(function($) {
-  $(function() {
-    $('#test').click(function(e) {
-      if (e.originalEvent) {
-        alert('You clicked me!');
-      } else {
-        alert('Something else triggered me!');
-      }
-    });
-
-    setTimeout(function() {
-      $('#test').trigger('click');
-    }, 5000);
-  });
-})(jQuery);
-{{ method_field('PUT') }} -->
-
-</form>
-    <td><form method='POST' action='/admin/pending/<%= pendinguser.id %>?_method=DELETE'>
+    <td><form id="test" method='POST' action='login/1/pending/<%= integerId %>?_method=DELETE'>
       <button type="Submit" value="Decline" class="btn btn-secondary">
-      Decline
+      Remove From Pending
       </button>
-    </tr>
+    </form>
+    </td>
+
+
+<a href='login/1/pending' class="btn btn-light">Back to list</a>
+<% include ../partials/footer %>

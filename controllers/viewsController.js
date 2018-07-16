@@ -54,15 +54,15 @@ module.exports = {
       });
     },
 
-  oneAcceptPending(req, res){
-    res.render('pending/single-pending', {
-      pendinguser: res.locals.pendinguser,
-    });
-  },
+  // oneAcceptPending(req, res){
+  //   res.render('pending/single-pending', {
+  //     pendinguser: res.locals.pendinguser,
+  //   });
+  // },
 
-  acceptedPending(req, res){
-    res.render('pending/accepted')
-  },
+  // acceptedPending(req, res){
+  //   res.render('pending/accepted')
+  // },
 
   pendingPage(req,res){
     res.render('pending/pending-note');
