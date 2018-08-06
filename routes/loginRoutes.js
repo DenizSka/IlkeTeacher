@@ -21,7 +21,7 @@ loginRoutes.get('/:id', authMiddleware.ensureLoggedIn, authMiddleware.allowAcces
   console.log('we need req params in login routes', req.params.id);
   if (!isNaN(req.params.id)) {
     loggedUser.findById(req.params.id).then(user => {
-      if (user == true && user.role != "admin") {
+      if (user.role != "admin") {
         delete user.password;
         console.log('users:', user);
         // res.json(user);

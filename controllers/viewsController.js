@@ -43,9 +43,6 @@ module.exports = {
   //   });
   // },
 
-// app.get('/user/:id', function(request, response){
-//   response.send('user ' + request.params.id);
-// });
 
 //pending student:
   pendingStudent(req, res) {
@@ -68,9 +65,9 @@ module.exports = {
     res.render('pending/pending-note');
   },
 
-  handlePandingDelete(req, res) {
-   res.render('pending/rejected');
-   },
+  // handlePandingDelete(req, res) {
+  //  res.render('pending/rejected');
+  //  },
 
 
 //projects!!

@@ -47,7 +47,10 @@ Students will have to create a username and password in order to upload the home
 <p>(Note: In order to move forward client approval is needed - Payment is expected on these important dates in order to share the work.)</p>
 <li>4/10/2018 - Set up all the tabs and the forms</li>
 <li>5/10/2018 - Username password set up</li>
+<li>6/10/2018 - Authentication system for students</li>
 <li>6/10/2018 - Authentication system for admin</li>
-<li>6/16/2018 - CSS done. Ready to publish</li>
+<li>8/1/2018 - Uploading material</li>
+<li>8/15/2018 - Upgrade security, protection against malware</li>
+<li>8/16/2018 - CSS done. Ready to publish</li>
 
 
