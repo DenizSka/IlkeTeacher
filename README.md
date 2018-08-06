@@ -4,7 +4,7 @@
 <p>Work in progress site: </p>
 <p>https://ilke-teacher.herokuapp.com/</p>
 <p>
-This website is built to perform as a portfolio page for architecture teacher Ilke and also a platform for her students to download all the homeworks and submit it back to her. 
+This website is built to perform as a platform so that the professor Ilke can easily share assignments to her fellow students as well as receive and answer questions from students. This is a two-way platform to enhance the communication between the professor and her students.
 
 This site has an admin page for Ilke to upload all her publications and homeworks. She will also be approving the users of the page. 
 
@@ -36,9 +36,10 @@ Students will have to create a username and password in order to upload the home
 <li>A place for students to submit their homeworks. (with the current flow, they can only send it as an email)</li>
 
 
-<ul><h2> Technologies Needed: </h2></ul>
+<ul><h2> Technologies Used: </h2></ul>
 
-<li> Express </li>
+<li> Node/Express </li>
+<li> EJS </li>
 <li> SQL </li>
 
 
