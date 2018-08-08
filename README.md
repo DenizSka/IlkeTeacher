@@ -41,8 +41,8 @@ Students will have to create a username and password in order to upload the home
 <li> Node/Express </li>
 <li> EJS </li>
 <li> SQL </li>
-
-<iframe src="https://docs.google.com/document/d/1cRxZlGc9_89iPn8Dhcw6y5D7jCPHxAoR_nzyh3PXifk" style="width:600px; height:500px;" frameborder="0"></iframe>
+https://docs.google.com/document/d/1cRxZlGc9_89iPn8Dhcw6y5D7jCPHxAoR_nzyh3PXifk/
+<iframe src="http://docs.google.com/gview?url=https://docs.google.com/document/d/1cRxZlGc9_89iPn8Dhcw6y5D7jCPHxAoR_nzyh3PXifk.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
 
 
 <ul><h2> Important Milestones: </h2></ul>
