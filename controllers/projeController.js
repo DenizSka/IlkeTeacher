@@ -35,14 +35,14 @@ module.exports = {
   },
 
 
-
-
   bosForm(req, res, next) {
     const yeniProje = {
       id: null,
       content: null,
+      year: null,
       author: null,
-      genre_type: null,
+      pdf: null,
+      image: null,
     };
     res.locals.proje = yeniProje;
     next();

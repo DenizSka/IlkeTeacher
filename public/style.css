@@ -4,7 +4,7 @@
 
 .clearfix div{
   height: auto;
-  width: 25%;
+/*  width: 25%;*/
   float: left;
   font-size: 12px;
   padding-top: 20px;
@@ -167,17 +167,18 @@ img.resize {
 
 .spanclass{
   margin: 30px 24px 48px 24px;
-  width: calc((100% - 144px) / 3);
+  width: calc((100% - 10px) / 3);
   display: block;
   position: relative;
   display: -webkit-box;
-  display: flex;
+/*  display: flex;*/
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 12px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   flex-direction: column;
   background-color: #f9f9f9;
+  padding-bottom: 10px;
 }
 
 .spanclasspubli{

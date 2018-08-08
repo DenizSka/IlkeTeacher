@@ -2,10 +2,10 @@
 
 <div class="spanclasspubli">
 
-  <img src="../../img/sorry.png" width="300" alt="Noimage">
+
   <h5 class="publiname-single"><%= publication.content %></h5>
-  <p class="publiname-single">Author: <%= publication.author %></p>
-  <p class="publiname-single">Genre: <%= publication.genre_type %></p>
+  <p class="publiname-single">Publish Year: <%= publication.year %></p>
+  <p class="publiname-single"><p><iframe src="<%= publication.pdf %>" style="width:1000px; height:500px;" frameborder="0"></iframe></p>
   <a class="singlebutton" href='/publications/<%= publication.id %>/edit'> <button type="button" class="btn btn-primary">Edit</button> </a>
   <form method='POST' action='/publications/<%= publication.id %>?_method=DELETE' class='singlebutton'>
      <button type="Submit" value="Delete" class="btn btn-secondary">

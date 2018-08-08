@@ -28,8 +28,10 @@ module.exports = {
     const yeniPubli = {
       id: null,
       content: null,
+      year: null,
       author: null,
-      genre_type: null,
+      pdf: null,
+      image: null,
     };
     res.locals.publication = yeniPubli;
     next();

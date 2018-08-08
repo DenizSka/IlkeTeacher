@@ -8,8 +8,9 @@
   <div class="spanclass">
     <h5 class="publiname"><%= publi.content %></h5>
     <span class="paragraph">
+    <p>Publish Year: <%= publi.year %></p>
     <p>Author: <%= publi.author %></p>
-    <p><iframe src="<%= publi.genre_type %>" style="width:600px; height:500px;" frameborder="0">Click</iframe></p>
+    <p><img src="<%= publi.image %>" style="width:100px; height:100px;" frameborder="0" alt="Noimage"></p>
     </span>
 
         <a href="/publications/<%= publi.id %>" class="publibutton">View</a>

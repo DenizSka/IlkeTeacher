@@ -26,8 +26,8 @@ module.exports = {
     return db.one(`
       INSERT
       INTO publications
-        (content,author,genre_type)
-      VALUES ($/content/,$/author/,$/genre_type/)
+        (content, year, author, pdf, image)
+      VALUES ($/content/, $/year/, $/author/,$/pdf/, $/image/)
       RETURNING *
       `, publication)
   },
@@ -36,10 +36,12 @@ module.exports = {
     return db.one(`
     UPDATE publications
     SET
-    content = $/content/,
-    author =  $/author/,
-    genre_type = $/genre_type/
-    WHERE id = $/id/
+       content = $/content/,
+       year = $/year/,
+       author =  $/author/,
+       pdf = $/pdf/,
+       image = $/image/
+      WHERE id = $/id/
     RETURNING *
     `, publication)
   },

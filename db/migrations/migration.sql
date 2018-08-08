@@ -7,10 +7,13 @@ DROP TABLE IF EXISTS projeler;
 CREATE TABLE projeler (
   id SERIAL PRIMARY KEY,
   content TEXT,
-  author VARCHAR(255),
-  genre_type VARCHAR(255),
+  year TEXT,
+  author TEXT,
+  pdf VARCHAR(255),
+  image VARCHAR(255),
   date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
+
 
 -- CREATE INDEX ON projeler (author);
 
@@ -21,8 +24,10 @@ DROP TABLE IF EXISTS publications;
 CREATE TABLE publications (
   id SERIAL PRIMARY KEY,
   content TEXT,
-  author VARCHAR(255),
-  genre_type VARCHAR(255),
+  year TEXT,
+  author TEXT,
+  pdf VARCHAR(255),
+  image VARCHAR(255),
   date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 

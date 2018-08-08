@@ -26,8 +26,8 @@ module.exports = {
     return db.one(`
       INSERT
       INTO projeler
-        (content,author,genre_type)
-      VALUES ($/content/,$/author/,$/genre_type/)
+        (content, year, author, pdf, image)
+      VALUES ($/content/, $/year/, $/author/, $/pdf/, $/image/)
       RETURNING *
       `, proje)
   },
@@ -37,8 +37,10 @@ module.exports = {
       UPDATE projeler
       SET
        content = $/content/,
+       year = $/year/,
        author =  $/author/,
-       genre_type = $/genre_type/
+       pdf = $/pdf/,
+       image = $/image/
       WHERE id = $/id/
       RETURNING *
       `, proje)
