@@ -42,8 +42,6 @@ Students will have to create a username and password in order to upload the home
 <li> EJS </li>
 <li> SQL </li>
 
-<iframe src="https://docs.google.com/document/d/e/2PACX-1vQVszL_SG9NyK5A6mXpb-g7opZmIXlRzxUuTJB5Ehl3IICL8YPtup5wB5XhxkzipTm8J88UAe451cAI/pub?embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
-
 
 
 <ul><h2> Important Milestones: </h2></ul>
