@@ -2,9 +2,7 @@
   --jumbotron-padding-y: 3rem;
 }
 
-
-
-div.clearfix {
+.clearfix div{
   height: auto;
 /*  width: 25%;*/
   float: left;
@@ -338,6 +336,9 @@ h5.publiname-single{
   color: #535353;
   font-family: "Open Sans", Arial, sans-serif;
 }
+
+
+/*footer*/
 footer{
   position:relative;
   width:100%;
