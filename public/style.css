@@ -19,6 +19,14 @@
   color: white;
 }
 
+.ilkeimage{
+  right: 0%;
+  position: absolute;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
 a.nav-item{
   padding-left: 20px;
 }
@@ -73,8 +81,16 @@ nav#firstnav {
 }
 
 .writingabout{
-  margin-top: 10px;
-  margin-left: 10px
+  margin-top: 50px;
+  margin-left: 40px;
+  width: 50.3333%;
+}
+
+.writingtitle{
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top:30px;
+  margin-left: 40px;
 }
 
 .table.table-hover{
