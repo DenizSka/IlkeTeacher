@@ -2,7 +2,9 @@
   --jumbotron-padding-y: 3rem;
 }
 
-.clearfix div{
+
+
+div.clearfix {
   height: auto;
 /*  width: 25%;*/
   float: left;
@@ -287,6 +289,48 @@ h5.publiname-single{
     position: relative;
     transition: 150ms;
 }
+
+/*contact me*/
+.column__title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 3em;
+    height: 1px;
+    top: 50%;
+    background-color: #e5e5e5;
+}
+.column__title{
+  position: relative;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-left: 4em;
+}
+
+.column__container{
+  position: relative;
+  margin: 5rem 10%;
+  display: flex;
+  flex-wrap: wrap;
+};
+
+
+
+.column__content{
+  padding: 0 4em 0 4em;
+}
+
+.containerz{
+  font-weight: 300;
+  height: 100%;
+}
+
+.column__wrapper{
+  width: 33.333333%;
+  display: inline-block
+};
+
+
 
 /*publication single*/
 

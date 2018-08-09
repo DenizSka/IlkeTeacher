@@ -139,6 +139,12 @@ app.get('/', (req,res) => {
   res.render('pages/home')
 });
 
+
+// home route
+app.get('/contactme', (req,res) => {
+  res.render('pages/contact')
+});
+
 // get anything that hasn't already been matched
 app.use('*', (req, res) => {
   // send a response with status 404
