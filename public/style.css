@@ -84,13 +84,22 @@ nav#firstnav {
   margin-top: 50px;
   margin-left: 40px;
   width: 50.3333%;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: .5px;
 }
 
 .writingtitle{
-  font-weight: 700;
+
+  font-weight: 300;
+  font-family:  'Raleway', sans-serif;
   text-transform: uppercase;
   margin-top:30px;
   margin-left: 40px;
+}
+
+
+.writingheadlin{
+
 }
 
 .table.table-hover{
@@ -316,6 +325,7 @@ h5.publiname-single{
 }
 .column__title{
   position: relative;
+  font-family: Lato;
   font-weight: 700;
   text-transform: uppercase;
   padding-left: 4em;
