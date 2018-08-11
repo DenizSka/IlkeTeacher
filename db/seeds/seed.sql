@@ -2,7 +2,7 @@
 
 INSERT INTO projeler (content, year, author, pdf, image) VALUES
   (
-    'After conservation : let building tell its own story',
+    'After conservation: Let building tell its own story',
     '2017',
     'Ilke Ciritci',
     'https://drive.google.com/file/d/1R45hqU_YA-uz7GGjByaMS4WMiR9FB8t3/preview',
