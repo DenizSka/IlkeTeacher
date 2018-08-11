@@ -11,6 +11,7 @@
   font-style: normal;
   font-size: 40px;
 /*  letter-spacing: 1px;*/
+  text-align: center;
   text-transform: none;
   line-height: 1.2em;
   letter-spacing: 0.0208333em;
@@ -48,6 +49,11 @@ a{
 .navbar-toggler {
   margin-right: 50%;
 }
+
+.navbar{
+display: block;
+}
+
 .bg-dark{
   background-color: #F3FCFF!important;
   text-align: center;
@@ -229,7 +235,6 @@ img.resize {
   text-transform: uppercase;
   margin-top: 30px;
   margin-bottom: 30px;
-  padding-right: 10%;
   text-align: center;
 }
 
@@ -268,7 +273,6 @@ img.resize {
   font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
   margin-top: 30px;
-  padding-right: 10%;
   text-align: center;
 }
 
