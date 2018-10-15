@@ -9,8 +9,9 @@ const loginRoutes = require('./routes/loginRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const signupRoutes = require('./routes/signupRoutes');
 const bodyParser = require('body-parser');
+// const passport = require('passport');
 //configure the logger: (some other loggers are winston, bunyan,)
-const passport = require('passport');
+
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const ejs = require('ejs');
@@ -18,10 +19,10 @@ const path = require('path');
 const escapeHtml = require('escape-html');
 const http = require('http');
 const url = require('url');
-require('dotenv').config();
+const session = require('express-session');
 
 const cors = require('cors');
-const secret = process.env.COOKIE_SECRET;
+// const secret = process.env.COOKIE_SECRET;
 // const authMiddleware = require('./controllers/authController');
 
 //when we create forms, the natural method will be post. In order to get the delete function to work we will need this package.
@@ -49,7 +50,24 @@ or anything more than text*/
 app.use( bodyParser.urlencoded({ extended: true }));
 /* we'll also be accepting and parsing json  */
 app.use(bodyParser.json());
-app.use(cookieParser(secret));
+// app.use(cookieParser(secret));
+// app.use(cookieParser());
+app.use(session({
+      key: 'user_id',
+      secret: 'ehuehuehuhe',
+      saveUninitialized: false,
+      resave: false,
+      cookie:{
+        path    : '/',
+        httpOnly: false,
+        maxAge: 60000
+      }
+    })
+);
+
+
+
+
 
 
 const permission = require('permission');
@@ -65,16 +83,8 @@ const notAuthenticated = {
     redirect: '/login'
 };
 
-// app.set('permission', {
-//   role: 'admin',
-//   [ 'allow',
-//     {
-//         paths: ["/projects/:id/edit"],
-//         methods: ['get'],
-//     }
-//   ],
-//   notAuthenticated: notAuthenticated
-// });
+
+
 
 // static route to public
 app.use(express.static('public'));
@@ -136,6 +146,8 @@ app.use('/publications', publiRoutes);
 
 // home route
 app.get('/', (req,res) => {
+  console.log(req.cookies);
+  console.log(req.session);
   res.render('pages/home')
 });
 

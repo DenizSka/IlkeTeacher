@@ -26,6 +26,7 @@ module.exports = {
                 .then((result) => {
                 //if the passwords matched
                 if(result){
+                console.log('the problem is here', req.session);
                 const cookie = req.cookies['user_id'];
                   if (cookie === undefined) {
                   //setting the 'set-cookie' header
@@ -44,7 +45,7 @@ module.exports = {
                     // });
                     // user = res.user;
                     res.locals.user = user;
-
+                    req.session.user = user;
                     console.log('id:', user.id);
                     res.redirect(`/login/${user.id}`);
                     // res.json({
@@ -79,12 +80,19 @@ module.exports = {
   //     .catch(err => next(err));
   // },
 
+// This middleware will check if user's cookie is still saved in browser and user is not set, then automatically log the user out.
+// This usually happens when you stop your express server after login, your cookie still remains saved in the browser.
+
+
 // route for user logout
   logout(req, res, next) {
     console.log('this is logout');
-    res.clearCookie('user_id');
+        if (req.cookies.user_id && !req.session.user) {
+        res.clearCookie('user_id');
+    }
     next();
   },
+
 
 
   loginForm(req, res, next) {

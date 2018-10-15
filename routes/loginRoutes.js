@@ -17,6 +17,7 @@ loginRoutes.get('/', controller.loginForm, views.loginFormu);
   // .put(controller.update, views.projeUpdate)
   // .delete(controller.destroy, views.projeDelete);
 
+
 loginRoutes.get('/:id', authMiddleware.ensureLoggedIn, authMiddleware.allowAccess, (req, res) => {
   console.log('we need req params in login routes', req.params.id);
   if (!isNaN(req.params.id)) {
@@ -33,7 +34,7 @@ loginRoutes.get('/:id', authMiddleware.ensureLoggedIn, authMiddleware.allowAcces
         console.log('this is req user', user.role);
         // console.log('this is req Admin', user.role);
         console.log('users:', user);
-        // res.json(user);
+
         res.render('./pages/admin', {
           user: user,
         });
@@ -104,7 +105,7 @@ loginRoutes.put('/:loginid/pending/:pendingid', (req, res) => {
           res.render ('pending/accepted', {
             integerId : integerId,
           });
-        });  
+        });
       } else {
         resError(res, 404, "User Not Found");
       }
@@ -127,7 +128,7 @@ loginRoutes.delete('/:loginid/pending/:pendingid', (req, res) => {
           console.log('this is delete pending user', pendinguser);
           pendinguser = pendinguser;
           res.redirect(`/login/1/pending/`)
-        });  
+        });
       } else {
         resError(res, 404, "User Not Found");
       }
@@ -139,7 +140,7 @@ loginRoutes.delete('/:loginid/pending/:pendingid', (req, res) => {
 
 
 // adminRoutes.route('/:id')
-  
+
 //   .put(controller.saveOnePending, views.acceptedPending)
 //   .delete(controller.removePending, views.handlePandingDelete);
 
