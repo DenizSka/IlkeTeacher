@@ -1,0 +1,40 @@
+<% include ../partials/header %>
+<br></br>
+
+
+
+<table class="table table-hover">
+  <h1 class="headline"> Exam Results </h1>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Exam Name</th>
+      <th scope="col">Exam Date</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Exam Results</th>
+    </tr>
+  </thead>
+
+  <tbody><% admins.forEach(function(student) { %>
+    <tr>
+      <th scope="row"><%= student.id %></th>
+      <td><%= student.examname %></td>
+      <td><%= student.examdate %></td>
+      <td><%= student.firstname %></td>
+      <td><%= student.lastname %></td>
+      <td><%= student.examresult %></td>
+      <td><a href='/exam-results/admin/<%= student.id %>/edit' class="btn btn-primary"> Edit </a><br></td>
+      <td><form method='POST' action='/exam-results/admin/<%= student.id %>?_method=DELETE'>
+        <button type="Submit" value="Delete" class="btn btn-secondary">
+          Delete
+        </button>
+      </form></td>
+    </tr>
+
+  <% }) %></tbody>
+</table>
+</div>
+<br>
+
+<% include ../partials/footer %>

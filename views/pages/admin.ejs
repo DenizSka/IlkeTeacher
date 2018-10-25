@@ -13,6 +13,10 @@
             </div>
 
             <a href='/login/<%= user.id %>/pending' class="btn btn-light">Pending users</a>
+            <a class="nav-item nav-link" href='/publications/new'>Add New Publication</a>
+            <a class="nav-item nav-link" href='/projects/new'>Add New Projects</a>
+            <a class="nav-item nav-link" href='/exam-results/new'>Add Exam Results</a>
+            <a class="nav-item nav-link" href='/exam-results/admin'>View/Edit Exam Results</a>
             <form action="/login/logout" method="post">
                 <input class="btn btn-danger" type="submit" value="Log Out"/>
             </form>

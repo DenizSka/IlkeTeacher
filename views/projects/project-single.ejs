@@ -5,12 +5,7 @@
   <h5 class="publiname-single"><%= proje.content %></h5>
   <p class="publiname-single">Author: <%= proje.author %></p>
   <p class="publiname-single"><p><iframe src="<%= proje.pdf %>" style="width:1000px; height:500px;" frameborder="0"></iframe></p>
-  <a href='/projects/<%= proje.id %>/edit' class="btn btn-primary"> Edit </a><br>
-  <form method='POST' action='/projects/<%= proje.id %>?_method=DELETE'>
-    <button type="Submit" value="Delete" class="btn btn-secondary">
-    Delete
-    </button>
-  </form>
+
   <a href='/projects' class="btn btn-light">Back</a>
 
 </div>

@@ -57,3 +57,17 @@ CREATE TABLE users (
 );
 
  CREATE INDEX ON users (email);
+
+
+
+DROP TABLE IF EXISTS students;
+
+CREATE TABLE students (
+  id SERIAL PRIMARY KEY,
+  examname TEXT,
+  examdate TEXT,
+  firstname TEXT,
+  lastname TEXT,
+  examresult TEXT,
+  date_created TIMESTAMP NOT NULL DEFAULT NOW()
+);

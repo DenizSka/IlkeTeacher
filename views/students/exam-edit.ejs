@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+<div class="table table-hover">
+<div class= "edit-project">
+  <h5 class="publiname">Edit:</h5>
+  <br></br>
+  <form method='POST' action='/exam-results/admin/<%= student.id %>?_method=PUT''>
+    <input name="id" type="hidden" class="form-control" value="<%= student.id %>">
+    <label for="inputExamName">Exam Name</label>
+    <input name="examname" type="text" class="form-control" value="<%= student.examname %>" />
+    <label for="inputDate">Exam Date</label>
+    <input name="examdate" type="text" class="form-control" value="<%= student.examdate %>" />
+    <label for="inputFirstName">First Name</label>
+    <input name="firstname" type="text" class="form-control" value="<%= student.firstname %>" />
+    <label for="inputLastName">Last Name</label>
+    <input name="lastname" type="text" class="form-control" value="<%= student.lastname %>" />
+    <label for="inputExamResult">Exam Result</label>
+    <input name="examresult" type="text" class="form-control" value="<%= student.examresult %>" />
+    <input type='submit' value='Edit!' />
+  </form>
+</div>
+</div>
+
+<% include ../partials/footer %>

@@ -43,7 +43,7 @@ a{
 
 /*header*/
 .navbar-light {
-    background-color: #F3FCFF!important;
+    background-color: #FFEADA!important;
 }
 
 .navbar-toggler {
@@ -55,7 +55,7 @@ display: block;
 }
 
 .bg-dark{
-  background-color: #F3FCFF!important;
+  background-color: #FFE4D8!important;
   text-align: center;
 }
 
@@ -65,8 +65,8 @@ display: block;
 .ilkeimage{
   right: 0%;
   position: absolute;
-  margin-right: 50px;
-  margin-top: 10px;
+/*  margin-right: 50px;*/
+/*  margin-top: 10px;*/
   margin-left: 10px;
 }
 

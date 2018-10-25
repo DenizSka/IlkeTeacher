@@ -2,6 +2,7 @@ const express = require('express');
 const adminRoutes = express.Router();
 
 const controller = require('../controllers/signinController');
+// const publiController = require('../controllers/publicationController');
 const views = require('../controllers/viewsController');
 const loggedUser = require('../models/loginDB');
 
@@ -18,7 +19,7 @@ adminRoutes.get('/ ', (req, res, id) => {
           console.log('users:', pendingusers);
           res.render ('pending/pending-userpage', {
             pendingusers: pendingusers,
-          })
+          });
         });
         // .get(controller.indexPending, views.pendingStudent)
       } else {
@@ -29,7 +30,8 @@ adminRoutes.get('/ ', (req, res, id) => {
     resError(res, 500, "Invalid ID");
   }
 });
-  
+
+
 // adminRoutes.route('/:id')
 //   .get(controller.getOnePending, views.oneAcceptPending)
 //   .put(controller.saveOnePending, views.acceptedPending)

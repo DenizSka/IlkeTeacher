@@ -69,6 +69,47 @@ module.exports = {
   //  res.render('pending/rejected');
   //  },
 
+// students:
+  showExams(req, res) {
+    res.render('students/exam-index', {
+      data: res.locals.students,
+      });
+    },
+
+
+  // admin:
+  showAdmin(req, res){
+    res.render('students/exam-admin', {
+      admins: res.locals.students,
+    });
+  },
+
+  addForm(req, res){
+    res.render('students/exam-add');
+  },
+
+  showAdminEkle(req, res) {
+    res.redirect('/exam-results/admin');
+  },
+
+  showEkle(req, res) {
+    res.redirect('/exam-results');
+  },
+
+
+  studentEditForm(req, res) {
+    res.render('students/exam-edit', {
+      student: res.locals.student,
+    });
+  },
+
+  studentUpdate(req, res) {
+    res.redirect('/exam-results/admin');
+  },
+
+  studentDelete(req, res) {
+   res.redirect('/exam-results/admin');
+   },
 
 //projects!!
   projeleriGoster(req, res) {

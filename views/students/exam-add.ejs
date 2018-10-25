@@ -1,0 +1,25 @@
+
+<% include ../partials/header %>
+
+<div class="table table-hover">
+<br></br>
+<h5 class="publiname">Add exam results</h5>
+<br></br>
+<form method='POST' action='/exam-results/admin'>
+  <label for="inputContent">Exam Name</label>
+  <input class="form-control" name="examname" type="text" placeholder="Exam Name" />
+  <label for="inputYear">Exam Date</label>
+  <input class="form-control" name="examdate" type="text" placeholder="Day/Month/Year" />
+  <label for="inputAuthor">First Name</label>
+  <input class="form-control" name="firstname" type="text" placeholder="First Name" />
+  <label for="inputPdf">Last Name</label>
+  <input class="form-control" name="lastname" type="text" placeholder="Last Name" />
+  <label for="inputImage">Result</label>
+  <input class="form-control" name="examresult" type="text" placeholder="Exam Result" />
+  <br></br>
+  <button type="submit" class="btn btn-primary mb-2" value='Submit!'>Submit</button>
+</form>
+
+</div>
+<% include ../partials/footer %>
+

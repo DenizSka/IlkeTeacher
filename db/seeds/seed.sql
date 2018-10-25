@@ -119,6 +119,16 @@ INSERT INTO publications (content, year, author, pdf, image) VALUES
     '../../img/ilkepub11.png'
   );
 
+INSERT INTO students (examname, examdate, firstname, lastname, examresult) VALUES
+  (
+    'Midterm',
+    '09-10-2018',
+    'Ilke',
+    'Ciritci',
+    '100'
+  );
+
+
 
 INSERT INTO pendingusers (password, repassword, fullname, role, email) VALUES
   (
