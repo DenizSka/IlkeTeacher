@@ -147,13 +147,7 @@ INSERT INTO users (password, repassword, fullname, role, email) VALUES
     'denizska',
     'admin',
     'hello@world.com'
-  ),
-  (
-    '123456',
-    '123456',
-    'yanina',
-    'user',
-    'yanina@world.com'
   );
+
 
 

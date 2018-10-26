@@ -110,7 +110,7 @@ app.use('/login', loginRoutes);
 // app.use('/user', authMiddleware.ensureLoggedIn, userRoutes);
 
 // signup route
-// app.use('/signup', signupRoutes);
+app.use('/signup', signupRoutes);
 
 
 
