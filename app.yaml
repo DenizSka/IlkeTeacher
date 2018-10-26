@@ -12,5 +12,6 @@
 # limitations under the License.
 
 # [START gae_quickstart_yaml]
-runtime: nodejs8
+env: flex
+runtime: nodejs
 # [END gae_quickstart_yaml]
