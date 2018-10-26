@@ -1,28 +1,61 @@
 <% include ../partials/header-signedin %>
-
-
-    <div class="row">
-
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Hi there Ilke;</h3>
-                    <p>
-                        <strong>id</strong>: <%= user.id %><br>
-                        <strong>email</strong>: <%= user.email %><br>
-                    </p>
-            </div>
-
-            <a href='/login/<%= user.id %>/pending' class="btn btn-light">Pending users</a>
-            <a class="nav-item nav-link" href='/publications/new'>Add New Publication</a>
-            <a class="nav-item nav-link" href='/projects/new'>Add New Projects</a>
-            <a class="nav-item nav-link" href='/exam-results/new'>Add Exam Results</a>
-            <a class="nav-item nav-link" href='/exam-results/admin'>View/Edit Exam Results</a>
+    <br></br>
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Hi Ilke! Please Read me!
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        <div class="ilkeadmin">
+        <p class="ilkeadmin"> Hi Ilke! Welcome to Your Admin Panel! Please don't forget to logout after you are done.</p>
+        <strong>email</strong>: <%= user.email %><br>
+        <strong>password</strong>: hello123<br>
             <form action="/login/logout" method="post">
                 <input class="btn btn-danger" type="submit" value="Log Out"/>
             </form>
         </div>
-
+      </div>
     </div>
+  </div>
+</div>
+
+      <div class="column__container containerz" id="adminscontainer">
+      <div class="column__wrapper" id="admin">
+        <div class="column__title">Exam Results</div>
+        <br></br>
+        <div class="column__content">
+          <ul><a class="btn btn-light" href='/exam-results/new'>Add Exam Results</a>
+            <a class="btn btn-light" href='/exam-results/admin'>View/Edit Exam Results</a></ul>
+        </div>
+      </div>
+      <div class="column__wrapper" id="admin">
+        <div class="column__title">
+          Your Publications / Student Projects (OUT OF ORDER FOR NOW)
+        </div>
+        <br></br>
+        <div class="column__content">
+          <ul>
+          <a class="btn btn-light" href='/projects/new'>Add New Projects</a></ul>
+          <ul>
+          <a class="btn btn-light" href='/publications/new'>Add New Publication</a></ul>
+        </div>
+      </div>
+      <div class="column__wrapper" id="admin">
+        <div class="column__title">Pending Users</div>
+        <br></br>
+        <div class="column__content">
+          <a href='/login/<%= user.id %>/pending' class="btn btn-light">Pending users</a>
+        </div>
+      </div>
+
+  </div>
+
+
 
 
 <% include ../partials/footer %>

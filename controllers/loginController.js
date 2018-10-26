@@ -85,11 +85,16 @@ module.exports = {
 
 
 // route for user logout
+  // logout(req, res, next) {
+  //   console.log('this is logout', req.cookies.user_id);
+  //       if (req.cookies.user_id && !req.session.user) {
+  //       res.clearCookie('user_id');
+  //   }
+  //   next();
+  // },
   logout(req, res, next) {
-    console.log('this is logout', req.cookies.user_id);
-        if (req.cookies.user_id && !req.session.user) {
-        res.clearCookie('user_id');
-    }
+      console.log('this is logout');
+    res.clearCookie('user_id');
     next();
   },
 

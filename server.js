@@ -43,6 +43,7 @@ app.set('view engine', 'ejs');
 //telling which logger to use.
 app.use(logger('dev'));
 
+
 // parse incoming data
 /* we'll be reading the form body and files,
 or anything more than text*/
@@ -64,6 +65,8 @@ const notAuthenticated = {
     message: 'The entered credentials are incorrect',
     redirect: '/login'
 };
+
+
 
 // app.set('permission', {
 //   role: 'admin',

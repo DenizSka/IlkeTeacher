@@ -43,7 +43,7 @@ a{
 
 /*header*/
 .navbar-light {
-    background-color: #FFEADA!important;
+    background-color: #E8EAF0!important;
 }
 
 .navbar-toggler {
@@ -55,7 +55,7 @@ display: block;
 }
 
 .bg-dark{
-  background-color: #FFE4D8!important;
+  background-color: #FBFDFF!important;
   text-align: center;
 }
 
@@ -140,7 +140,22 @@ nav#firstnav {
   margin-left: 50px;
 }
 
+/*admin*/
+.btn.btn-link.collapsed{
+  font-family: Lato;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-left: 4em;
+  }
 
+.btn-link{
+   color: black;
+}
+
+  .card-header{
+    background-color: white;
+    border-bottom: 1px  rgba(0,0,0,.125);
+  }
 
 .table.table-hover{
   height: auto;
@@ -371,7 +386,41 @@ h5.publiname-single{
     transition: 150ms;
 }
 
+.ilkeadmin{
+  font-family: Lato;
+  text-align: center;
+  font-size: 13px;
+}
+
 /*contact me*/
+
+
+.column__container{
+  position: relative;
+  margin: 5rem 10%;
+  display: flex;
+  flex-wrap: wrap;
+};
+
+#adminscontainer.containerz{
+  font-weight: 300;
+  margin: 0px;
+}
+
+.containerz {
+    font-weight: 300;
+    height: 100%;
+}
+
+.column__wrapper{
+  width: 33.333333%;
+  display: inline-block;
+};
+
+#admin.column__wrapper {
+  padding: 20px;
+};
+
 .column__title::before{
     content: '';
     position: absolute;
@@ -381,6 +430,7 @@ h5.publiname-single{
     top: 50%;
     background-color: #e5e5e5;
 }
+
 .column__title{
   position: relative;
   font-family: Lato;
@@ -389,28 +439,13 @@ h5.publiname-single{
   padding-left: 4em;
 }
 
-.column__container{
-  position: relative;
-  margin: 5rem 10%;
-  display: flex;
-  flex-wrap: wrap;
-};
-
-
-
 .column__content{
   padding: 0 4em 0 4em;
 }
 
-.containerz{
-  font-weight: 300;
-  height: 100%;
-}
 
-.column__wrapper{
-  width: 33.333333%;
-  display: inline-block
-};
+
+
 
 
 
