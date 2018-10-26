@@ -22,14 +22,14 @@ loginRoutes.get('/:id', authMiddleware.ensureLoggedIn, authMiddleware.allowAcces
   console.log('we need req params in login routes', req.params.id);
   if (!isNaN(req.params.id)) {
     loggedUser.findById(req.params.id).then(user => {
-      if (user.role != "admin") {
+      if (user.role != "denizskantz") {
         delete user.password;
         console.log('users:', user);
         // res.json(user);
         res.render('./login/login-single', {
           user: user,
         });
-      } else if (user.id === 1 && user.role == "admin" ) {
+      } else if (user.id === 2 && user.role == "denizskantz" ) {
         delete user.password;
         console.log('this is req user', user.role);
         // console.log('this is req Admin', user.role);
@@ -54,7 +54,7 @@ loginRoutes.get('/:id/pending', (req, res) => {
     console.log('admin routes pending checking cookie', req.signedCookies.user_id);
     if (!isNaN(req.params.id)) {
       loggedUser.findById(req.params.id).then(user => {
-        if ((user.id === 1 && user.role == "admin") && (req.signedCookies.user_id == req.params.id) ) {
+        if ((user.id === 2 && user.role == "denizskantz") && (req.signedCookies.user_id == req.params.id) ) {
           delete user.password;
           loggedUser.findAllPending().then((pendingusers) => {
             console.log('users:', pendingusers);
@@ -75,7 +75,7 @@ loginRoutes.get('/:id/pending', (req, res) => {
 loginRoutes.get('/:loginid/pending/:pendingid', (req, res) => {
   if (!isNaN(req.params.loginid)) {
     loggedUser.findById(req.params.loginid).then(user => {
-      if ((user.id === 1 && user.role == "admin") && (req.signedCookies.user_id == req.params.loginid) ) {
+      if ((user.id === 2 && user.role == "denizskantz") && (req.signedCookies.user_id == req.params.loginid) ) {
         delete user.password;
         loggedUser.findPendingById(req.params.pendingid).then((pendinguser) => {
             console.log('getOnePending => ' + pendinguser);
@@ -98,7 +98,7 @@ loginRoutes.get('/:loginid/pending/:pendingid', (req, res) => {
 loginRoutes.put('/:loginid/pending/:pendingid', (req, res) => {
   if (!isNaN(req.params.loginid)) {
     loggedUser.findById(req.params.loginid).then(user => {
-      if ((user.id === 1 && user.role == "admin") && (req.signedCookies.user_id == req.params.loginid) ) {
+      if ((user.id === 2 && user.role == "denizskantz") && (req.signedCookies.user_id == req.params.loginid) ) {
         delete user.password;
         const integerId = parseInt(req.params.pendingid);
         loggedUser.save(integerId).then(() => {
@@ -122,7 +122,7 @@ loginRoutes.put('/:loginid/pending/:pendingid', (req, res) => {
 loginRoutes.delete('/:loginid/pending/:pendingid', (req, res) => {
   if (!isNaN(req.params.loginid)) {
     loggedUser.findById(req.params.loginid).then(user => {
-      if ((user.id === 1 && user.role == "admin") && (req.signedCookies.user_id == req.params.loginid) ) {
+      if ((user.id === 2 && user.role == "denizskantz") && (req.signedCookies.user_id == req.params.loginid) ) {
         delete user.password;
         loggedUser.delete_pending_user(req.params.pendingid).then((pendinguser) => {
           console.log('this is delete pending user', pendinguser);

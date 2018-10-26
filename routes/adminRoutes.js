@@ -13,7 +13,7 @@ adminRoutes.get('/ ', (req, res, id) => {
   console.log('admin routes for pending checking cookie', req.signedCookies.user_id);
   if (!isNaN(req.params.id)) {
     loggedUser.findById(req.params.id).then(user => {
-      if ((user.id === 1 && user.role == "admin") && (req.signedCookies.user_id == req.params.id) ) {
+      if ((user.id === 2 && user.role == "denizskantz") && (req.signedCookies.user_id == req.params.id) ) {
         delete user.password;
         loggedUser.findAllPending().then((pendingusers) => {
           console.log('users:', pendingusers);
