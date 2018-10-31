@@ -18,7 +18,7 @@ const path = require('path');
 const escapeHtml = require('escape-html');
 const http = require('http');
 const url = require('url');
-
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 require('dotenv').config();
 
 const cors = require('cors');
@@ -42,7 +42,7 @@ var allowCrossDomain = function(req, res, next) {
       next();
     }
 };
-app.use(allowCrossDomain);
+// app.use(allowCrossDomain);
 
 // app.use(passport.initialize());
 // app.use(passport.session());
@@ -105,6 +105,11 @@ app.use(cors({
   origin: 'http://localhost:8080',
   credentials: true
 }));
+
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://ilkeciritci.com/', true);
+xhr.withCredentials = true;
+xhr.send(null);
 
 // login route
 app.use('/login', loginRoutes);
