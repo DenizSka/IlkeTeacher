@@ -19,10 +19,21 @@ const path = require('path');
 const escapeHtml = require('escape-html');
 const http = require('http');
 const url = require('url');
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+// this is also trying heroku cookie set up
+// var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 require('dotenv').config();
 
 const cors = require('cors');
+
+// ENABLING COR REQUESTS
+const origins = [
+  'http://localhost:3000', // Development
+  'http://localhost:5000', // Production Build
+  'http://reactjs.herokuapp.com', // Just for debugging reasons
+  'https://reactjs.herokuapp.com'
+];
+app.use(cors({credentials: true, origin: origins}));
+
 
 const secret = process.env.COOKIE_SECRET;
 // const authMiddleware = require('./controllers/authController');
@@ -30,21 +41,23 @@ const secret = process.env.COOKIE_SECRET;
 //when we create forms, the natural method will be post. In order to get the delete function to work we will need this package.
 const methodOverride = require('method-override');
 
-//allow cookie crossDomain override
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
 
-    // intercept OPTIONS method
-    if ('OPTIONS' == req.method) {
-      res.send(200);
-    }
-    else {
-      next();
-    }
-};
-app.use(allowCrossDomain);
+// heroku cookie problem
+// //allow cookie crossDomain override
+// var allowCrossDomain = function(req, res, next) {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+
+//     // intercept OPTIONS method
+//     if ('OPTIONS' == req.method) {
+//       res.send(200);
+//     }
+//     else {
+//       next();
+//     }
+// };
+// app.use(allowCrossDomain);
 
 // const xhr = new XMLHttpRequest();
 // xhr.open('GET', 'http://ilkeciritci.com/', true);
