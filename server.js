@@ -1,6 +1,7 @@
 const express = require('express');
 // initialize the app
 const app = express();
+
 const projeRoutes = require('./routes/projeroutes');
 const publiRoutes = require('./routes/publicationRoutes');
 const loginRoutes = require('./routes/loginRoutes');
@@ -22,6 +23,7 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 require('dotenv').config();
 
 const cors = require('cors');
+
 const secret = process.env.COOKIE_SECRET;
 // const authMiddleware = require('./controllers/authController');
 
@@ -42,6 +44,12 @@ var allowCrossDomain = function(req, res, next) {
       next();
     }
 };
+app.use(allowCrossDomain);
+
+// const xhr = new XMLHttpRequest();
+// xhr.open('GET', 'http://ilkeciritci.com/', true);
+// xhr.withCredentials = true;
+// xhr.send(null);
 // app.use(allowCrossDomain);
 
 // app.use(passport.initialize());
@@ -101,15 +109,12 @@ app.use(express.static('public'));
 // This sets a folder called public to be the destination from which any static assets (images,css,etc) will be served.
 app.use( '/static', express.static( path.join( __dirname, 'public' )));
 
-app.use(cors({
-  origin: 'http://localhost:8080',
-  credentials: true
-}));
+// app.use(cors({
+//   origin: 'http://localhost:8080',
+//   credentials: true
+// }));
 
-var xhr = new XMLHttpRequest();
-xhr.open('GET', 'http://ilkeciritci.com/', true);
-xhr.withCredentials = true;
-xhr.send(null);
+
 
 // login route
 app.use('/login', loginRoutes);
