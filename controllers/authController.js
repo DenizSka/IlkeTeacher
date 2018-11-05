@@ -9,6 +9,18 @@ function ensureLoggedIn(req, res, next) {
   }
 }
 
+
+function requireLogin (req, res, next) {
+  console.log('this is requireLogin', req.session.user);
+  if (!req.session.user) {
+    res.status(401);
+    next(new Error('Un-Authorized'));
+  } else {
+    next();
+  }
+}
+
+
 function allowAccess(req, res, next) {
   console.log('this is allow access', req.signedCookies.user_id);
   if(req.signedCookies.user_id == req.params.id){
@@ -34,6 +46,6 @@ function isAdmin(req, res, next){
 module.exports ={
   ensureLoggedIn,
   allowAccess,
-
+  requireLogin,
 
 }

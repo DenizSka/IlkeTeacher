@@ -28,6 +28,10 @@ module.exports = {
     res.render('pages/login');
   },
 
+  adminPage(req, res){
+    res.render('pages/admin');
+  },
+
 
   logoutPage(req,res){
     res.render('login/logout');
@@ -118,6 +122,18 @@ module.exports = {
       });
     },
 
+  projeleriAdminGoster(req, res) {
+    res.render('projects/project-admin-index', {
+      data: res.locals.projeler,
+      });
+    },
+
+  showAdminOne(req, res) {
+    res.render('projects/project-single-admin', {
+      proje: res.locals.proje,
+    });
+  },
+
   showOne(req, res){
     res.render('projects/project-single', {
       proje: res.locals.proje,
@@ -141,11 +157,11 @@ module.exports = {
   },
 
   projeUpdate(req, res) {
-    res.redirect(`/projects/${req.params.id}`);
+    res.redirect(`/projects/admin/${req.params.id}`);
   },
 
   projeDelete(req, res) {
-   res.redirect('/projects');
+   res.redirect('/projects/admin');
    },
 
 

@@ -2,35 +2,28 @@ const express = require('express');
 const projeRoutes = express.Router();
 const controller = require('../controllers/projeController');
 const views = require('../controllers/viewsController');
+const authMiddleware = require('../controllers/authController');
 
-function isAuthenticated(req, res, next) {
-  // do any checks you want to in here
-  console.log('checking if auth for pending checking deniz cookie', req.signedCookies);
-  // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
-  // you can do this however you want with whatever variables you set up
-  if (req.signedCookies.user_id){
-      return next();
-  }else{
-  // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
-  res.redirect('/');
-  }
-}
+projeRoutes.get('/new', authMiddleware.requireLogin, controller.bosForm, views.eklemeFormu);
 
+projeRoutes.get('/admin/:id/edit', authMiddleware.requireLogin, controller.getOne, views.projeEditForm);
 
-projeRoutes.get('/new', isAuthenticated, controller.bosForm, views.eklemeFormu);
+projeRoutes.get('/admin/:id', authMiddleware.requireLogin, controller.getOne, views.showAdminOne);
+projeRoutes.put('/admin/:id', authMiddleware.requireLogin, controller.update, views.projeUpdate);
+projeRoutes.delete('/admin/:id', authMiddleware.requireLogin, controller.destroy, views.projeDelete);
 
-projeRoutes.route('/:id/edit')
-  .get(controller.getOne, views.projeEditForm);
+projeRoutes.get('/admin', authMiddleware.requireLogin, controller.index, views.projeleriAdminGoster);
+projeRoutes.post('/admin', authMiddleware.requireLogin, controller.create, views.ekle);
+
 
 projeRoutes.route('/:id')
-  .get(controller.getOne, views.showOne)
-  .put(controller.update, views.projeUpdate)
-  .delete(controller.destroy, views.projeDelete);
+  .get(controller.getOne, views.showOne);
+
 
 
 projeRoutes.route('/')
   .get(controller.index, views.projeleriGoster)
-  .post(controller.create, views.ekle);
+
 
 
 

@@ -1,10 +1,10 @@
-<% include ../partials/header %>
+<% include ../partials/header-signedin %>
 <h1> User Accepted </h1>
 
     <td>
       <form id="test" method='POST' action='/login/1/pending/<%= integerId %>?_method=DELETE'>
         <button type="Submit" value="Decline" class="btn btn-secondary" autofocus>
-          Remove From Pending 
+          Remove From Pending
         </button>
       </form>
     </td>

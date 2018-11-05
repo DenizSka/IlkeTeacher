@@ -2,12 +2,12 @@ const express = require('express');
 const publiRoutes = express.Router();
 const controller = require('../controllers/publicationController');
 const views = require('../controllers/viewsController');
-const permission = require('permission');
+const authMiddleware = require('../controllers/authController');
 
-publiRoutes.get('/new', controller.bosForm, views.publiFormu);
+publiRoutes.get('/new', authMiddleware.requireLogin, controller.bosForm, views.publiFormu);
 
 publiRoutes.route('/:id/edit')
-  .get(controller.getOne, views.publiEditForm);
+  .get(controller.getOne, authMiddleware.requireLogin, views.publiEditForm);
 
 publiRoutes.route('/:id')
   .get(controller.getOne, views.onePubli)

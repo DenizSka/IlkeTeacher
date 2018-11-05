@@ -19,6 +19,8 @@ const path = require('path');
 const escapeHtml = require('escape-html');
 const http = require('http');
 const url = require('url');
+
+const session = require('client-sessions');
 // this is also trying heroku cookie set up
 // var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 require('dotenv').config();
@@ -34,6 +36,16 @@ const origins = [
 ];
 app.use(cors({credentials: true, origin: origins}));
 
+
+app.use(session({
+  cookieName: 'session',
+  secret: 'eg[isfd-8yF9-7w2315df{}+Ijsli;;to8',
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000,
+  httpOnly: true,
+  secure: true,
+  ephemeral: true
+}));
 
 const secret = process.env.COOKIE_SECRET;
 // const authMiddleware = require('./controllers/authController');
@@ -105,18 +117,6 @@ const notAuthenticated = {
 };
 
 
-
-// app.set('permission', {
-//   role: 'admin',
-//   [ 'allow',
-//     {
-//         paths: ["/projects/:id/edit"],
-//         methods: ['get'],
-//     }
-//   ],
-//   notAuthenticated: notAuthenticated
-// });
-
 // static route to public
 app.use(express.static('public'));
 // This sets a folder called public to be the destination from which any static assets (images,css,etc) will be served.
@@ -151,11 +151,6 @@ app.use('/login', loginRoutes);
 
 // signup route
 // app.use('/signup', signupRoutes);
-
-
-
-
-
 
 
 // // route for user logout
@@ -197,15 +192,6 @@ app.use('*', (req, res) => {
   res.status(404).send('page not found');
 });
 
-
-// // error handler
-// app.use('*', (err, req, res, next) => {
-//   res.status(err.status || 500);
-//   res.json({
-//     message: err.message,
-//     error: req.app.get('env') === 'development' ? err : {}
-//   });
-// });
 
 app.use('*', (error, req, res, next) => {
   console.log('this is error', error);
