@@ -12,10 +12,14 @@ publiRoutes.get('/admin',authMiddleware.requireLogin, controller.index, views.pu
 
 publiRoutes.get('/admin/:id/edit', authMiddleware.requireLogin, controller.getOne, views.publiEditForm);
 
+publiRoutes.get('/admin/:id', authMiddleware.requireLogin, controller.getOne, views.oneAdminPubli);
+
+publiRoutes.put('/admin/:id', authMiddleware.requireLogin, controller.update, views.publiUpdate);
+
+publiRoutes.delete('/admin/:id', authMiddleware.requireLogin, controller.destroy, views.handleDelete);
+
 publiRoutes.route('/:id')
-  .get(controller.getOne, views.onePubli)
-  .put(controller.update, views.publiUpdate)
-  .delete(controller.destroy, views.handleDelete);
+  .get(controller.getOne, views.onePubli);
 
 
 

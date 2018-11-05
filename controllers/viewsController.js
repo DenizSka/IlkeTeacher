@@ -185,12 +185,18 @@ module.exports = {
     });
   },
 
+  oneAdminPubli(req, res){
+    res.render('publications/publication-single-admin', {
+      publication: res.locals.publication,
+    });
+  },
+
   publiFormu(req, res){
     res.render('publications/publication-add');
   },
 
   publiEkle(req, res) {
-    res.redirect('/publications');
+    res.redirect('/publications/admin');
   },
 
   publiEditForm(req, res) {
@@ -201,11 +207,11 @@ module.exports = {
   },
 
   publiUpdate(req, res) {
-    res.redirect(`/publications/${req.params.id}`);
+    res.redirect(`/publications/admin/${req.params.id}`);
   },
 
   handleDelete(req, res) {
-   res.redirect('/publications');
+   res.redirect('/publications/admin');
    }
 
 }
