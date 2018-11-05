@@ -1,15 +1,20 @@
 
 <h1>Ilke Ciritci Website</h1>
 
-<p>Work in progress site: </p>
-<p>https://ilke-teacher.herokuapp.com/</p>
+<p>See the Luve Stie Here: </p>
+<p>http://www.ilkeciritci.com</p>
 <p>
 This website is built to perform as a platform so that the professor Ilke can easily share assignments to her fellow students as well as receive and answer questions from students. This is a two-way platform to enhance the communication between the professor and her students.
 
-This site has an admin page for Ilke to upload all her publications and homeworks. She will also be approving the users of the page. 
+This site has an admin page for Ilke to upload all her publications,homeworks and exam results. She will also be approving the users of the page. 
 
 Students will have to create a username and password in order to upload the homeworks. Users will be approved by admin. 
 </p>
+<div>
+    <p>  <h3> Admin Page on Live Site </h3><br>
+      <img src="../master/wireframes/Admin.png" width="500"/>
+    </p>
+</div>   
 <div>
     <p>  <h3> User Journey </h3><br>
         <img src="../master/wireframes/0userjourney.png" width="800"/>
@@ -40,7 +45,8 @@ Students will have to create a username and password in order to upload the home
 
 <li> Node/Express </li>
 <li> EJS </li>
-<li> SQL </li>
+<li> PSQL </li>
+<li> Platform Heroku </li>
 
 
 
