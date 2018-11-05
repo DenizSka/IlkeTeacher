@@ -1,7 +1,7 @@
 
 <h1>Ilke Ciritci Website</h1>
 
-<p>See the Luve Stie Here: </p>
+<p>See the Live Site Here: </p>
 <p>http://www.ilkeciritci.com</p>
 <p>
 This website is built to perform as a platform so that the professor Ilke can easily share assignments to her fellow students as well as receive and answer questions from students. This is a two-way platform to enhance the communication between the professor and her students.
@@ -12,7 +12,7 @@ Students will have to create a username and password in order to upload the home
 </p>
 <div>
     <p>  <h3> Admin Page on Live Site </h3><br>
-      <img src="../master/wireframes/Admin.png" width="500"/>
+      <img src="../master/wireframes/Admin.png" width="600"/>
     </p>
 </div>   
 <div>
