@@ -27,7 +27,6 @@ CREATE TABLE publications (
   year TEXT,
   author TEXT,
   pdf VARCHAR(255),
-  image VARCHAR(255),
   date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
