@@ -4,7 +4,10 @@ const controller = require('../controllers/projeController');
 const views = require('../controllers/viewsController');
 const authMiddleware = require('../controllers/authController');
 
-projeRoutes.get('/new', authMiddleware.requireLogin, controller.bosForm, views.eklemeFormu);
+projeRoutes.get('/admin/new', authMiddleware.requireLogin, controller.bosForm, views.eklemeFormu);
+
+projeRoutes.get('/admin', authMiddleware.requireLogin, controller.index, views.projeleriAdminGoster);
+
 
 projeRoutes.get('/admin/:id/edit', authMiddleware.requireLogin, controller.getOne, views.projeEditForm);
 
@@ -12,8 +15,6 @@ projeRoutes.get('/admin/:id', authMiddleware.requireLogin, controller.getOne, vi
 projeRoutes.put('/admin/:id', authMiddleware.requireLogin, controller.update, views.projeUpdate);
 projeRoutes.delete('/admin/:id', authMiddleware.requireLogin, controller.destroy, views.projeDelete);
 
-projeRoutes.get('/admin', authMiddleware.requireLogin, controller.index, views.projeleriAdminGoster);
-projeRoutes.post('/admin', authMiddleware.requireLogin, controller.create, views.ekle);
 
 
 projeRoutes.route('/:id')
@@ -23,6 +24,7 @@ projeRoutes.route('/:id')
 
 projeRoutes.route('/')
   .get(controller.index, views.projeleriGoster)
+  .post(controller.create, views.proEkle);
 
 
 

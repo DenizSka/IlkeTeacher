@@ -31,7 +31,6 @@ module.exports = {
       year: null,
       author: null,
       pdf: null,
-      image: null,
     };
     res.locals.publication = yeniPubli;
     next();

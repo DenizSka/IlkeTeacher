@@ -26,8 +26,8 @@ module.exports = {
     return db.one(`
       INSERT
       INTO publications
-        (content, year, author, pdf, image)
-      VALUES ($/content/, $/year/, $/author/,$/pdf/, $/image/)
+        (content, year, author, pdf)
+      VALUES ($/content/, $/year/, $/author/,$/pdf/)
       RETURNING *
       `, publication)
   },
@@ -39,8 +39,7 @@ module.exports = {
        content = $/content/,
        year = $/year/,
        author =  $/author/,
-       pdf = $/pdf/,
-       image = $/image/
+       pdf = $/pdf/
       WHERE id = $/id/
     RETURNING *
     `, publication)

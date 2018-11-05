@@ -11,7 +11,7 @@
     <span class="paragraph">
       <p>Publish Year: <%= publi.year %></p>
       <p>Author: <%= publi.author %></p>
-      <p><img src="<%= publi.image %>" style="width:100px; height:100px;" frameborder="0" alt="Noimage"></p>
+      <p class="publiname-single"><p><iframe src="<%= publi.pdf %>" style="width:100px; height:100px;" frameborder="0"></iframe></p>
     </span>
       <a href="/publications/admin/<%= publi.id %>" class="publibutton">View</a>
     </div>

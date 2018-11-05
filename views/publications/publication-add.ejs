@@ -2,7 +2,29 @@
 
 <div class="table table-hover">
 <br></br>
-<h5 class="publiname">Add a new publication</h5>
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Add New - Instructions on the PDF!
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        <div class="ilkeadmin">
+        <p class="ilkeadmin"> Please read the instructions below for adding the pdf link. </p>
+
+        <strong>Step 1 </strong>: Click on Embed Item on your google drive url as shown in the picture below: <br>
+        <p><img src="../../img/instructions.png" style="width:350px; height:350px;" frameborder="0" alt="Noimage"></p>
+        <strong>Step 2</strong>: Copy the url inside the quotation marks. Starting with "http.."" and ending with "preview". As shown in the picture below:<br>
+        <p><img src="../../img/instructions2.png" style="width:350px; height:350px;" frameborder="0" alt="Noimage"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <br></br>
 <form method='POST' action='/publications'>
   <label for="inputContent">Title</label>
@@ -11,7 +33,7 @@
   <input class="form-control" name="year" type="text" placeholder="Year" />
   <label for="inputAuthor">Author</label>
   <input class="form-control" name="author" type="text" placeholder="Author" />
-  <label for="inputPdf">PDF</label>
+  <label for="inputPdf">PDF (Read Instructions)</label>
   <input class="form-control" name="pdf" type="text" placeholder="PDF" />
 
   <br></br>

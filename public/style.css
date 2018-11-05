@@ -241,7 +241,29 @@ img.resize {
 .jumbotron .container {
   max-width: 40rem;
 }
+/*adding new forms*/
+.form-control {
+  margin-right: 25px;
+  margin-left: 25px;
+  width: 75%;
+}
 
+label{
+  padding-left: 25px;
+}
+
+
+.mb-2{
+  margin-left: 25px;
+}
+
+.btn-primary {
+  margin-left: 25px;
+}
+
+.btn-secondary {
+  margin-left: 25px;
+}
 /*publications*/
 .headline {
   padding-top: 20px;

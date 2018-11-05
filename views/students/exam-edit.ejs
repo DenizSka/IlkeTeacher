@@ -1,11 +1,9 @@
 <% include ../partials/header-signedin %>
-  <form action="/login/logout" method="post">
-      <input class="btn btn-danger" type="submit" value="Log Out"/>
-  </form>
+
 <div class="table table-hover">
 <div class= "edit-project">
-  <h5 class="publiname">Edit:</h5>
   <br></br>
+  <h5 class="publiname">Edit:</h5>
   <form method='POST' action='/exam-results/admin/<%= student.id %>?_method=PUT''>
     <input name="id" type="hidden" class="form-control" value="<%= student.id %>">
     <label for="inputExamName">Exam Name</label>
@@ -18,7 +16,7 @@
     <input name="lastname" type="text" class="form-control" value="<%= student.lastname %>" />
     <label for="inputExamResult">Exam Result</label>
     <input name="examresult" type="text" class="form-control" value="<%= student.examresult %>" />
-    <input type='submit' value='Edit!' />
+    <input type='submit' class="btn btn-primary mb-2" value='Edit!' />
   </form>
 </div>
 </div>

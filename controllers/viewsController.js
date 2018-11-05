@@ -144,10 +144,9 @@ module.exports = {
     res.render('projects/project-add');
   },
 
-  ekle(req, res) {
-    res.redirect('/projects');
+  proEkle(req, res) {
+    res.redirect('/projects/admin');
   },
-
 
   projeEditForm(req, res) {
     // console.log('inside of showEditForm function');
@@ -213,7 +212,6 @@ module.exports = {
   handleDelete(req, res) {
    res.redirect('/publications/admin');
    }
-
 }
 
 

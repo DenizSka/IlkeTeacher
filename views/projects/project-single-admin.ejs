@@ -2,8 +2,10 @@
 <div class="table table-hover">
 
 <div class='proje'>
+
   <h5 class="publiname-single"><%= proje.content %></h5>
   <p class="publiname-single">Author: <%= proje.author %></p>
+  <a href='/projects/admin' class="btn btn-light">Back</a>
   <p class="publiname-single"><p><iframe src="<%= proje.pdf %>" style="width:1000px; height:500px;" frameborder="0"></iframe></p>
   <a href='/projects/admin/<%= proje.id %>/edit' class="btn btn-primary"> Edit </a><br>
   <form method='POST' action='/projects/admin/<%= proje.id %>?_method=DELETE'>
@@ -11,7 +13,7 @@
     Delete
     </button>
   </form>
-  <a href='/admin/projects' class="btn btn-light">Back</a>
+
 
 </div>
 </div>

@@ -2,9 +2,9 @@
 
 <div class="spanclasspubli">
 
-
   <h5 class="publiname-single"><%= publication.content %></h5>
   <p class="publiname-single">Publish Year: <%= publication.year %></p>
+  <a class="singlebutton" href='/publications/admin'><button type="button" class="btn btn-light">Back</button></a>
   <p class="publiname-single"><p><iframe src="<%= publication.pdf %>" style="width:1000px; height:500px;" frameborder="0"></iframe></p>
   <a class="singlebutton" href='/publications/admin/<%= publication.id %>/edit'> <button type="button" class="btn btn-primary">Edit</button> </a>
   <form method='POST' action='/publications/admin/<%= publication.id %>?_method=DELETE' class='singlebutton'>
@@ -12,7 +12,7 @@
     Delete
     </button>
   </form>
-  <a class="singlebutton" href='/publications/admin'><button type="button" class="btn btn-light">Back</button></a>
+
 </div>
 
 

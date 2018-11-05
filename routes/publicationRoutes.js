@@ -6,7 +6,7 @@ const authMiddleware = require('../controllers/authController');
 
 
 
-publiRoutes.get('/new', authMiddleware.requireLogin, controller.bosForm, views.publiFormu);
+publiRoutes.get('/admin/new', authMiddleware.requireLogin, controller.bosForm, views.publiFormu);
 
 publiRoutes.get('/admin',authMiddleware.requireLogin, controller.index, views.publiAdminGoster);
 

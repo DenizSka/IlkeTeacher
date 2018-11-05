@@ -41,8 +41,7 @@ module.exports = {
       content: null,
       year: null,
       author: null,
-      pdf: null,
-      image: null,
+      pdf: null
     };
     res.locals.proje = yeniProje;
     next();
