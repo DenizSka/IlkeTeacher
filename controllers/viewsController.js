@@ -173,7 +173,11 @@ module.exports = {
     });
   },
 
-
+  publiAdminGoster(req, res) {
+    res.render('publications/publication-admin-index', {
+      pubdata: res.locals.publications,
+    });
+  },
 
   onePubli(req, res){
     res.render('publications/publication-single', {

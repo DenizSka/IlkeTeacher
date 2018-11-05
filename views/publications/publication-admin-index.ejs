@@ -1,0 +1,23 @@
+<% include ../partials/header-signedin %>
+
+<div class="table table-hover">
+  <h1 class="publi-title"> My Publications </h1>
+
+
+  <div class="clearfix"><% pubdata.forEach(function(publi) { %>
+  <div class="spanclass">
+  <h5 class="publiname"><%= publi.content %></h5>
+  <br></br>
+    <span class="paragraph">
+      <p>Publish Year: <%= publi.year %></p>
+      <p>Author: <%= publi.author %></p>
+      <p><img src="<%= publi.image %>" style="width:100px; height:100px;" frameborder="0" alt="Noimage"></p>
+    </span>
+      <a href="/publications/admin/<%= publi.id %>" class="publibutton">View</a>
+    </div>
+  <% }) %></div>
+</div>
+
+
+<% include ../partials/footer %>
+

@@ -4,10 +4,13 @@ const controller = require('../controllers/publicationController');
 const views = require('../controllers/viewsController');
 const authMiddleware = require('../controllers/authController');
 
+
+
 publiRoutes.get('/new', authMiddleware.requireLogin, controller.bosForm, views.publiFormu);
 
-publiRoutes.route('/:id/edit')
-  .get(controller.getOne, authMiddleware.requireLogin, views.publiEditForm);
+publiRoutes.get('/admin',authMiddleware.requireLogin, controller.index, views.publiAdminGoster);
+
+publiRoutes.get('/admin/:id/edit', authMiddleware.requireLogin, controller.getOne, views.publiEditForm);
 
 publiRoutes.route('/:id')
   .get(controller.getOne, views.onePubli)
