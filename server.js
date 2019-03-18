@@ -24,22 +24,22 @@ const cors = require('cors');
 
 // ENABLING COR REQUESTS
 const origins = [
-  'http://localhost:3000', // Development
-  'http://localhost:5000', // Production Build
-  'http://reactjs.herokuapp.com', // Just for debugging reasons
-  'https://reactjs.herokuapp.com',
+	'http://localhost:3000', // Development
+	'http://localhost:5000', // Production Build
+	'http://reactjs.herokuapp.com', // Just for debugging reasons
+	'https://reactjs.herokuapp.com',
 ];
 app.use(cors({ credentials: true, origin: origins }));
 
 
 app.use(session({
-  cookieName: 'session',
-  secret: 'eg[isasa-372373894735;]][]}}{;;to8',
-  duration: 30 * 60 * 1000,
-  activeDuration: 5 * 60 * 1000,
-  httpOnly: true,
-  secure: true,
-  ephemeral: true,
+	cookieName: 'session',
+	secret: 'eg[isasa-372373894735;]][]}}{;;to8',
+	duration: 30 * 60 * 1000,
+	activeDuration: 5 * 60 * 1000,
+	httpOnly: true,
+	secure: true,
+	ephemeral: true,
 }));
 
 const secret = process.env.COOKIE_SECRET;
@@ -111,9 +111,9 @@ permission.NOT_AUTHENTICATED === 'notAuthenticated'; // true
 permission.NOT_AUTHORIZED === 'notAuthorized'; // true
 
 const notAuthenticated = {
-  flashType: 'error',
-  message: 'The entered credentials are incorrect',
-  redirect: '/login',
+	flashType: 'error',
+	message: 'The entered credentials are incorrect',
+	redirect: '/login',
 };
 
 
@@ -123,8 +123,8 @@ app.use(express.static('public'));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
-  origin: 'http://localhost:8080',
-  credentials: true,
+	origin: 'http://localhost:8080',
+	credentials: true,
 }));
 
 
@@ -176,32 +176,32 @@ app.use('/publications', publiRoutes);
 
 // home route
 app.get('/', (req, res) => {
-  res.render('pages/home');
+	res.render('pages/home');
 });
 
 
 // home route
 app.get('/contactme', (req, res) => {
-  res.render('pages/contact');
+	res.render('pages/contact');
 });
 
 // get anything that hasn't already been matched
 app.use('*', (req, res) => {
-  // send a response with status 404
-  res.status(404).send('page not found');
+	// send a response with status 404
+	res.status(404).send('page not found');
 });
 
 
-app.use('*', (error, req, res, next) => {
-  console.log('this is error', error);
-  res.locals.error = error;
-  res.render('pages/error');
+app.use('*', (error, req, res) => {
+	console.log('this is error', error);
+	res.locals.error = error;
+	res.render('pages/error');
 });
 
 
 // tell the app where to serve
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+	console.log(`Listening on port ${port}`);
 });
 
 module.exports = app;
