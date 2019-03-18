@@ -2,15 +2,10 @@ const express = require('express');
 // initialize the app
 const app = express();
 
-const projeRoutes = require('./routes/projeroutes');
-const publiRoutes = require('./routes/publicationRoutes');
-const loginRoutes = require('./routes/loginRoutes');
 // const userRoutes = require('./routes/userRoutes');
-const adminRoutes = require('./routes/adminRoutes');
-const examRoutes = require('./routes/examRoutes');
-const signupRoutes = require('./routes/signupRoutes');
+// const adminRoutes = require('./routes/adminRoutes');
 const bodyParser = require('body-parser');
-//configure the logger: (some other loggers are winston, bunyan,)
+// configure the logger: (some other loggers are winston, bunyan,)
 const passport = require('passport');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
@@ -32,9 +27,9 @@ const origins = [
   'http://localhost:3000', // Development
   'http://localhost:5000', // Production Build
   'http://reactjs.herokuapp.com', // Just for debugging reasons
-  'https://reactjs.herokuapp.com'
+  'https://reactjs.herokuapp.com',
 ];
-app.use(cors({credentials: true, origin: origins}));
+app.use(cors({ credentials: true, origin: origins }));
 
 
 app.use(session({
@@ -44,13 +39,13 @@ app.use(session({
   activeDuration: 5 * 60 * 1000,
   httpOnly: true,
   secure: true,
-  ephemeral: true
+  ephemeral: true,
 }));
 
 const secret = process.env.COOKIE_SECRET;
 // const authMiddleware = require('./controllers/authController');
 
-//when we create forms, the natural method will be post. In order to get the delete function to work we will need this package.
+// when we create forms, the natural method will be post. In order to get the delete function to work we will need this package.
 const methodOverride = require('method-override');
 
 
@@ -87,46 +82,50 @@ app.use(methodOverride('_method'));
 const port = process.env.PORT || 3000;
 
 /* Views- Telling the app where to look for our templates and the other telling it what kind of template to expect. */
-app.set('views', path.join( __dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//telling which logger to use.
+// telling which logger to use.
 app.use(logger('dev'));
 
 
 // parse incoming data
 /* we'll be reading the form body and files,
-or anything more than text*/
-app.use( bodyParser.urlencoded({ extended: true }));
+or anything more than text */
+app.use(bodyParser.urlencoded({ extended: true }));
 /* we'll also be accepting and parsing json  */
 app.use(bodyParser.json());
 app.use(cookieParser(secret));
 
 
 const permission = require('permission');
+const signupRoutes = require('./routes/signupRoutes');
+const examRoutes = require('./routes/examRoutes');
+const loginRoutes = require('./routes/loginRoutes');
+const publiRoutes = require('./routes/publicationRoutes');
+const projeRoutes = require('./routes/projeroutes');
 
 
-permission.AUTHORIZED === 'authorized' // true
-permission.NOT_AUTHENTICATED === 'notAuthenticated' // true
-permission.NOT_AUTHORIZED === 'notAuthorized' // true
+permission.AUTHORIZED === 'authorized'; // true
+permission.NOT_AUTHENTICATED === 'notAuthenticated'; // true
+permission.NOT_AUTHORIZED === 'notAuthorized'; // true
 
 const notAuthenticated = {
-    flashType: 'error',
-    message: 'The entered credentials are incorrect',
-    redirect: '/login'
+  flashType: 'error',
+  message: 'The entered credentials are incorrect',
+  redirect: '/login',
 };
 
 
 // static route to public
 app.use(express.static('public'));
 // This sets a folder called public to be the destination from which any static assets (images,css,etc) will be served.
-app.use( '/static', express.static( path.join( __dirname, 'public' )));
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
   origin: 'http://localhost:8080',
-  credentials: true
+  credentials: true,
 }));
-
 
 
 // login route
@@ -176,14 +175,14 @@ app.use('/publications', publiRoutes);
 
 
 // home route
-app.get('/', (req,res) => {
-  res.render('pages/home')
+app.get('/', (req, res) => {
+  res.render('pages/home');
 });
 
 
 // home route
-app.get('/contactme', (req,res) => {
-  res.render('pages/contact')
+app.get('/contactme', (req, res) => {
+  res.render('pages/contact');
 });
 
 // get anything that hasn't already been matched
@@ -196,13 +195,13 @@ app.use('*', (req, res) => {
 app.use('*', (error, req, res, next) => {
   console.log('this is error', error);
   res.locals.error = error;
-  res.render('pages/error')
+  res.render('pages/error');
 });
 
 
 // tell the app where to serve
 app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
+  console.log(`Listening on port ${port}`);
 });
 
 module.exports = app;

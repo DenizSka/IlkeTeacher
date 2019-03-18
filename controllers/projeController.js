@@ -1,9 +1,6 @@
 
 const projeData = require('../models/projeDB');
 
-
-
-
 module.exports = {
 
   index(req, res, next) {

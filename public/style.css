@@ -1,34 +1,5 @@
-:root {
+.root {
   --jumbotron-padding-y: 3rem;
-}
-
-.site-title{
-  padding-left: 35%;
-  padding-right: 35%;
-  color: #3e3e3b;
-  font-weight: 600;
-  font-family: Playfair Display;
-  font-style: normal;
-  font-size: 40px;
-/*  letter-spacing: 1px;*/
-  text-align: center;
-  text-transform: none;
-  line-height: 1.2em;
-  letter-spacing: 0.0208333em;
-  padding-bottom: 0px;
-  padding-top: 5px;
-  margin-bottom: 0px;
-}
-.clearfix div{
-  height: auto;
-/*  width: 25%;*/
-  float: left;
-  font-size: 12px;
-  padding-top: 30px;
-  padding-right: 20px;
-  padding-left: 20px;
-  margin-bottom: 1%;
-  margin-left: 10%;
 }
 
 a{
@@ -50,16 +21,61 @@ a{
   margin-right: 50%;
 }
 
+/*navigation*/
 .navbar{
 display: block;
 }
+
+.nav-link {
+  display: inline;
+  text-transform: capitalize;
+  font-weight: normal;
+}
+
 
 .bg-dark{
   background-color: #FBFDFF!important;
   text-align: center;
 }
 
+/*About me*/
+.site-title{
+  padding-left: 35%;
+  padding-right: 35%;
+  color: #3e3e3b;
+  font-weight: 600;
+  font-family: Playfair Display;
+  font-style: normal;
+  font-size: 40px;
+  text-align: center;
+  text-transform: none;
+  line-height: 1.2em;
+  letter-spacing: 0.0208333em;
+  padding-bottom: 0px;
+  padding-top: 5px;
+  margin-bottom: 0px;
+}
 
+.writingabout{
+  margin-top: 50px;
+  margin-left: 50px;
+  width: 50.3333%;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: .5px;
+}
+
+.writingtitle{
+
+  font-weight: 300;
+  font-family:  'Raleway', sans-serif;
+  text-transform: uppercase;
+  margin-top:30px;
+  margin-left: 50px;
+}
+
+.d-block{
+  height: 500px;
+}
 
 
 .ilkeimage{
@@ -70,35 +86,21 @@ display: block;
   margin-left: 10px;
 }
 
-a.nav-item{
-  padding-left: 20px;
-}
 
-.carousel-item{
+/*.carousel-item{
   height: 400px;
   width: 100%;
-}
+}*/
 
-.d-block{
-  height: 500px;
-}
-
-#loginsignup{
-    margin-left: 25%;
-    margin-right: 25%;
-}
-
-
-.text-muted{
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 12px;
+img.resize {
+  width:100px; /* you can use % */
+  height: auto;
 }
 
 .container {
-    width: 100%;
-    padding-right: 0px;
-    padding-left: 0px;
+  width: 100%;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 @media (min-width: 1200px) {
@@ -119,27 +121,26 @@ a.nav-item{
   }
 }
 
+a.nav-item{
+  padding-left: 20px;
+}
+
+#loginsignup{
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+
 nav#firstnav {
   text-align: center;
 }
 
-.writingabout{
-  margin-top: 50px;
-  margin-left: 50px;
-  width: 50.3333%;
-  font-family: 'Playfair Display', serif;
-  letter-spacing: .5px;
+
+.text-muted{
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 12px;
 }
-
-.writingtitle{
-
-  font-weight: 300;
-  font-family:  'Raleway', sans-serif;
-  text-transform: uppercase;
-  margin-top:30px;
-  margin-left: 50px;
-}
-
 /*admin*/
 .btn.btn-link.collapsed{
   font-family: Lato;
@@ -172,25 +173,19 @@ nav#firstnav {
   font-size: 16px;
 }
 
-.table.table-carousel{
+/*.table.table-carousel{
   height: auto;
 /*  display: table;*/
-  height: 70%;
+/*  height: 70%;
   float: left;
   font-size: 12px;
   padding-top: 0px;
   padding-right: 0px;
   position: relative;
   margin-bottom: 100px;
-  margin-top: 0px;
-}
+  margin-top: 0px;*/
+/*}*/
 
-
-
-img.resize {
-  width:100px; /* you can use % */
-  height: auto;
-}
 
 @media (min-width: 576px){
 .col-sm-4 {
@@ -205,16 +200,6 @@ img.resize {
   background-color: #fff;
 }
 
-
-.footerhome{
-  margin-left: 10px;
-}
-
-.nav-link {
-  display: inline;
-  text-transform: capitalize;
-  font-weight: normal;
-}
 
 @media (min-width: 768px) {
   .jumbotron {
@@ -264,14 +249,13 @@ label{
 .btn-secondary {
   margin-left: 25px;
 }
+
 /*publications*/
-.headline {
-  padding-top: 20px;
+.publi-title{
   font-size: 30px;
   font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
   margin-top: 30px;
-  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -295,24 +279,6 @@ label{
   padding-bottom: 10px;
 }
 
-.spanclasspubli{
-  display: flex;
-  font-family: "Open Sans", Arial, sans-serif;
-  font-size: 12px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column;
-  padding-left: 20px;
-}
-.publi-title{
-
-  font-size: 30px;
-  font-family: 'Raleway', sans-serif;
-  text-transform: uppercase;
-  margin-top: 30px;
-  text-align: center;
-}
-
 .publiname{
   -webkit-font-smoothing: antialiased;
     border: 0;
@@ -329,6 +295,12 @@ label{
 }
 
 
+/*publication single*/
+
+.publi{
+  color: #535353;
+  font-family: "Open Sans", Arial, sans-serif;
+}
 
 .publiname-single{
   font-weight: 600;
@@ -348,6 +320,17 @@ h5.publiname-single{
   font-size: 20px;
   font-weight: bold;
   padding-top: 40px;
+}
+
+
+.spanclasspubli{
+  display: flex;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 12px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  padding-left: 20px;
 }
 
 .edit-publication{
@@ -408,6 +391,18 @@ h5.publiname-single{
     transition: 150ms;
 }
 
+/*admin Page*/
+
+.headline {
+  padding-top: 20px;
+  font-size: 30px;
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
 .ilkeadmin{
   font-family: Lato;
   text-align: center;
@@ -465,21 +460,25 @@ h5.publiname-single{
   padding: 0 4em 0 4em;
 }
 
+.clearfix div{
+  height: auto;
+/*  width: 25%;*/
+  float: left;
+  font-size: 12px;
+  padding-top: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 1%;
+  margin-left: 10%;
+}
 
+/*footer*/
 
-
-
-
-
-/*publication single*/
-
-.publi{
-  color: #535353;
-  font-family: "Open Sans", Arial, sans-serif;
+.footerhome{
+  margin-left: 10px;
 }
 
 
-/*footer*/
 footer{
   position:relative;
   width:100%;
