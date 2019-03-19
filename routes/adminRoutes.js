@@ -1,4 +1,5 @@
 const express = require('express');
+
 const adminRoutes = express.Router();
 
 const controller = require('../controllers/signinController');
@@ -7,27 +8,26 @@ const views = require('../controllers/viewsController');
 const loggedUser = require('../models/loginDB');
 
 
-
 adminRoutes.get('/ ', (req, res, id) => {
   console.log('admin routes for pending', req.params);
   console.log('admin routes for pending checking cookie', req.signedCookies.user_id);
   if (!isNaN(req.params.id)) {
-    loggedUser.findById(req.params.id).then(user => {
-      if ((user.id === 2 && user.role == "denizskantz") && (req.signedCookies.user_id == req.params.id) ) {
+    loggedUser.findById(req.params.id).then((user) => {
+      if ((user.id === 2 && user.role == 'denizskantz') && (req.signedCookies.user_id == req.params.id)) {
         delete user.password;
         loggedUser.findAllPending().then((pendingusers) => {
           console.log('users:', pendingusers);
-          res.render ('pending/pending-userpage', {
-            pendingusers: pendingusers,
+          res.render('pending/pending-userpage', {
+            pendingusers,
           });
         });
         // .get(controller.indexPending, views.pendingStudent)
       } else {
-        resError(res, 404, "User Not Found");
+        resError(res, 404, 'User Not Found');
       }
     });
   } else {
-    resError(res, 500, "Invalid ID");
+    resError(res, 500, 'Invalid ID');
   }
 });
 
@@ -59,7 +59,7 @@ adminRoutes.get('/ ', (req, res, id) => {
 
 function resError(res, statusCode, message) {
   res.status(statusCode);
-  res.json({message});
-};
+  res.json({ message });
+}
 
 module.exports = adminRoutes;

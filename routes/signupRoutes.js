@@ -1,4 +1,5 @@
 const express = require('express');
+
 const signupRoutes = express.Router();
 const controller = require('../controllers/signinController');
 const views = require('../controllers/viewsController');
@@ -7,7 +8,6 @@ const views = require('../controllers/viewsController');
 
 // signupRoutes.get('/', controller.getOneEmail, views.signupFormu);
 signupRoutes.get('/', controller.emptyForm, views.signupFormu);
-
 
 // signupRoutes.route('/:id/edit')
 //   .get(controller.getOne);
@@ -37,15 +37,12 @@ signupRoutes.get('/', controller.emptyForm, views.signupFormu);
 //   }
 // });
 
-
 signupRoutes.route('/')
   // .post(controller.getOneEmail, views.addsignup);
   .post(controller.getOneEmail, views.pendingPage);
 
-
 signupRoutes.route('/logout')
   .post(controller.logout, views.logoutPage);
-
 
 
 module.exports = signupRoutes;

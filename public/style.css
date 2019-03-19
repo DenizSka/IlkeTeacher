@@ -1,9 +1,9 @@
-.root {
+:root {
   --jumbotron-padding-y: 3rem;
 }
 
-a{
-  font-family:  'Raleway', sans-serif;
+a {
+  font-family: 'Raleway', sans-serif;
   color: #2F3330;
   font-weight: bold;
   letter-spacing: 0.1em;
@@ -144,10 +144,10 @@ nav#firstnav {
 /*project*/
 
 .table.table-hover{
-  height: auto;
+  /*height: auto;*/
 /*  display: table;*/
   height: 70%;
-  float: left;
+  /*float: left;*/
   padding-top: 0px;
   padding-right: 0px;
   position: relative;
@@ -188,6 +188,32 @@ nav#firstnav {
   max-width: 40rem;
 }
 
+@media (max-width: 1000px) {
+  iframe{
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 800px) {
+  iframe{
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 650px) {
+  iframe{
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 500px) {
+  iframe{
+    margin-left: 5%;
+    margin-right:5%;
+    max-width: 300px;
+  }
+}
+
 /*log in*/
 #loginsignup{
   margin-left: 30%;
@@ -225,69 +251,102 @@ label{
   text-align: center;
 }
 
+.publicationslist{
+  font-size: 12px;
+  padding-top: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 1%;
+  margin-left: 20%;
+}
+
 .spanclass{
+  height: 400px;
   margin: 30px 24px 48px 40px;
-  width: calc((100% - 10px) / 3);
-  display: block;
+  width: 100%;
+  width: calc(40% - 3em);
   position: relative;
   display: -webkit-box;
-/*  display: flex;*/
   text-align: center;
   font-family: "Open Sans", Arial, sans-serif;
-  font-size: 12px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   flex-direction: column;
-/*  background-color: #f9f9f9;*/
+  float: left;
   border-color: #D4D4D4;
   border-width: 1px;
   border-style: solid;
-  padding-bottom: 10px;
+}
+
+@media (max-width: 1200px) {
+  .table.table-hover{
+    max-width: 3000px;
+  }
+
+  .publicationslist{
+    margin-right: 0%;
+    margin-left: 0%;
+  }
+
+  .spanclass{
+    width: calc(50% - 3em);
+  }
+}
+
+@media (max-width: 700px) {
+  .table.table-hover{
+    max-width: 1200px;
+  }
+
+  .publicationslist{
+    margin-left: 10%;
+  }
+
+  .spanclass{
+    width: calc(100% - 3em);
+  }
 }
 
 .publiname{
   -webkit-font-smoothing: antialiased;
-    border: 0;
-    font: inherit;
-    font-size: 100%;
-    margin: 0;
-    padding: 0;
-    vertical-align: baseline;
-    color: #535353;
-    font-family: 'Lato', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 1.5;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #535353;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
 }
 
 .publibutton{
   background-color: #bbb;
-    border-color: #bbb;
-    color: #fff;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    outline: none;
-    text-decoration: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font-family: "Open Sans", Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border: 2px solid transparent;
-    border-radius: 18px;
-    cursor: pointer;
-    display: inline-block;
-    line-height: 32px;
-    padding: 0 24px;
-    position: relative;
-    transition: 150ms;
+  border-color: #bbb;
+  color: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  text-decoration: none;
+  user-select: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 32px;
+  padding: 0 24px;
+  position: relative;
+  transition: 150ms;
 }
 
 /*publication single*/
@@ -314,6 +373,13 @@ h5.publiname-single{
   font-size: 20px;
   font-weight: bold;
   padding-top: 40px;
+}
+
+@media (max-width: 500px) {
+  .publiname-single{
+    margin-left:5%;
+    margin-right: 5%;
+  }
 }
 
 .spanclasspubli{
@@ -419,14 +485,16 @@ h5.publiname-single{
 }
 
 .clearfix div{
-  height: auto;
-  float: left;
+  /*height: auto;*/
+  /*float: left;*/
+  /*overflow: hidden;*/
   font-size: 12px;
   padding-top: 30px;
   padding-right: 20px;
   padding-left: 20px;
+  padding-bottom: 20px;
   margin-bottom: 1%;
-  margin-left: 10%;
+  margin-left: 1%;
 }
 
 /*footer*/
