@@ -31,6 +31,12 @@ display: block;
   font-weight: normal;
 }
 
+@media (max-width: 576px) {
+  .nav-link.navbara {
+    display: block;
+  }
+}
+
 .bg-dark{
   background-color: #FBFDFF!important;
   text-align: center;
@@ -55,6 +61,7 @@ display: block;
 }
 
 .writingabout{
+  position: relative;
   margin-top: 50px;
   margin-left: 50px;
   width: 50.3333%;
@@ -70,6 +77,25 @@ display: block;
   margin-left: 50px;
 }
 
+@media (max-width: 992px) {
+  .writingabout {
+   width: 50.3333%;
+  }
+}
+
+@media (max-width: 750px) {
+  .writingabout {
+   width: 57%;
+  }
+}
+
+@media (max-width: 576px) {
+  .writingabout {
+    margin-top: 350px;
+    width: 70.3333%;
+  }
+}
+
 .d-block{
   height: 500px;
 }
@@ -77,14 +103,32 @@ display: block;
 .ilkeimage{
   right: 0%;
   position: absolute;
-/*  margin-right: 50px;*/
-/*  margin-top: 10px;*/
+  width: 500px;
+  height: 500px;
   margin-left: 10px;
 }
 
-img.resize {
-  width:100px; /* you can use % */
-  height: auto;
+@media (max-width: 992px) {
+  .ilkeimage{
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 750px) {
+  .ilkeimage{
+    margin-top: 30px;
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ilkeimage{
+    width: 350px;
+    height: 300px;
+    left: 0%;
+  }
 }
 
 .container {
@@ -107,12 +151,19 @@ img.resize {
 
 @media (min-width: 576px) {
   .container {
-      max-width: 1500px;
+    max-width: 1500px;
   }
 }
 
 a.nav-item{
   padding-left: 20px;
+}
+
+@media (max-width: 576px) {
+  a.nav-item.containera{
+    padding-left: 3px;
+    font-size: 12px;
+  }
 }
 
 nav#firstnav {
@@ -124,6 +175,7 @@ nav#firstnav {
   padding-right: 10px;
   font-size: 12px;
 }
+
 /*admin*/
 .btn.btn-link.collapsed{
   font-family: Lato;
@@ -144,10 +196,7 @@ nav#firstnav {
 /*project*/
 
 .table.table-hover{
-  /*height: auto;*/
-/*  display: table;*/
   height: 70%;
-  /*float: left;*/
   padding-top: 0px;
   padding-right: 0px;
   position: relative;
@@ -218,6 +267,13 @@ nav#firstnav {
 #loginsignup{
   margin-left: 30%;
   margin-right: 30%;
+}
+
+@media (max-width: 600px) {
+  #loginsignup{
+    margin-left: 10%;
+    margin-right: 10%;
+  }
 }
 
 .form-control {
@@ -453,6 +509,12 @@ h5.publiname-single{
     height: 100%;
 }
 
+@media (max-width: 576px) {
+  .containerz {
+    margin-left: 0px;
+  }
+}
+
 .column__wrapper{
   width: 33.333333%;
   display: inline-block;
@@ -480,14 +542,41 @@ h5.publiname-single{
   padding-left: 4em;
 }
 
+@media (max-width: 576px) {
+  .column__title{
+    padding-left: 2em;
+  }
+}
+
+
 .column__content{
   padding: 0 4em 0 4em;
 }
 
+/*@media (min-width: 1200px) {
+  .column__content {
+      max-width: 3000px;
+  }
+}*/
+/*
+@media (min-width: 992px) {
+  .column__content {
+      max-width: 1500px;
+  }
+}*/
+@media (max-width: 950px) {
+  .column__content {
+    padding: 0 0 0 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .column__content {
+    padding: 0 0 0 0;
+  }
+}
+
 .clearfix div{
-  /*height: auto;*/
-  /*float: left;*/
-  /*overflow: hidden;*/
   font-size: 12px;
   padding-top: 30px;
   padding-right: 20px;
